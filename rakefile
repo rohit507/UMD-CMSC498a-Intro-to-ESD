@@ -1,0 +1,12 @@
+#########################################
+#                                       #
+#   Name : Rakefile                     #
+#   About : Build automation document   #
+#                                       #
+#########################################
+
+require "yaml" 
+
+task :todo do 
+    sh 'grep -r --exclude="*\.swp" --exclude-dir="\.git" "TODO" ./'
+end
