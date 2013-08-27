@@ -1,3 +1,28 @@
+# General 
+
+*~
+[#]*[#]
+.[#]*
+TAGS
+bin/
+lib/
+
+# Vim
+
+*.swp
+*.swo
+
+# Nohup
+
+nohup.out
+
+# Output files
+
+*.tex
+*.pdf
+
+# LaTeX
+
 *.acn
 *.acr
 *.alg

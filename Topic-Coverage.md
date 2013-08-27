@@ -1,0 +1,182 @@
+- [ ] Introduction 
+  - [ ] Purpose of book
+  - [ ] How to read (i.e. This is not the user manual! Go there for     
+                 tables, here for explanations.)
+  - [ ] LPC1769 basic info
+  - [ ] Arm Cortex-M3 basic info
+- [ ] !! GPIO
+  - [ ] Explanation
+    - [ ] Basic GPIO
+    - [ ] Pin connect
+    - [ ] Interrupts 
+    - [ ] Circuits
+      - [ ] Pull Up/Down Resistors
+      - [ ] LED Resistor values
+      - [ ] Common Anode/Cathode devices
+  - [ ] Examples
+    - [ ] Single Led
+    - [ ] Button Polling
+  - [ ] Exercises
+    - [ ] RGB Led
+    - [ ] Button Interrupt
+- [ ] ! Power Control and Clocking
+  - [ ] Explanation
+    - [ ] Clocking diagram
+    - [ ] Power consumption
+      - [ ] Effect of clocking, peripherals
+  - [ ] Example
+    - [ ] Basic clockrate change
+  - [ ] Exercises
+    - [ ] Math: Calculate changes for target clockrate
+- [ ] !! Timers 
+  - [ ] Explanation
+    - [ ] Capture Registers/Pins
+    - [ ] Timer Counters
+    - [ ] Prescale registers
+    - [ ] External Match Register/Pins
+  - [ ] Example
+    - [ ] Capture Input Timing
+    - [ ] Timed LED w/o Interrupt or Polling
+  - [ ] Exercise
+    - [ ] Math : Timing Calculations
+- [ ] Project : Morse Code Reader
+  - [ ] Morse Code Spec
+  - [ ] Semihosting & printf()
+- [ ] Real Time Clock
+  - [ ] Explanation
+  - [ ] Exercise
+    - [ ] Binary Clock
+- [ ] ~~ Repetitive Interrupt Timer & System Tick Timer
+  - [ ] Explanation
+  - [ ] Exercises
+    - [ ] Timed LED Blinking
+- [ ] NVIC
+  - [ ] Explanation
+  - [ ] Examples
+    - [ ] Interrupt Priority
+    - [ ] Software Generated Interrupt
+  - [ ] Exercise
+    - [ ] Force Reentrant Interrupt
+- [ ] ! Analog to Digital Converter (ADC)
+  - [ ] Explanation
+  - [ ] Examples
+    - [ ] Read in data from function generator
+  - [ ] Exercises
+    - [ ] Read photoresistor
+- [ ] ! Digital to Analog Converter (DAC)
+  - [ ] Explanation
+  - [ ] Example
+    - [ ] Sawtooth Out
+  - [ ] Exercise
+    - [ ] ADC DAC Forwarder
+- [ ] ! Direct Memory Access (DMA)
+  - [ ] Explanation 
+  - [ ] Example 
+    - [ ] Memory-To-Memory
+  - [ ] Exercise
+    - [ ] ADC DAC forwarder w/ DMA
+    - [ ] Linked List Stuff
+- [ ] ~ Flash Memory 
+  - [ ] Explanation
+  - [ ] Example
+    - [ ] Data Store
+- [ ] Project : Sound Recorder 
+  - [ ] Use ADC,DAC,DMA and Flash to record and play back sound
+  - [ ] Circuitry stuff
+- [ ] ! Serial Peripheral Interface (SPI)
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Interface (via. SSP interface)
+  - [ ] Example
+    - [ ] Shift Register w/ 7 segment display
+  - [ ] Exercise
+    - [ ] MicroSD IO
+    - [ ] Larson Scanner with Bit Angle Modulation
+- [ ] ~~ USB Device
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Interface
+  - [ ] Example
+    - [ ] Joystick Mouse
+- [ ] ~ USB Host
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Interface
+  - [ ] Example 
+    - [ ] Thumbdrive IO
+- [ ] Project : extend sound recorder w/ FAT16 IO (to SD or thumbdrive)
+  - [ ] FAT Spec
+- [ ] Pulsed Width Modulation (PWM)
+  - [ ] Explanation
+  - [ ] Example
+    - [ ] Led w/ brightness
+  - [ ] Exercise
+    - [ ] RGB Led w/ brightness
+    - [ ] Larson Scanner w/ PWM
+- [ ] ~ Universal Asynchronous Receive Transmit (UART)
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Interface
+  - [ ] TODO : Find components/projects that use UART
+- [ ] ~ I2C
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Interface
+  - [ ] TODO : Find components/projects that use I2C
+- [ ] Ethernet
+  - [ ] Explanation
+    - [ ] Protocol
+    - [ ] Inteface
+  - [ ] Example
+    - [ ] TODO : Find something simple to do with ethernet (ask Bobby)
+- [ ] !! Free RTOS
+  - [ ] Explanation
+    - [ ] What is it?
+    - [ ] Why use it?
+    - [ ] How to use it. 
+  - [ ] Example
+    - [ ] Basic multi-task app
+- [ ] Project : Use Free RTOS and a TCP/IP stack to implement a small 
+           http server that returns information on current inputs
+          (TODO: check feasibility)
+  - [ ] TCP/IP
+  - [ ] DHCP 
+  - [ ] HTTP
+- [ ] Appendices
+  - [ ] ! Gnu Toolchain
+    - [ ] Install
+      - [ ] !! Linux
+      - [ ] !! OSX
+      - [ ] !! Windows <!-- [ ] preferably with mingw --->	
+    - [ ] Use
+      - [ ] Code (GCC, example Makefile/Rakefile)
+        - [ ] Linking libraries 
+        - [ ] printf / semihosting
+      - [ ] Debug (GDB w/ LPC1769)
+        - [ ] Breakpoints
+        - [ ] Memory Viewing
+  - [ ] ~ LPCXpresso
+    - [ ] Install
+	 - [ ] Windows 
+	 - [ ] OSX
+	 - [ ] Linux 
+    - [ ] Use
+	 - [ ] Code
+        - [ ] Project Types and Versions
+        - [ ] Linking Libraries
+        - [ ] printf / semihosting
+      - [ ] Debug
+        - [ ] Breakpoints
+        - [ ] Memory Viewing
+  - [ ] !! Pin Out Diagram
+  - [ ] !! Resetting the LPC1769 / Recovery from fuckups
+  - [ ] !! Contributing Guidelines
+
+----------------
+
+!! - high priority 
+!  - greater than normal priority
+~  - below normal priority 
+~~ - low priority
+?? - optional / tentative
+

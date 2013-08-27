@@ -1,4 +1,20 @@
-Intro-to-ESD
-============
+Introduction to Embedded Systems Development with the LPC 1769 
+======================
 
-Introduction to Embedded Systems Development with the LPC 1769 : A Textbook designed for computer scientists taking an ESD course at the University of Maryland
+A textbook for computer scientists taking an ESD course at the 
+University of Maryland
+
+## Building ##
+
+At the moment this requires the following software:
+
+    Pandoc 1.11.1 (Ubuntu has an old version,
+                   so you might just want to 
+                   build it yourself.) 
+    Ruby 2.0.0    (Use RVM)
+    GPP 2.24
+
+Ideally with the `texlive-full` package or similar, so you'll have
+a good selection of common LaTeX packages. 
+
+
