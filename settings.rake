@@ -14,6 +14,7 @@ $PP = "gpp"
     # Options for initial .pp to .ppmd pass
     $PPMACRO_PRE = "#{$ROOT_DIR}style/ppmd.gpp"
     $PPOPTS_PRE = '-U "@" "\n" "(" "," ")\n" "(" ")" "#" "" ' +
+                  '+ciic "@@" "\n" +ciic "@>" "<@" ' +
                   "--include #{$PPMACRO_PRE}"
 
     # Options for final .tex to .pptex pass
@@ -24,10 +25,13 @@ $PP = "gpp"
 # Latex Creator Options
 $LC = "pandoc"
 
-    # Standalone Options
-    $LCOPTS_SA = "-s --toc-depth=2 -N -R --standalone"
+    # Header File (pure LaTeX)
+    $LCHEADER_FILE = "#{$ROOT_DIR}style/header.tex"
 
-    # Connected Build Options
+    # Standalone Options
+    $LCOPTS_SA = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE}"
+
+    # Linked Build Options
     $LCOPTS_CN = "-s --toc-depth=2 -N -R --standalone"
 
 # PDF Creator Options

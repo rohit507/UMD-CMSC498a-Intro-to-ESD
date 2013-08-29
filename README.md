@@ -13,6 +13,7 @@ At the moment this requires the following software:
                    build it yourself.) 
     Ruby 2.0.0    (Use RVM)
     GPP 2.24
+    Bibtool 2.55
 
 Ideally with the `texlive-full` package or similar, so you'll have
 a good selection of common LaTeX packages. 
