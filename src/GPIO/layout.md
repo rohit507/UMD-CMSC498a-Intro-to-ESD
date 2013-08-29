@@ -115,8 +115,7 @@ to be used for output, and then set the state to be on.
 @@
 If you look in the manual you'll see that `P0[9]`'s direction is controlled
 by the 9th bit in a register located at `0x2009C000`, and that setting it 
-to 1 makes it an output pin.  
-^[TODO: insert manual reference]
+to 1 makes it an output pin. [@LPCManual, p.107]
 
 ~~~~~~~~~~{.C}
     ((uint32_t *) 0x2009C000) |= (1 << 9); // Set P0[9] to output
@@ -233,9 +232,7 @@ write code that uses them.
     @   LPC_GPIO0->FIOPIN |= (1 << 9);  // Turn LED on
  	mov.w	r3, 0xc000
   	movt	r3, 0x2009
- 	mov.w	r2, 0xc000
-	movt	r2, 0x2009
-   	ldr	    r2, [r2, 20]
+   	ldr	    r2, [r3, 20]
  	orr.w	r2, r2, 0x200
    	str	    r2, [r3, 20]
 ~~~~~~~~~~
@@ -246,7 +243,7 @@ write code that uses them.
   	mov.w	r2, 0x200
    	str	    r2, [r3, 24]
 ~~~~~~~~~~
-<@ 
+<@
 
 
 @>

@@ -28,11 +28,12 @@ $LC = "pandoc"
     # Header File (pure LaTeX)
     $LCHEADER_FILE = "#{$ROOT_DIR}style/header.tex"
     $LCBIB_FILE = "#{$ROOT_DIR}src/Bibliography/Citations.bib"
+    $LCCSL_FILE = "#{$ROOT_DIR}src/Bibliography/style.csl"
 
 
     # Standalone Options
     $LCOPTS_SA = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE} " +
-                 "--bibliography=#{$LCBIB_FILE}"
+                 "--bibliography=#{$LCBIB_FILE}"# --csl=#{$LCCSL_FILE}"
 
     # Linked Build Options
     $LCOPTS_CN = "-s --toc-depth=2 -N -R --standalone"
