@@ -16,6 +16,14 @@ lib/
 
 nohup.out
 
+# Generated Files
+
+.ppmd
+
+# kBibtex
+
+*.bib~*
+
 # Output files
 
 *.tex
