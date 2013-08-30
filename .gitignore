@@ -26,7 +26,8 @@ nohup.out
 
 # Output files
 
-*.tex
+layout.tex
+src/*/*.tex
 *.pdf
 
 # LaTeX
