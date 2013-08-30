@@ -9,7 +9,7 @@ Read the following tutorials to get you up to speed with the electronics:
  - [Understanding LEDs][LED]
  - [Using Pull Up Resistors][Pull_Up]
 
-All these tutorials are a bit Arduino centric, but you should be able to 
+All these tutorials are Arduino centric, but you should be able to 
 easily extrapolate to what you need to do for your LPC.
 
 Additionally, you should keep the following documents handy, as they contain
@@ -48,8 +48,23 @@ reading the state of a button, and making an LED blink.
 Using what you learn from that, you'll be able to start building more 
 complex devices.
 
+## GPIO Output ##
 
-## Memory Mapped Registers ##
+The first half of GPIO is the output, and it's a relatively simple system,
+compared to the other parts of the LPC, but it's also one of the most 
+versatile and powerful. 
+@@
+For the moment we'll limit ourselves to turning LEDs on and off, but the same
+tools can be used to create much more complex devices.
+@@
+You can control the output through a simple process, first you tell the LPC
+that a specific pin should be used as an output, and then you tell the LPC
+whether the pin should be held low or high. 
+@@
+The interesting part is how exactly you can give the LPC instructions, and what
+it does in order to carry them out. 
+
+### Memory Mapped Registers ###
 
 
 On a normal machine most of your hardware access is done through a kernel
@@ -67,7 +82,7 @@ into a register, or takes data from a register and writes it to somewhere
 in the memory. 
 
 However, there are a number of privileged address, and when you try to
-manipulate these a slightly different pathway is taken. 
+read from or write to these a slightly different pathway is taken. 
 @@
 Here when the memory controller gets the instruction it notices the address 
 is special, and instead of going to the memory module, it'll forward the 
@@ -75,7 +90,7 @@ request to a register that's located in the relevant peripheral.
 
 
 These registers all have different functions, and you can read the manual
-^[TODO: insert manual ref] to figure out what any specific register does, and 
+@todo(insert manual ref) to figure out what any specific register does, and 
 which address in memory it's mapped to. 
 @@
 The really important thing to notice is that you're not dealing with a
@@ -102,13 +117,13 @@ There are registers where a write operation will trigger some change in the
 peripheral, making the LPC turn an LED on, or send out a signal.
 
 
-## Blinking Lights ## 
+### Blinking Lights ###
 
 So let's start with something simple; Blinking Lights. 
 @@
 Connect up an LED to pin `P0[9]` and ground, making sfure to place the proper
 current limiting resistor in series with it. 
-^[Use the schematic to figure which pin it is.]
+@todo(Use the schematic to figure which pin it is.)
 @@
 To actually turn on the LED you have to first tell the LPC that the pin is
 to be used for output, and then set the state to be on. 
@@ -133,7 +148,7 @@ bit.
 So now you should be able to make the light blink, or by varying the amount
 of time on and off, let it glow with varying levels of brightness.
 
-## An Easier Way ##
+### An Easier Way ###
 
 Of course writing out the memory address every time you wish to change a 
 register isn't easy, or readable. 
@@ -205,7 +220,7 @@ it, you'll get something much easier to work with.
 Having a layer of macros like this also makes it easier to port your code
 to another platform that uses the same interface.
 
-## More Registers ##
+### More Registers ###
 
 If you look closely there's 4 GPIO units, each controlling 32 pins, and 
 each of those blocks has 5 registers. 
@@ -223,6 +238,34 @@ writing to `FIOCLR` will disable the pin.
     LPC_GPIO0->FIOSET = 1 << 9; // Turn LED On
     LPC_GPIO0->FIOCLR = 1 << 9; // Turn LED Off
 ~~~~~~~~~~
+
+Each of these transactions takes a single write command, while the previous
+method had to first read the register, do a computation and write back the 
+result. 
+@@
+It is also important to note that a read operation on `FIOSET` connects to 
+a different register than a write operation to the same memory address.
+@@
+In this case, reading from `FIOSET` will get you the current output state 
+of each of the pins, regardless of their mode; whereas a write sends data
+to a seperate circuit that makes changes in a number of other registers.
+@@
+`FIOCLR` has a similar write operation, but no read operation at all instead
+^[TODO: Figure out if it returns 0s,gibberish, or a hard fault]
+
+`FIOMASK` serves a similar purpose, allowing you to disable various pins
+by writing ones to their respective bits. 
+@@
+Disabling a pin via `FIOMASK` means that `FIOSET` and `FIOCLR` will do nothing
+to change the state of that pin, and that `FIOPIN` will always read a zero. 
+
+## Input ##
+
+### Basics ###
+
+### Interrupts ###
+
+## Project : Bit Banging ##
 
 @>
 These seem redundant until you start looking at what happens when you 
@@ -390,4 +433,5 @@ GPIO output is very simple with the LPC, it basically amounts to:
   - Exercises
     - RGB Led
     - Button Interrupt
+O% Rohit Ramesh
 <@

@@ -6,3 +6,5 @@
 @define(centerstart,\begin{center})
 @define(centerend,\end{center})
 @define(pagebreak,\pagebreak)
+@define(todo,\todo{#1})
+@define(missingfigure,\missingfigure{#1})

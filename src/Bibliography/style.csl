@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only">
+<!-- This style was edited with the Visual CSL Editor (http://editor.citationstyles.org/visualEditor/) -->
   <info>
-    <title>IEEE (with URL)</title>
+    <title>IEEE with URL</title>
     <id>http://www.zotero.org/styles/ieee-with-url</id>
     <link href="http://www.zotero.org/styles/ieee-with-url" rel="self"/>
-    <link href="http://www.ieee.org/documents/stylemanual.pdf" rel="documentation"/>
+    <link href="http://www.ieee.org/portal/cms_docs_iportals/iportals/publications/authors/transjnl/stylemanual.pdf" rel="documentation"/>
     <link href="http://www.ieee.org/documents/auinfo07.pdf" rel="documentation"/>
     <author>
       <name>Michael Berkowitz</name>
@@ -28,17 +29,9 @@
     <category citation-format="numeric"/>
     <category field="engineering"/>
     <category field="generic-base"/>
-    <updated>2013-07-31T21:35:12+00:00</updated>
+    <updated>2013-08-29T23:07:57+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
-  <locale xml:lang="en">
-    <terms>
-      <term name="chapter" form="short">ch.</term>
-      <term name="presented at">presented at the</term>
-      <term name="available at">available</term>
-    </terms>
-  </locale>
-  <!-- Macros -->
   <macro name="edition">
     <choose>
       <if type="bill book chapter graphic legal_case legislation motion_picture paper-conference report song" match="any">
@@ -80,7 +73,7 @@
   </macro>
   <macro name="author">
     <names variable="author">
-      <name initialize-with=". " delimiter=", " and="text"/>
+      <name initialize-with="." delimiter=", " and="text"/>
       <label form="short" prefix=", " text-case="capitalize-first"/>
       <substitute>
         <names variable="editor"/>
@@ -90,7 +83,7 @@
   </macro>
   <macro name="editor">
     <names variable="editor">
-      <name initialize-with=". " delimiter=", " and="text"/>
+      <name initialize-with="." delimiter=", " and="text"/>
       <label form="short" prefix=", " text-case="capitalize-first"/>
     </names>
   </macro>
@@ -124,10 +117,8 @@
   <macro name="publisher">
     <choose>
       <if type=" bill book chapter graphic legal_case legislation motion_picture paper-conference song" match="any">
-        <group delimiter=": ">
-          <text variable="publisher-place"/>
-          <text variable="publisher"/>
-        </group>
+        <text variable="publisher-place" suffix=": "/>
+        <text variable="publisher"/>
       </if>
       <else>
         <group delimiter=", ">
@@ -139,25 +130,17 @@
   </macro>
   <macro name="event">
     <choose>
-      <if type="paper-conference speech" match="any">
+      <if type="paper-conference">
         <choose>
-          <!-- Published Conference Paper -->
           <if variable="container-title">
             <group delimiter=", ">
-              <group delimiter=" ">
-                <text term="in"/>
-                <text variable="container-title" font-style="italic"/>
-              </group>
+              <text variable="container-title" prefix="in " font-style="italic"/>
               <text variable="event-place"/>
             </group>
           </if>
-          <!-- Unpublished Conference Paper -->
           <else>
             <group delimiter=", ">
-              <group delimiter=" ">
-                <text term="presented at"/>
-                <text variable="event"/>
-              </group>
+              <text variable="event" prefix="presented at the "/>
               <text variable="event-place"/>
             </group>
           </else>
@@ -169,13 +152,9 @@
     <choose>
       <if variable="URL">
         <group delimiter=". ">
-          <group delimiter=": ">
-            <text term="available at" text-case="capitalize-first"/>
-            <text variable="URL"/>
-          </group>
-          <group prefix="[" suffix="]" delimiter=": ">
-            <text term="accessed" text-case="capitalize-first"/>
-            <date variable="accessed">
+          <text variable="URL" prefix="Available: "/>
+          <group prefix="[" suffix="]">
+            <date variable="accessed" prefix="Accessed: ">
               <date-part name="day" form="numeric-leading-zeros" suffix="-"/>
               <date-part name="month" form="short" suffix="-" strip-periods="true"/>
               <date-part name="year" form="long"/>
@@ -191,42 +170,24 @@
       <text variable="page"/>
     </group>
   </macro>
-  <macro name="citation-locator">
-    <group delimiter=" ">
-      <choose>
-        <if locator="page">
-          <label variable="locator" form="short"/>
-        </if>
-        <else>
-          <label variable="locator" form="short" text-case="capitalize-first"/>
-        </else>
-      </choose>
-      <text variable="locator"/>
-    </group>
-  </macro>
-  <!-- Citation -->
   <citation collapse="citation-number">
     <sort>
       <key variable="citation-number"/>
     </sort>
     <layout delimiter=", ">
-      <group prefix="[" suffix="]" delimiter=", ">
-        <text variable="citation-number"/>
-        <text macro="citation-locator"/>
-      </group>
+      <text value="\["/>
+      <text variable="citation-number"/>
+      <text variable="title-short" prefix=" "/>
+      <text variable="page" prefix=" "/>
+      <text value="\]" font-weight="normal" vertical-align="baseline"/>
     </layout>
   </citation>
-  <!-- Bibliography -->
   <bibliography entry-spacing="0" second-field-align="flush">
     <layout>
-      <!-- Citation Number -->
       <text variable="citation-number" prefix="[" suffix="]"/>
-      <!-- Author(s) -->
       <text macro="author" suffix=", "/>
-      <!-- Rest of Citation -->
       <group suffix=". ">
         <choose>
-          <!-- Specific Formats -->
           <if type="article-journal">
             <group delimiter=", ">
               <text macro="title"/>
@@ -273,10 +234,9 @@
           </else-if>
           <else-if type="patent">
             <text macro="title" suffix=", "/>
-            <text variable="number" prefix=" "/>
+            <text variable="number" prefix="U.S. Patent "/>
             <text macro="issued"/>
           </else-if>
-          <!-- Generic/Fallback Formats -->
           <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
             <group delimiter=", " suffix=". ">
               <text macro="title"/>
@@ -301,10 +261,7 @@
           <else-if type="chapter paper-conference" match="any">
             <group delimiter=", " suffix=", ">
               <text macro="title"/>
-              <group delimiter=" ">
-                <text term="in"/>
-                <text variable="container-title" font-style="italic"/>
-              </group>
+              <text variable="container-title" prefix="in " font-style="italic"/>
               <text macro="locators"/>
             </group>
             <text macro="editor" suffix=" "/>
