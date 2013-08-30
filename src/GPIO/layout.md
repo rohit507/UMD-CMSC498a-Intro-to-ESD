@@ -261,9 +261,11 @@ write code that uses them.
 
 ~~~~~~~~~~{.gnuassembler}
     @   LPC_GPIO0->FIOPIN |= (1 << 9);  // Turn LED on
- 	mov.w	r3, 0xc000
+  	mov.w	r3, 0xc000
   	movt	r3, 0x2009
-   	ldr	    r2, [r3, 20]
+    mov.w	r2, 0xc000
+  	movt	r2, 0x2009
+   	ldr	    r2, [r2, 20]
  	orr.w	r2, r2, 0x200
    	str	    r2, [r3, 20]
 ~~~~~~~~~~
@@ -310,6 +312,7 @@ you can have some pins set as input and some as output.
 
 Once you have this set up, you can connect up a switch with a pull down resistor
 to the input pin, and be able to read the state of your button in software.
+
 @missingfigure(Diagram of button circuit w/ tiny explanation)
 
 ### Bouncing ###
@@ -319,10 +322,13 @@ something like the following.
 
 ~~~~~~~~~~{.C}
     int state, prevstate = 0;
-    while(1){
-        state = (LPC_GPIO0->FIOPIN >> 9) & 1; // Get state of P0[9]
-        if(!prevstate && state) {             // If there's a change from 0 to 1
-            LPC_GPIO0->FIOPIN ^= 1 << 8;      // Toggle P0[8]
+    while(1){ 
+        // Get state of P0[9]
+        state = (LPC_GPIO0->FIOPIN >> 9) & 1;  
+        // If there's a change from 0 to 1
+        if(!prevstate && state) {    
+            // Toggle P0[8]
+            LPC_GPIO0->FIOPIN ^= 1 << 8;      
         }
         prevstate = state;
     }
@@ -335,23 +341,51 @@ And even when it changes it'll not simply toggle, but choose a new state randoml
 @@
 It might stay the same or switch state with an approximately 50% chance of either.
 
-So why is this? @todo(More info about bouncing) 
+@missingfigure(Insert figure showing zoomed in button press on oscilloscope)
 
-@missingfigure(Insert figure showing zoomed in button press on oscilliscope)
+This happens because buttons aren't perfect, and instead of getting smooth 
+transitions from connected to disconnected, the transitions are disjointed
+and shaky, this phenomenon is known as bouncing.
+@@
+Because the GPIO pins can only read if something is low or high these jitters 
+result in a number of very fast transitions before the voltage stabilizes.
+@@
+Your LPC will see each of these transitions as a separate button press and toggle
+the LED that many times.
+@@
+Since the number of transitions is random, the final state of the LED is also
+random. 
+
+There's a number of ways to combat bouncing, including keeping track of how long
+a button has been pressed before triggering an event and changing the circuit. 
+
 
 ### Interrupts ###
 
-
+@inlinetodo(Insert basic tutorial on interrupts, and how cmsis uses them)
 
 ## Project : Bit Banging ##
 
+Bit banging is the process of implementing a serial communication protocol using
+software instead of dedicated hardware. 
+@@
+In this case we're going to be sending data to a series of shift registers,
+using GPIO pins to control 8 LEDs.
+
+
 ### Reading ###
+
+@inlinetodo("Find a good tutorial on shift registers, and link it here")
 
 ### Materials ###
 
-### Goals ###
+@inlinetodo("Write a list of the basic components they'll need w/ links to a
+ datasheet or two")
 
-### Hints ###
+### Steps ###
+
+@inlinetodo("Large scale project steps")
+
 
 \todototoc
 \listoftodos

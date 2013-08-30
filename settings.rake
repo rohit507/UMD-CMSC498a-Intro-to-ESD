@@ -35,7 +35,7 @@ $LC = "pandoc"
 
     # Standalone Options
     $LCOPTS_SA = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE} " +
-                 "--template #{$LCTEMPLATE_FILE} "# +
+                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango "# +
                  #"--bibliography #{$LCBIB_FILE} --csl #{$LCCSL_FILE}"
 
     # Linked Build Options
