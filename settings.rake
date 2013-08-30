@@ -14,7 +14,7 @@ $PP = "gpp"
     # Options for initial .pp to .ppmd pass
     $PPMACRO_PRE = "#{$ROOT_DIR}style/ppmd.gpp"
     $PPOPTS_PRE = '-U "@" "\n" "(" "," ")" "(" ")" "#" "" ' +
-                  '+ciic "@@" "\n" +ciic "@>" "<@" ' +
+                  '+ciic "@@" "\n" +ciic "@>" "<@" +siqi "\"" "\"" "\\\\" ' +
                   "--include #{$PPMACRO_PRE}"
 
     # Options for final .tex to .pptex pass

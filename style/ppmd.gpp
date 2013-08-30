@@ -1,3 +1,6 @@
+@mode(push)
+@mode(quote,"|")
+
 @define(tikzstart,\begin{center}\resizebox{#1}{#2}{)
 @define(tikzend,}\end{center})
 @define(tinystart,)
@@ -6,5 +9,10 @@
 @define(centerstart,\begin{center})
 @define(centerend,\end{center})
 @define(pagebreak,\pagebreak)
-@define(todo,\todo{#1})
-@define(missingfigure,\missingfigure{#1})
+@define(todo,\todo[size=\small]{#1})
+@define(inlinetodo,\todo[inline,size=\footnotesize]{#1})
+@define(comment,\mycomment[#1]{#2})
+@define(inlinecomment,\myinlinecomment[#1]{#2})
+@define(missingfigure,\missingfigure[#2]{#1})
+
+@mode(pop)

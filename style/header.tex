@@ -1,1 +1,27 @@
-\usepackage{todonotes}
+\usepackage{todonotes} 
+\usepackage{setspace}
+\newcounter{mycmtctr}
+\newcommand{\mycomment}[2][]
+{
+    % initials of the author (optional) + note in the margin
+    \refstepcounter{mycmtctr}%
+    {%
+        \setstretch{0.7}% spacing
+        \todo[color={red!100!green!33},size=\footnotesize]
+        {
+            \textbf{Comment [\uppercase{#1}\themycmtctr]:}~#2
+        }
+    }
+}
+\newcommand{\myinlinecomment}[2][]
+{
+    % initials of the author (optional) + note inlin
+    \refstepcounter{mycmtctr}%
+    {%
+        \setstretch{0.7}% spacing
+        \todo[inline,color={red!100!green!33},size=\footnotesize]
+        {
+            \textbf{Comment [\uppercase{#1}\themycmtctr]:}~#2
+        }
+    }
+}
