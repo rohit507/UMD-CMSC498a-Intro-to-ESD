@@ -34,7 +34,7 @@ $LC = "pandoc"
     $LCCSL_FILE = "#{$ROOT_DIR}src/Bibliography/style.csl"
 
     # Standalone Options
-    $LCOPTS_SA = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE} " +
+    $LCOPTS_SA = "-s --toc-depth=3 -N -R --standalone -H #{$LCHEADER_FILE} " +
                  "--template #{$LCTEMPLATE_FILE} --highlight-style=tango "# +
                  #"--bibliography #{$LCBIB_FILE} --csl #{$LCCSL_FILE}"
 

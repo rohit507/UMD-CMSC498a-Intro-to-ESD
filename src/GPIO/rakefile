@@ -10,13 +10,12 @@ $ROOT_DIR = "../../"
 
 import "#{$ROOT_DIR}common.rake"
 
-require 'yaml'
-
 # List of files that aren't automatically generated and should be saved
 #  *everything* else will be deleted during the full clean operation
 
 $filelist = ["layout.md",        # The final layout document
              "table.erb",        # Template for the table
+             "assets/"  ,        # Dir containing images and stuff
              "rakefile"]    
 
 # List of generated files, these will be deleted during most clean operations  
@@ -31,29 +30,3 @@ $tempfiles = ["layout.ppmd",
               "nohup.out",
               "layout.toc"]
 
-task :clean => ["clean:default"] 
-
-namespace :clean do
-
-    task :default => :temp
-    
-    task :temp do
-        fl = FileList.new()
-        fl.add($tempfiles)
-        fl.existing!
-        fl.each do |f|
-            rm_rf f
-        end 
-    end
-
-    task :all do
-        fl = FileList.new()
-        fl.add("*")
-        fl.existing!
-        fl.exclude { |f|  $filelist.include?(f) }
-        fl.each do |f|
-            rm_rf f
-        end 
-    end
-
-end
