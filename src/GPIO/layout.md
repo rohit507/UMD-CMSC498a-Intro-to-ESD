@@ -252,9 +252,9 @@ to a separate circuit that makes changes in a number of other registers.
 `FIOCLR` has a similar write operation, but no read operation at all instead
 @todo("Figure out if it returns 0s,gibberish, or a hard fault")
 
-@inlinecomment(Rohit,Should we insert assembly here? Showing the different numbers
+@inlinecomment(Rohit,"Should we insert assembly here? Showing the different numbers
 of instructions? is it relevant since ARM isn't a one cycle per instruction 
-architecture?)
+architecture?")
 @>
 These seem redundant until you start looking at what happens when you 
 write code that uses them. 
@@ -337,11 +337,10 @@ something like the following.
 ~~~~~~~~~~
 
 When you try that, you'll notice some odd behavior, not only will the LED change
-when you press the button, but it will also change when you release the button. 
+when you press the button, but it will ocasionally also change when you release
+the button. 
 @@
-And even when it changes it'll not simply toggle, but choose a new state randomly.
-@@
-It might stay the same or switch state with an approximately 50% chance of either.
+It'll even ocasionally miss button presses completely.
 
 @missingfigure(Insert figure showing zoomed in button press on oscilloscope)
 
@@ -352,15 +351,16 @@ and shaky, this phenomenon is known as bouncing.
 Because the GPIO pins can only read if something is low or high these jitters 
 result in a number of very fast transitions before the voltage stabilizes.
 @@
-Your LPC will see each of these transitions as a separate button press and toggle
-the LED that many times.
+Your LPC will see some of these transitions as a separate button presses 
+and toggle the LED accordingly.
 @@
-Since the number of transitions is random, the final state of the LED is also
-random. 
+Most of the time, the bouncing will happen between reads of the pin state but
+sometimes, a read will happen in the middle of the bouncing and cause anomalous
+output. 
 
 There's a number of ways to combat bouncing, including keeping track of how long
 a button has been pressed before triggering an event and changing the circuit to 
-debounce it.
+eliminate the effect. 
 
 ### Interrupts ###
 
@@ -415,8 +415,6 @@ other GPIO ports don't have interrupt support]
     LPC_GPIOINT->IO0IntEnF |= (1 << 9);
 ~~~~~~~~~~
 
-@todo("Test code sample")
-
 Once the interrupt is enabled and will trigger on the right pins, the handler has
 to be defined. 
 @@
@@ -431,12 +429,12 @@ name will make that the handler for the interrupt.
     // Turn on the LED when the button is pressed
     void EINT3_IRQHandler() {
         // If the rising edge interrupt was triggered
-        if((LPC_GPIOINT->IO0StatR >> 9) & 1){
+        if((LPC_GPIOINT->IO0IntStatR >> 9) & 1){
             // Turn on P0[8]
             LPC_GPIO0->FIOPIN |= 1 << 8;      
         }
         // If the falling edge interrupt was triggered
-        if((LPC_GPIOINT->IO0StatR >> 9) & 1){
+        if((LPC_GPIOINT->IO0IntStatF >> 9) & 1){
             // Turn off P0[8]
             LPC_GPIO0->FIOPIN &= ~(1 << 8);      
         }
@@ -444,8 +442,6 @@ name will make that the handler for the interrupt.
         LPC_GPIOINT->IO0IntClr |= (1 << 9);
     }
 ~~~~~~~~~~
-
-@todo("Test Code Sample")
 
 Because the same interrupt handler will be called for any event one has to check
 the interrupt status registers to see which pin triggered the interrupt and on
@@ -513,6 +509,8 @@ to control 8 LEDs.
     'Understanding LEDs'
 [Pull_Up]: https://learn.sparkfun.com/tutorials/pull-up-resistors/introduction
     'Understanding Pull Up and Pull Down Resistors'
+[Shift_Schem]: http://www.ti.com/lit/ds/symlink/cd4094b.pdf
+    'CD4094B Shift Register Schematic'
 [LPC_Manual]: http://www.nxp.com/documents/user_manual/UM10360.pdf
     'LPC17xx User Manual'
 [LPC_Schem]: http://www.cs.umd.edu/class/fall2012/cmsc498a/manuals/lpcxpresso_lpc1769_schematic.pdf
