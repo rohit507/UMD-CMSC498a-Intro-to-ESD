@@ -79,7 +79,8 @@ instruction are sent down a bus to the memory controller.
 @@
 The memory controller then either retrieves data from memory and places it 
 into a register, or takes data from a register and writes it to somewhere
-in the memory.@todo(Insert diagram of ARM processor?)
+in the memory.@comment(Rohit,Insert diagram of ARM processor? It'll show all
+connected components, which would be cool.)
 
 However, there are a number of privileged address, and when you try to
 read from or write to these a slightly different pathway is taken. 
@@ -90,8 +91,8 @@ request to a register that's located in the relevant peripheral.
 
 
 These registers all have different functions, and you can read the manual
-@todo(insert manual ref) to figure out what any specific register does, and 
-which address in memory it's mapped to. 
+to figure out what any specific register does, and  which address in memory
+it's mapped to. 
 @@
 The really important thing to notice is that you're not dealing with a
 normal piece of memory, and these memory mapped registers can act very 
@@ -252,7 +253,8 @@ to a separate circuit that makes changes in a number of other registers.
 @todo("Figure out if it returns 0s,gibberish, or a hard fault")
 
 @inlinecomment(Rohit,Should we insert assembly here? Showing the different numbers
-of instructions?)
+of instructions? is it relevant since ARM isn't a one cycle per instruction 
+architecture?)
 @>
 These seem redundant until you start looking at what happens when you 
 write code that uses them. 
@@ -312,6 +314,8 @@ Once you have this set up, you can connect up a switch with a pull down resistor
 to the input pin, and be able to read the state of your button in software.
 
 @missingfigure(Diagram of button circuit w/ tiny explanation)
+@comment(Rohit,"Do we really need this basic a drawing, esp since we're not
+providing one for basic LED things?")
 
 ### Bouncing ###
 
