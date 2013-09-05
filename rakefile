@@ -44,7 +44,7 @@ file 'book.tex' => ['title.md',
                     'src/GPIO/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
-        "#{$LCOPTS_CN} #{f.prerequisites.join(" ")} "
+        "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
 end
 
 $tempfiles = ["book.ppmd",
