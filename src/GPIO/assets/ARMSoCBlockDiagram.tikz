@@ -1,0 +1,890 @@
+\definecolor{cffffe6}{RGB}{255,255,230}
+\definecolor{cfee6f2}{RGB}{254,230,242}
+\definecolor{ce4c5e1}{RGB}{228,197,225}
+\definecolor{ccbd5e8}{RGB}{203,213,232}
+\definecolor{cfed9a6}{RGB}{254,217,166}
+\definecolor{cd9f1ea}{RGB}{217,241,234}
+\definecolor{cccebdd}{RGB}{204,235,221}
+\definecolor{cccecf4}{RGB}{204,236,244}
+\definecolor{cbdaed4}{RGB}{189,174,212}
+\definecolor{cfcc0a7}{RGB}{252,192,167}
+\definecolor{ce6f5c4}{RGB}{230,245,196}
+\definecolor{ce5ddba}{RGB}{229,221,186}
+\definecolor{cfee6c2}{RGB}{254,230,194}
+\definecolor{cfb9a99}{RGB}{251,154,153}
+
+
+\begin{tikzpicture}[y=0.80pt,x=0.80pt,yscale=-1, inner sep=0pt, outer sep=0pt]
+  \path[draw=black,fill=cffffe6,line join=miter,line cap=round,miter
+    limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+    (21.0000,29.0000) rectangle (481.0000,589.0000);
+  \begin{scope}[shift={(0,0.01085)}]
+      \path[draw=black,fill=cfee6f2,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (80.0000,134.9891) rectangle (190.0000,370.0227);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.59277,145.92857) node[above] (text3256) {System Controller};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,150.0000) rectangle (180.0000,164.8780);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.31494,160.83502) node[above] (text3260) {Advanced Int. Ctrl.};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,165.0000) rectangle (180.0000,179.8780);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.271,174.8316) node[above] (text3264) {Power Mgt. Ctrl.};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,185.0000) rectangle (180.0000,199.8780);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.02686,195.74957) node[above] (text3268) {PLL};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,200.0000) rectangle (180.0000,214.8780);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.98535,210.74957) node[above] (text3272) {Osc};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,214.8780) rectangle (180.0000,229.7561);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.07568,225.62761) node[above] (text3276) {RC Osc};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,235.1219) rectangle (180.0000,250.0000);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.26855,245.95697) node[above] (text3280) {Reset Ctrl.};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,250.0000) rectangle (180.0000,265.0040);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.90723,260.74417) node[above] (text3284) {Brownout Detect};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,265.1220) rectangle (180.0000,280.0000);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.90723,275.87152) node[above] (text3288) {Power On Reset};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,285.0000) rectangle (180.0000,300.0040);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.89014,294.89456) node[above] (text3300) {Prog. Int. Timer};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,299.8731) rectangle (180.0000,315.0040);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.90723,309.83109) node[above] (text3304) {Watchdog Timer};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,315.0039) rectangle (180.0000,330.0079);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.8877,325.90924) node[above] (text3308) {Real Time Timer};
+      \path[draw=black,fill=ccbd5e8,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,330.0000) rectangle (180.0000,344.8780);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (134.90479,339.8316) node[above] (text3312) {Debug Unit};
+      \path[draw=black,fill=ce4c5e1,line join=miter,line cap=round,miter
+        limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+        (90.0000,344.8780) rectangle (180.0000,359.8820);
+      \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+        (135.271,355.77603) node[above] (text3316) {PID Ctrl.};
+  \end{scope}
+  \begin{scope}[shift={(0,-5.0)}]
+    \path[draw=black,fill=cfed9a6,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,70.0000) rectangle (130.0000,130.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (99.947266,94.708984) node[above] (text3320) {JTAGScan};
+  \end{scope}
+  \begin{scope}[shift={(-0.6051,0)}]
+    \path[draw=black,fill=cfed9a6,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (365.6051,70.0000) rectangle (450.8117,130.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (408.00629,93.056641) node[above] (text3332) {VoltageRegulator};
+  \end{scope}
+  \path[draw=black,line join=miter,line cap=butt,miter limit=4.00,fill
+    opacity=0.750,even odd rule,line width=1.600pt] (250.0000,115.0000) --
+    (250.0000,570.0000);
+  \begin{scope}[shift={(0,46.0)}]
+    \path[draw=black,fill=cfed9a6,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (220.0000,170.0000) rectangle (280.0000,230.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (250.02051,195.37109) node[above] (text3338) {PeripheralBridge};
+  \end{scope}
+  \begin{scope}[shift={(0,0.34117)}]
+    \path[draw=black,fill=cd9f1ea,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,144.6588) rectangle (340.0000,294.6588);
+    \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+      cap=butt,line width=0.800pt] (-219.85658,329.30664) node[above]
+      (text3344) {Memory Controller};
+  \end{scope}
+  \begin{scope}[shift={(0,5.0)}]
+    \path[draw=black,fill=cd9f1ea,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (370.0000,140.0000) rectangle (430.0000,160.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (400.04395,155.95898) node[above] (text3348) {EBI};
+  \end{scope}
+  \begin{scope}[shift={(0,10.0)}]
+    \path[draw=black,fill=cccebdd,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (370.0000,170.0000) rectangle (430.0000,220.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (399.62207,200.95898) node[above] (text3352) {SRAM};
+  \end{scope}
+  \begin{scope}[shift={(0,5.0)}]
+    \path[draw=black,fill=cccecf4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (370.0000,240.0000) rectangle (430.0000,290.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (399.91211,271.12598) node[above] (text3356) {Flash};
+  \end{scope}
+  \begin{scope}[shift={(-0.04132,10.0)}]
+    \path[draw=black,fill=cd9f1ea,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (370.0000,310.0000) rectangle (435.0413,340.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (402.38882,320.37109) node[above] (text3360) {FlashProgrammer};
+  \end{scope}
+  \begin{scope}[shift={(-0.03204,10.125)}]
+    \path[draw=black,fill=cfed9a6,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (279.9282,310.5000) rectangle (360.0320,339.8750);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (319.84534,321.7627) node[above] (text3366) {PeripheralData Controller};
+  \end{scope}
+    \path[draw=black,fill=cbdaed4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,360.0000) rectangle (430.0000,390.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (370.14648,370.37109) node[above] (text3372) {Application-
+      SpecificLogic};
+    \path[draw=black,fill=cfcc0a7,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,410.0000) rectangle (430.0000,440.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (369.87109,428.97266) node[above] (text3378) {CAN};
+    \path[draw=black,fill=ce6f5c4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,440.0000) rectangle (430.0000,470.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (370.13477,459.07227) node[above] (text3382) {USB Device};
+    \path[draw=black,fill=ce5ddba,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,470.0000) rectangle (430.0000,500.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (370.02051,489.0752) node[above] (text3386) {PWM Ctrl};
+    \path[draw=black,fill=ce6f5c4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,500.0000) rectangle (430.0000,530.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (369.74512,517.87109) node[above] (text3390) {Synchro Serial Ctrl};
+    \path[draw=black,fill=ce5ddba,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (310.0000,530.0000) rectangle (430.0000,560.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (370.06738,549.0752) node[above] (text3394) {Timer/Counter 0-2};
+    \path[draw=black,fill=ce5ddba,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,530.0000) rectangle (190.0000,560.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (130.21973,548.97266) node[above] (text3398) {ADC0-7};
+    \path[draw=black,fill=ce6f5c4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,500.0000) rectangle (190.0000,530.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (129.98535,519.0752) node[above] (text3402) {Two Wire Interface};
+    \path[draw=black,fill=ce5ddba,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,470.0000) rectangle (190.0000,500.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (129.77734,488.97266) node[above] (text3406) {SPI};
+    \path[draw=black,fill=ce6f5c4,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,440.0000) rectangle (190.0000,470.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (130.7002,458.96973) node[above] (text3410) {USART0-1};
+    \path[draw=black,fill=cfcc0a7,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (70.0000,410.0000) rectangle (190.0000,440.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (130.09082,429.0752) node[above] (text3414) {Ethernet MAC};
+    \path[draw=black,fill=cfee6c2,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (40.0000,190.0000) rectangle (60.0000,240.0000);
+    \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+      cap=butt,line width=0.800pt] (-214.79785,55.958984) node[above]
+      (text3418) {PIO};
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (9.9375,94.0000) .. controls (9.9375,94.0000) and
+      (9.9375,95.0000) .. (9.9375,95.0000) -- (9.9375,96.0000) .. controls
+      (9.9375,96.0000) and (9.9438,96.0000) .. (64.0000,96.0000) --
+      (64.0000,94.0000) .. controls (36.9719,94.0000) and (23.4445,94.0000) ..
+      (16.6875,94.0000) .. controls (13.3090,94.0000) and (11.6259,94.0000) ..
+      (10.7812,94.0000) .. controls (10.3589,94.0000) and (10.1368,94.0000) ..
+      (10.0312,94.0000) .. controls (9.9785,94.0000) and (9.9507,94.0000) ..
+      (9.9375,94.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (68.6015,95.0000) --
+      (61.6815,99.0000) -- (61.6815,91.0000) -- (68.6015,95.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.3134,95.0000) --
+      (12.2334,91.0000) -- (12.2334,99.0000) -- (5.3134,95.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (135.9062,94.0000) .. controls (135.9062,94.0000) and
+      (135.9062,95.0000) .. (135.9062,95.0000) -- (135.9062,96.0000) .. controls
+      (135.9062,96.0000) and (135.9180,96.0000) .. (188.9375,96.0000) --
+      (188.9375,94.0000) .. controls (162.4278,94.0000) and (149.1587,94.0000) ..
+      (142.5312,94.0000) .. controls (139.2175,94.0000) and (137.5472,94.0000) ..
+      (136.7188,94.0000) .. controls (136.3045,94.0000) and (136.1036,94.0000) ..
+      (136.0000,94.0000) .. controls (135.9482,94.0000) and (135.9192,94.0000) ..
+      (135.9062,94.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (193.5397,95.0000) --
+      (186.6197,99.0000) -- (186.6197,91.0000) -- (193.5397,95.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (131.2882,95.0000) --
+      (138.2082,91.0000) -- (138.2082,99.0000) -- (131.2882,95.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (311.0625,94.0000) .. controls (311.0625,94.0000) and
+      (311.0625,95.0000) .. (311.0625,95.0000) -- (311.0625,96.0000) .. controls
+      (311.0625,96.0000) and (311.0877,96.0000) .. (359.3438,96.0000) --
+      (359.3438,94.0000) .. controls (335.2157,94.0000) and (323.1258,94.0000) ..
+      (317.0938,94.0000) .. controls (314.0777,94.0000) and (312.5978,94.0000) ..
+      (311.8438,94.0000) .. controls (311.4667,94.0000) and (311.2505,94.0000) ..
+      (311.1562,94.0000) .. controls (311.1091,94.0000) and (311.1055,94.0000) ..
+      (311.0938,94.0000) .. controls (311.0879,94.0000) and (311.0640,94.0000) ..
+      (311.0625,94.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (363.9484,95.0000) --
+      (357.0284,99.0000) -- (357.0284,91.0000) -- (363.9484,95.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (306.4603,95.0000) --
+      (313.3803,91.0000) -- (313.3803,99.0000) -- (306.4603,95.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (455.9375,99.0000) .. controls (455.9375,99.0000) and
+      (455.9375,100.0000) .. (455.9375,100.0000) -- (455.9375,101.0000) .. controls
+      (455.9375,101.0000) and (455.9270,101.0000) .. (489.8750,101.0000) --
+      (489.8750,99.0000) .. controls (472.9010,99.0000) and (464.4310,99.0000) ..
+      (460.1875,99.0000) .. controls (458.0657,99.0000) and (456.9992,99.0000) ..
+      (456.4688,99.0000) .. controls (456.2035,99.0000) and (456.0663,99.0000) ..
+      (456.0000,99.0000) .. controls (455.9669,99.0000) and (455.9458,99.0000) ..
+      (455.9375,99.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.5052,100.0000) --
+      (487.5852,104.0000) -- (487.5852,96.0000) -- (494.5052,100.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (451.3252,100.0000) --
+      (458.2452,96.0000) -- (458.2452,104.0000) -- (451.3252,100.0000) -- cycle;
+  \begin{scope}[shift={(5.0,0)}]
+    \path[draw=black,fill=cfb9a99,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (190.0000,60.0000) rectangle (300.0000,130.0000);
+    \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
+      (244.80225,89.722168) node[above] (text3326) {ARMProcessor};
+  \end{scope}
+    \path[draw=black,fill=cfee6c2,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (34.9960,410.0000) rectangle (50.0000,559.9972);
+    \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+      cap=butt,line width=0.800pt] (-484.79645,48.456997) node[above]
+      (text3885) {PIO};
+    \path[draw=black,fill=cfee6c2,line join=miter,line cap=round,miter
+      limit=4.00,even odd rule,line width=0.800pt,rounded corners=0.0000cm]
+      (450.0000,410.0028) rectangle (465.0040,560.0000);
+    \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+      cap=butt,line width=0.800pt] (-484.79926,463.46094) node[above]
+      (text3903) {PIO};
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.7812,154.5000) .. controls (256.7812,154.5000)
+      and (256.7812,155.5000) .. (256.7812,155.5000) -- (256.7812,156.5000) ..
+      controls (256.7812,156.5000) and (256.7857,156.5000) .. (303.9688,156.5000) --
+      (303.9688,154.5000) .. controls (280.3772,154.5000) and (268.5854,154.5000) ..
+      (262.6875,154.5000) .. controls (259.7386,154.5000) and (258.2685,154.5000) ..
+      (257.5312,154.5000) .. controls (257.1626,154.5000) and (256.9672,154.5000) ..
+      (256.8750,154.5000) .. controls (256.8289,154.5000) and (256.8240,154.5000) ..
+      (256.8125,154.5000) .. controls (256.8067,154.5000) and (256.7827,154.5000) ..
+      (256.7812,154.5000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (308.5904,155.5000) --
+      (301.6704,159.5000) -- (301.6704,151.5000) -- (308.5904,155.5000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (252.1753,155.5000) --
+      (259.0953,151.5000) -- (259.0953,159.5000) -- (252.1753,155.5000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (346.0000,154.0000) .. controls (346.0000,154.0000)
+      and (346.0000,155.0000) .. (346.0000,155.0000) -- (346.0000,156.0000) ..
+      controls (346.0000,156.0000) and (345.9873,156.0000) .. (364.2500,156.0000) --
+      (364.2500,154.0000) .. controls (355.1187,154.0000) and (350.5641,154.0000) ..
+      (348.2812,154.0000) .. controls (347.1398,154.0000) and (346.5666,154.0000) ..
+      (346.2812,154.0000) .. controls (346.1386,154.0000) and (346.0669,154.0000) ..
+      (346.0312,154.0000) .. controls (346.0134,154.0000) and (346.0045,154.0000) ..
+      (346.0000,154.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (368.8636,155.0000) --
+      (361.9436,159.0000) -- (361.9436,151.0000) -- (368.8636,155.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (341.3689,155.0000) --
+      (348.2889,151.0000) -- (348.2889,159.0000) -- (341.3689,155.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (345.7500,204.0000) .. controls (345.7500,204.0000)
+      and (345.7500,205.0000) .. (345.7500,205.0000) -- (345.7500,206.0000) ..
+      controls (345.7500,206.0000) and (345.7373,206.0000) .. (364.0000,206.0000) --
+      (364.0000,204.0000) .. controls (354.8687,204.0000) and (350.3141,204.0000) ..
+      (348.0312,204.0000) .. controls (346.8898,204.0000) and (346.3166,204.0000) ..
+      (346.0312,204.0000) .. controls (345.8886,204.0000) and (345.8169,204.0000) ..
+      (345.7812,204.0000) .. controls (345.7634,204.0000) and (345.7545,204.0000) ..
+      (345.7500,204.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (368.6160,205.0000) --
+      (361.6960,209.0000) -- (361.6960,201.0000) -- (368.6160,205.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (341.1213,205.0000) --
+      (348.0413,201.0000) -- (348.0413,209.0000) -- (341.1213,205.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (345.7500,269.0000) .. controls (345.7500,269.0000)
+      and (345.7500,270.0000) .. (345.7500,270.0000) -- (345.7500,271.0000) ..
+      controls (345.7500,271.0000) and (345.7373,271.0000) .. (364.0000,271.0000) --
+      (364.0000,269.0000) .. controls (354.8687,269.0000) and (350.3141,269.0000) ..
+      (348.0312,269.0000) .. controls (346.8898,269.0000) and (346.3166,269.0000) ..
+      (346.0312,269.0000) .. controls (345.8886,269.0000) and (345.8169,269.0000) ..
+      (345.7812,269.0000) .. controls (345.7634,269.0000) and (345.7545,269.0000) ..
+      (345.7500,269.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (368.6160,270.0000) --
+      (361.6960,274.0000) -- (361.6960,266.0000) -- (368.6160,270.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (341.1213,270.0000) --
+      (348.0413,266.0000) -- (348.0413,274.0000) -- (341.1213,270.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (436.2500,154.0000) .. controls (436.2500,154.0000)
+      and (436.2500,155.0000) .. (436.2500,155.0000) -- (436.2500,156.0000) ..
+      controls (436.2500,156.0000) and (436.2561,156.0000) .. (489.8750,156.0000) --
+      (489.8750,154.0000) .. controls (463.0655,154.0000) and (449.6711,154.0000) ..
+      (442.9688,154.0000) .. controls (439.6176,154.0000) and (437.9316,154.0000) ..
+      (437.0938,154.0000) .. controls (436.6748,154.0000) and (436.4797,154.0000) ..
+      (436.3750,154.0000) .. controls (436.3226,154.0000) and (436.2943,154.0000) ..
+      (436.2812,154.0000) .. controls (436.2747,154.0000) and (436.2516,154.0000) ..
+      (436.2500,154.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.4897,155.0000) --
+      (487.5697,159.0000) -- (487.5697,151.0000) -- (494.4897,155.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.6387,155.0000) --
+      (438.5587,151.0000) -- (438.5587,159.0000) -- (431.6387,155.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (196.0938,293.5312) .. controls (196.0938,293.5312)
+      and (196.0938,294.5312) .. (196.0938,294.5312) -- (196.0938,295.5312) ..
+      controls (196.0938,295.5312) and (196.1065,295.5312) .. (243.0000,295.5312) --
+      (243.0000,293.5312) .. controls (219.5533,293.5312) and (207.8304,293.5312) ..
+      (201.9688,293.5312) .. controls (199.0379,293.5312) and (197.5452,293.5312) ..
+      (196.8125,293.5312) .. controls (196.4461,293.5312) and (196.2791,293.5312) ..
+      (196.1875,293.5312) .. controls (196.1417,293.5312) and (196.1052,293.5312) ..
+      (196.0938,293.5312) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (247.6011,294.5168) --
+      (240.6811,298.5168) -- (240.6811,290.5168) -- (247.6011,294.5168) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.4757,294.5168) --
+      (198.3956,290.5168) -- (198.3956,298.5168) -- (191.4757,294.5168) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (65.6250,214.0000) .. controls (65.6250,214.0000) and
+      (65.6250,215.0000) .. (65.6250,215.0000) -- (65.6250,216.0000) .. controls
+      (65.6250,216.0000) and (65.6184,216.0000) .. (78.9688,216.0000) --
+      (78.9688,214.0000) .. controls (72.2936,214.0000) and (68.9500,214.0000) ..
+      (67.2812,214.0000) .. controls (66.4469,214.0000) and (66.0523,214.0000) ..
+      (65.8438,214.0000) .. controls (65.7395,214.0000) and (65.6823,214.0000) ..
+      (65.6562,214.0000) .. controls (65.6432,214.0000) and (65.6283,214.0000) ..
+      (65.6250,214.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (83.5944,215.0000) --
+      (76.6744,219.0000) -- (76.6744,211.0000) -- (83.5944,215.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (61.0120,215.0000) --
+      (67.9320,211.0000) -- (67.9320,219.0000) -- (61.0120,215.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (9.8750,214.0000) .. controls (9.8750,214.0000) and
+      (9.8750,215.0000) .. (9.8750,215.0000) -- (9.8750,216.0000) .. controls
+      (9.8750,216.0000) and (9.8921,216.0000) .. (34.0000,216.0000) --
+      (34.0000,214.0000) .. controls (21.9461,214.0000) and (15.9197,214.0000) ..
+      (12.9062,214.0000) .. controls (11.3995,214.0000) and (10.6579,214.0000) ..
+      (10.2812,214.0000) .. controls (10.0929,214.0000) and (9.9846,214.0000) ..
+      (9.9375,214.0000) .. controls (9.9140,214.0000) and (9.9121,214.0000) ..
+      (9.9062,214.0000) .. controls (9.9033,214.0000) and (9.8757,214.0000) ..
+      (9.8750,214.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (38.6134,215.0000) --
+      (31.6934,219.0000) -- (31.6934,211.0000) -- (38.6134,215.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.2735,215.0000) --
+      (12.1935,211.0000) -- (12.1935,219.0000) -- (5.2735,215.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.1250,319.0000) .. controls (10.1250,319.0000) and
+      (10.1250,320.0000) .. (10.1250,320.0000) -- (10.1250,321.0000) .. controls
+      (10.1250,321.0000) and (10.1142,321.0000) .. (78.8125,321.0000) --
+      (78.8125,319.0000) .. controls (44.4634,319.0000) and (27.2748,319.0000) ..
+      (18.6875,319.0000) .. controls (14.3939,319.0000) and (12.2609,319.0000) ..
+      (11.1875,319.0000) .. controls (10.6508,319.0000) and (10.3842,319.0000) ..
+      (10.2500,319.0000) .. controls (10.1829,319.0000) and (10.1418,319.0000) ..
+      (10.1250,319.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (83.4240,320.0000) --
+      (76.5040,324.0000) -- (76.5040,316.0000) -- (83.4240,320.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.4937,320.0000) --
+      (12.4137,316.0000) -- (12.4137,324.0000) -- (5.4937,320.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.0000,334.0000) .. controls (256.0000,334.0000)
+      and (256.0000,335.0000) .. (256.0000,335.0000) -- (256.0000,336.0000) ..
+      controls (256.0000,336.0000) and (255.9961,336.0000) .. (274.2188,336.0000) --
+      (274.2188,334.0000) .. controls (265.1074,334.0000) and (260.5591,334.0000) ..
+      (258.2812,334.0000) .. controls (257.1423,334.0000) and (256.5660,334.0000) ..
+      (256.2812,334.0000) .. controls (256.1389,334.0000) and (256.0668,334.0000) ..
+      (256.0312,334.0000) .. controls (256.0134,334.0000) and (256.0045,334.0000) ..
+      (256.0000,334.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (278.8386,335.0000) --
+      (271.9187,339.0000) -- (271.9187,331.0000) -- (278.8386,335.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.3840,335.0000) --
+      (258.3040,331.0000) -- (258.3040,339.0000) -- (251.3840,335.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (324.0000,300.9688) .. controls (324.0000,307.8131)
+      and (324.0000,311.2577) .. (324.0000,312.9688) .. controls (324.0000,313.8243)
+      and (324.0000,314.2549) .. (324.0000,314.4688) .. controls (324.0000,314.5757)
+      and (324.0000,314.6295) .. (324.0000,314.6562) -- (325.0000,314.6562) --
+      (326.0000,314.6562) .. controls (326.0000,314.6562) and (326.0000,314.6575) ..
+      (326.0000,300.9688) -- (324.0000,300.9688) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (325.0000,296.3647) --
+      (329.0000,303.2847) -- (321.0000,303.2847) -- (325.0000,296.3647) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (325.0000,319.2855) --
+      (321.0000,312.3655) -- (329.0000,312.3655) -- (325.0000,319.2855) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (399.0000,300.3125) .. controls (399.0000,307.1569)
+      and (399.0000,310.5702) .. (399.0000,312.2812) .. controls (399.0000,313.1368)
+      and (399.0000,313.5674) .. (399.0000,313.7812) .. controls (399.0000,313.8882)
+      and (399.0000,313.9420) .. (399.0000,313.9688) .. controls (399.0000,313.9821)
+      and (399.0000,313.9967) .. (399.0000,314.0000) -- (400.0000,314.0000) --
+      (401.0000,314.0000) .. controls (401.0000,314.0000) and (401.0000,314.0013) ..
+      (401.0000,300.3125) -- (399.0000,300.3125) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (400.0000,295.6952) --
+      (404.0000,302.6152) -- (396.0000,302.6152) -- (400.0000,295.6952) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (400.0000,318.6160) --
+      (396.0000,311.6960) -- (404.0000,311.6960) -- (400.0000,318.6160) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (441.0000,334.0000) .. controls (441.0000,334.0000)
+      and (441.0000,335.0000) .. (441.0000,335.0000) -- (441.0000,336.0000) ..
+      controls (441.0000,336.0000) and (441.0000,336.0000) .. (490.2188,336.0000) --
+      (490.2188,334.0000) .. controls (465.6094,334.0000) and (453.3086,334.0000) ..
+      (447.1562,334.0000) .. controls (444.0801,334.0000) and (442.5503,334.0000) ..
+      (441.7812,334.0000) .. controls (441.3967,334.0000) and (441.1899,334.0000) ..
+      (441.0938,334.0000) .. controls (441.0457,334.0000) and (441.0433,334.0000) ..
+      (441.0312,334.0000) .. controls (441.0252,334.0000) and (441.0015,334.0000) ..
+      (441.0000,334.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.8397,335.0000) --
+      (487.9197,339.0000) -- (487.9197,331.0000) -- (494.8397,335.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (436.3890,335.0000) --
+      (443.3090,331.0000) -- (443.3090,339.0000) -- (436.3890,335.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.1875,374.0000) .. controls (256.1875,374.0000)
+      and (256.1875,375.0000) .. (256.1875,375.0000) -- (256.1875,376.0000) ..
+      controls (256.1875,376.0000) and (256.1661,376.0000) .. (304.0938,376.0000) --
+      (304.0938,374.0000) .. controls (280.1299,374.0000) and (268.1472,374.0000) ..
+      (262.1562,374.0000) .. controls (259.1608,374.0000) and (257.6864,374.0000) ..
+      (256.9375,374.0000) .. controls (256.5631,374.0000) and (256.3749,374.0000) ..
+      (256.2812,374.0000) .. controls (256.2344,374.0000) and (256.1992,374.0000) ..
+      (256.1875,374.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (308.7215,375.0000) --
+      (301.8015,379.0000) -- (301.8015,371.0000) -- (308.7215,375.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.5618,375.0000) --
+      (258.4818,371.0000) -- (258.4818,379.0000) -- (251.5618,375.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.4688,424.0000) .. controls (256.4688,424.0000)
+      and (256.4688,425.0000) .. (256.4688,425.0000) -- (256.4688,426.0000) ..
+      controls (256.4688,426.0000) and (256.4474,426.0000) .. (304.3750,426.0000) --
+      (304.3750,424.0000) .. controls (280.4112,424.0000) and (268.4285,424.0000) ..
+      (262.4375,424.0000) .. controls (259.4420,424.0000) and (257.9676,424.0000) ..
+      (257.2188,424.0000) .. controls (256.8443,424.0000) and (256.6561,424.0000) ..
+      (256.5625,424.0000) .. controls (256.5157,424.0000) and (256.4805,424.0000) ..
+      (256.4688,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (309.0000,425.0000) --
+      (302.0800,429.0000) -- (302.0800,421.0000) -- (309.0000,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.8404,425.0000) --
+      (258.7604,421.0000) -- (258.7604,429.0000) -- (251.8404,425.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.4688,454.0000) .. controls (256.4688,454.0000)
+      and (256.4688,455.0000) .. (256.4688,455.0000) -- (256.4688,456.0000) ..
+      controls (256.4688,456.0000) and (256.4474,456.0000) .. (304.3750,456.0000) --
+      (304.3750,454.0000) .. controls (280.4112,454.0000) and (268.4285,454.0000) ..
+      (262.4375,454.0000) .. controls (259.4420,454.0000) and (257.9676,454.0000) ..
+      (257.2188,454.0000) .. controls (256.8443,454.0000) and (256.6561,454.0000) ..
+      (256.5625,454.0000) .. controls (256.5157,454.0000) and (256.4805,454.0000) ..
+      (256.4688,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (309.0000,455.0000) --
+      (302.0800,459.0000) -- (302.0800,451.0000) -- (309.0000,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.8404,455.0000) --
+      (258.7604,451.0000) -- (258.7604,459.0000) -- (251.8404,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.4688,484.0000) .. controls (256.4688,484.0000)
+      and (256.4688,485.0000) .. (256.4688,485.0000) -- (256.4688,486.0000) ..
+      controls (256.4688,486.0000) and (256.4474,486.0000) .. (304.3750,486.0000) --
+      (304.3750,484.0000) .. controls (280.4112,484.0000) and (268.4285,484.0000) ..
+      (262.4375,484.0000) .. controls (259.4420,484.0000) and (257.9676,484.0000) ..
+      (257.2188,484.0000) .. controls (256.8443,484.0000) and (256.6561,484.0000) ..
+      (256.5625,484.0000) .. controls (256.5157,484.0000) and (256.4805,484.0000) ..
+      (256.4688,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (309.0000,485.0000) --
+      (302.0800,489.0000) -- (302.0800,481.0000) -- (309.0000,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.8404,485.0000) --
+      (258.7604,481.0000) -- (258.7604,489.0000) -- (251.8404,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.4688,514.0000) .. controls (256.4688,514.0000)
+      and (256.4688,515.0000) .. (256.4688,515.0000) -- (256.4688,516.0000) ..
+      controls (256.4688,516.0000) and (256.4474,516.0000) .. (304.3750,516.0000) --
+      (304.3750,514.0000) .. controls (280.4112,514.0000) and (268.4285,514.0000) ..
+      (262.4375,514.0000) .. controls (259.4420,514.0000) and (257.9676,514.0000) ..
+      (257.2188,514.0000) .. controls (256.8443,514.0000) and (256.6561,514.0000) ..
+      (256.5625,514.0000) .. controls (256.5157,514.0000) and (256.4805,514.0000) ..
+      (256.4688,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (309.0000,515.0000) --
+      (302.0800,519.0000) -- (302.0800,511.0000) -- (309.0000,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.8404,515.0000) --
+      (258.7604,511.0000) -- (258.7604,519.0000) -- (251.8404,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (256.4688,544.0000) .. controls (256.4688,544.0000)
+      and (256.4688,545.0000) .. (256.4688,545.0000) -- (256.4688,546.0000) ..
+      controls (256.4688,546.0000) and (256.4474,546.0000) .. (304.3750,546.0000) --
+      (304.3750,544.0000) .. controls (280.4112,544.0000) and (268.4285,544.0000) ..
+      (262.4375,544.0000) .. controls (259.4420,544.0000) and (257.9676,544.0000) ..
+      (257.2188,544.0000) .. controls (256.8443,544.0000) and (256.6561,544.0000) ..
+      (256.5625,544.0000) .. controls (256.5157,544.0000) and (256.4805,544.0000) ..
+      (256.4688,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (309.0000,545.0000) --
+      (302.0800,549.0000) -- (302.0800,541.0000) -- (309.0000,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (251.8404,545.0000) --
+      (258.7604,541.0000) -- (258.7604,549.0000) -- (251.8404,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (195.6250,544.0000) .. controls (195.6250,544.0000)
+      and (195.6250,545.0000) .. (195.6250,545.0000) -- (195.6250,546.0000) ..
+      controls (195.6250,546.0000) and (195.6036,546.0000) .. (243.5312,546.0000) --
+      (243.5312,544.0000) .. controls (219.5674,544.0000) and (207.5847,544.0000) ..
+      (201.5938,544.0000) .. controls (198.5983,544.0000) and (197.1239,544.0000) ..
+      (196.3750,544.0000) .. controls (196.0006,544.0000) and (195.8124,544.0000) ..
+      (195.7188,544.0000) .. controls (195.6720,544.0000) and (195.6367,544.0000) ..
+      (195.6250,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (248.1596,545.0000) --
+      (241.2396,549.0000) -- (241.2396,541.0000) -- (248.1596,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.0000,545.0000) --
+      (197.9200,541.0000) -- (197.9200,549.0000) -- (191.0000,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (195.6250,514.0000) .. controls (195.6250,514.0000)
+      and (195.6250,515.0000) .. (195.6250,515.0000) -- (195.6250,516.0000) ..
+      controls (195.6250,516.0000) and (195.6036,516.0000) .. (243.5312,516.0000) --
+      (243.5312,514.0000) .. controls (219.5674,514.0000) and (207.5847,514.0000) ..
+      (201.5938,514.0000) .. controls (198.5983,514.0000) and (197.1239,514.0000) ..
+      (196.3750,514.0000) .. controls (196.0006,514.0000) and (195.8124,514.0000) ..
+      (195.7188,514.0000) .. controls (195.6720,514.0000) and (195.6367,514.0000) ..
+      (195.6250,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (248.1596,515.0000) --
+      (241.2396,519.0000) -- (241.2396,511.0000) -- (248.1596,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.0000,515.0000) --
+      (197.9200,511.0000) -- (197.9200,519.0000) -- (191.0000,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (195.6250,484.0000) .. controls (195.6250,484.0000)
+      and (195.6250,485.0000) .. (195.6250,485.0000) -- (195.6250,486.0000) ..
+      controls (195.6250,486.0000) and (195.6036,486.0000) .. (243.5312,486.0000) --
+      (243.5312,484.0000) .. controls (219.5674,484.0000) and (207.5847,484.0000) ..
+      (201.5938,484.0000) .. controls (198.5983,484.0000) and (197.1239,484.0000) ..
+      (196.3750,484.0000) .. controls (196.0006,484.0000) and (195.8124,484.0000) ..
+      (195.7188,484.0000) .. controls (195.6720,484.0000) and (195.6367,484.0000) ..
+      (195.6250,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (248.1596,485.0000) --
+      (241.2396,489.0000) -- (241.2396,481.0000) -- (248.1596,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.0000,485.0000) --
+      (197.9200,481.0000) -- (197.9200,489.0000) -- (191.0000,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (195.6250,454.0000) .. controls (195.6250,454.0000)
+      and (195.6250,455.0000) .. (195.6250,455.0000) -- (195.6250,456.0000) ..
+      controls (195.6250,456.0000) and (195.6036,456.0000) .. (243.5312,456.0000) --
+      (243.5312,454.0000) .. controls (219.5674,454.0000) and (207.5847,454.0000) ..
+      (201.5938,454.0000) .. controls (198.5983,454.0000) and (197.1239,454.0000) ..
+      (196.3750,454.0000) .. controls (196.0006,454.0000) and (195.8124,454.0000) ..
+      (195.7188,454.0000) .. controls (195.6720,454.0000) and (195.6367,454.0000) ..
+      (195.6250,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (248.1596,455.0000) --
+      (241.2396,459.0000) -- (241.2396,451.0000) -- (248.1596,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.0000,455.0000) --
+      (197.9200,451.0000) -- (197.9200,459.0000) -- (191.0000,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (195.6250,424.0000) .. controls (195.6250,424.0000)
+      and (195.6250,425.0000) .. (195.6250,425.0000) -- (195.6250,426.0000) ..
+      controls (195.6250,426.0000) and (195.6036,426.0000) .. (243.5312,426.0000) --
+      (243.5312,424.0000) .. controls (219.5674,424.0000) and (207.5847,424.0000) ..
+      (201.5938,424.0000) .. controls (198.5983,424.0000) and (197.1239,424.0000) ..
+      (196.3750,424.0000) .. controls (196.0006,424.0000) and (195.8124,424.0000) ..
+      (195.7188,424.0000) .. controls (195.6720,424.0000) and (195.6367,424.0000) ..
+      (195.6250,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (248.1596,425.0000) --
+      (241.2396,429.0000) -- (241.2396,421.0000) -- (248.1596,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (191.0000,425.0000) --
+      (197.9200,421.0000) -- (197.9200,429.0000) -- (191.0000,425.0000) -- cycle;
+  \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+    cap=butt,line width=0.800pt] (-355.03125,245) node[above] (text3955)
+    {APB};
+  \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+    cap=butt,line width=0.800pt] (-173.49219,226.66406) node[above]
+    (text3959) {ASB/};
+  \path[cm={{0.0,-1.0,1.0,0.0,(0.0,0.0)}},fill=black,line join=miter,line
+    cap=butt,line width=0.800pt] (-173.01312,245.48131) node[above]
+    (text3971) {AHB};
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (55.6875,424.0000) .. controls (55.6875,424.0000) and
+      (55.6875,425.0000) .. (55.6875,425.0000) -- (55.6875,426.0000) .. controls
+      (55.6875,426.0000) and (55.6858,426.0000) .. (64.4062,426.0000) --
+      (64.4062,424.0000) .. controls (60.0460,424.0000) and (57.8713,424.0000) ..
+      (56.7812,424.0000) .. controls (56.2362,424.0000) and (55.9488,424.0000) ..
+      (55.8125,424.0000) .. controls (55.7444,424.0000) and (55.7045,424.0000) ..
+      (55.6875,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (69.0215,425.0000) --
+      (62.1015,429.0000) -- (62.1015,421.0000) -- (69.0215,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (51.0691,425.0000) --
+      (57.9891,421.0000) -- (57.9891,429.0000) -- (51.0691,425.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (55.6562,454.0000) .. controls (55.6562,454.0000) and
+      (55.6562,455.0000) .. (55.6562,455.0000) -- (55.6562,456.0000) .. controls
+      (55.6562,456.0000) and (55.6545,456.0000) .. (64.3750,456.0000) --
+      (64.3750,454.0000) .. controls (60.0148,454.0000) and (57.8401,454.0000) ..
+      (56.7500,454.0000) .. controls (56.2050,454.0000) and (55.9488,454.0000) ..
+      (55.8125,454.0000) .. controls (55.7444,454.0000) and (55.7045,454.0000) ..
+      (55.6875,454.0000) .. controls (55.6790,454.0000) and (55.6584,454.0000) ..
+      (55.6562,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (69.0000,455.0000) --
+      (62.0800,459.0000) -- (62.0800,451.0000) -- (69.0000,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (51.0475,455.0000) --
+      (57.9675,451.0000) -- (57.9675,459.0000) -- (51.0475,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (55.6562,484.0000) .. controls (55.6562,484.0000) and
+      (55.6562,485.0000) .. (55.6562,485.0000) -- (55.6562,486.0000) .. controls
+      (55.6562,486.0000) and (55.6545,486.0000) .. (64.3750,486.0000) --
+      (64.3750,484.0000) .. controls (60.0148,484.0000) and (57.8401,484.0000) ..
+      (56.7500,484.0000) .. controls (56.2050,484.0000) and (55.9488,484.0000) ..
+      (55.8125,484.0000) .. controls (55.7444,484.0000) and (55.7045,484.0000) ..
+      (55.6875,484.0000) .. controls (55.6790,484.0000) and (55.6584,484.0000) ..
+      (55.6562,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (69.0000,485.0000) --
+      (62.0800,489.0000) -- (62.0800,481.0000) -- (69.0000,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (51.0475,485.0000) --
+      (57.9675,481.0000) -- (57.9675,489.0000) -- (51.0475,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (55.6562,514.0000) .. controls (55.6562,514.0000) and
+      (55.6562,515.0000) .. (55.6562,515.0000) -- (55.6562,516.0000) .. controls
+      (55.6562,516.0000) and (55.6545,516.0000) .. (64.3750,516.0000) --
+      (64.3750,514.0000) .. controls (60.0148,514.0000) and (57.8401,514.0000) ..
+      (56.7500,514.0000) .. controls (56.2050,514.0000) and (55.9488,514.0000) ..
+      (55.8125,514.0000) .. controls (55.7444,514.0000) and (55.7045,514.0000) ..
+      (55.6875,514.0000) .. controls (55.6790,514.0000) and (55.6584,514.0000) ..
+      (55.6562,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (69.0000,515.0000) --
+      (62.0800,519.0000) -- (62.0800,511.0000) -- (69.0000,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (51.0475,515.0000) --
+      (57.9675,511.0000) -- (57.9675,519.0000) -- (51.0475,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (55.6562,544.0000) .. controls (55.6562,544.0000) and
+      (55.6562,545.0000) .. (55.6562,545.0000) -- (55.6562,546.0000) .. controls
+      (55.6562,546.0000) and (55.6545,546.0000) .. (64.3750,546.0000) --
+      (64.3750,544.0000) .. controls (60.0148,544.0000) and (57.8401,544.0000) ..
+      (56.7500,544.0000) .. controls (56.2050,544.0000) and (55.9488,544.0000) ..
+      (55.8125,544.0000) .. controls (55.7444,544.0000) and (55.7045,544.0000) ..
+      (55.6875,544.0000) .. controls (55.6790,544.0000) and (55.6584,544.0000) ..
+      (55.6562,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (69.0000,545.0000) --
+      (62.0800,549.0000) -- (62.0800,541.0000) -- (69.0000,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (51.0475,545.0000) --
+      (57.9675,541.0000) -- (57.9675,549.0000) -- (51.0475,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.3438,424.0000) .. controls (10.3438,424.0000) and
+      (10.3438,425.0000) .. (10.3438,425.0000) -- (10.3438,426.0000) .. controls
+      (10.3438,426.0000) and (10.3210,426.0000) .. (28.5000,426.0000) --
+      (28.5000,424.0000) .. controls (19.4105,424.0000) and (14.8661,424.0000) ..
+      (12.5938,424.0000) .. controls (11.4576,424.0000) and (10.9090,424.0000) ..
+      (10.6250,424.0000) .. controls (10.4830,424.0000) and (10.4105,424.0000) ..
+      (10.3750,424.0000) .. controls (10.3572,424.0000) and (10.3482,424.0000) ..
+      (10.3438,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (33.1296,425.0000) --
+      (26.2096,429.0000) -- (26.2096,421.0000) -- (33.1296,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.7186,425.0000) --
+      (12.6386,421.0000) -- (12.6386,429.0000) -- (5.7186,425.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.3438,454.0000) .. controls (10.3438,454.0000) and
+      (10.3438,455.0000) .. (10.3438,455.0000) -- (10.3438,456.0000) .. controls
+      (10.3438,456.0000) and (10.3210,456.0000) .. (28.5000,456.0000) --
+      (28.5000,454.0000) .. controls (19.4105,454.0000) and (14.8661,454.0000) ..
+      (12.5938,454.0000) .. controls (11.4576,454.0000) and (10.9090,454.0000) ..
+      (10.6250,454.0000) .. controls (10.4830,454.0000) and (10.4105,454.0000) ..
+      (10.3750,454.0000) .. controls (10.3572,454.0000) and (10.3482,454.0000) ..
+      (10.3438,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (33.1296,455.0000) --
+      (26.2096,459.0000) -- (26.2096,451.0000) -- (33.1296,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.7186,455.0000) --
+      (12.6386,451.0000) -- (12.6386,459.0000) -- (5.7186,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.3438,484.0000) .. controls (10.3438,484.0000) and
+      (10.3438,485.0000) .. (10.3438,485.0000) -- (10.3438,486.0000) .. controls
+      (10.3438,486.0000) and (10.3210,486.0000) .. (28.5000,486.0000) --
+      (28.5000,484.0000) .. controls (19.4105,484.0000) and (14.8661,484.0000) ..
+      (12.5938,484.0000) .. controls (11.4576,484.0000) and (10.9090,484.0000) ..
+      (10.6250,484.0000) .. controls (10.4830,484.0000) and (10.4105,484.0000) ..
+      (10.3750,484.0000) .. controls (10.3572,484.0000) and (10.3482,484.0000) ..
+      (10.3438,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (33.1296,485.0000) --
+      (26.2096,489.0000) -- (26.2096,481.0000) -- (33.1296,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.7186,485.0000) --
+      (12.6386,481.0000) -- (12.6386,489.0000) -- (5.7186,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.3438,514.0000) .. controls (10.3438,514.0000) and
+      (10.3438,515.0000) .. (10.3438,515.0000) -- (10.3438,516.0000) .. controls
+      (10.3438,516.0000) and (10.3210,516.0000) .. (28.5000,516.0000) --
+      (28.5000,514.0000) .. controls (19.4105,514.0000) and (14.8661,514.0000) ..
+      (12.5938,514.0000) .. controls (11.4576,514.0000) and (10.9090,514.0000) ..
+      (10.6250,514.0000) .. controls (10.4830,514.0000) and (10.4105,514.0000) ..
+      (10.3750,514.0000) .. controls (10.3572,514.0000) and (10.3482,514.0000) ..
+      (10.3438,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (33.1296,515.0000) --
+      (26.2096,519.0000) -- (26.2096,511.0000) -- (33.1296,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.7186,515.0000) --
+      (12.6386,511.0000) -- (12.6386,519.0000) -- (5.7186,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (10.3438,544.0000) .. controls (10.3438,544.0000) and
+      (10.3438,545.0000) .. (10.3438,545.0000) -- (10.3438,546.0000) .. controls
+      (10.3438,546.0000) and (10.3210,546.0000) .. (28.5000,546.0000) --
+      (28.5000,544.0000) .. controls (19.4105,544.0000) and (14.8661,544.0000) ..
+      (12.5938,544.0000) .. controls (11.4576,544.0000) and (10.9090,544.0000) ..
+      (10.6250,544.0000) .. controls (10.4830,544.0000) and (10.4105,544.0000) ..
+      (10.3750,544.0000) .. controls (10.3572,544.0000) and (10.3482,544.0000) ..
+      (10.3438,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (33.1296,545.0000) --
+      (26.2096,549.0000) -- (26.2096,541.0000) -- (33.1296,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (5.7186,545.0000) --
+      (12.6386,541.0000) -- (12.6386,549.0000) -- (5.7186,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (435.6250,424.0000) .. controls (435.6250,424.0000)
+      and (435.6250,425.0000) .. (435.6250,425.0000) -- (435.6250,426.0000) ..
+      controls (435.6250,426.0000) and (435.6233,426.0000) .. (444.3438,426.0000) --
+      (444.3438,424.0000) .. controls (439.9835,424.0000) and (437.8088,424.0000) ..
+      (436.7188,424.0000) .. controls (436.1737,424.0000) and (435.8863,424.0000) ..
+      (435.7500,424.0000) .. controls (435.6819,424.0000) and (435.6420,424.0000) ..
+      (435.6250,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (448.9524,425.0000) --
+      (442.0324,429.0000) -- (442.0324,421.0000) -- (448.9524,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.0000,425.0000) --
+      (437.9200,421.0000) -- (437.9200,429.0000) -- (431.0000,425.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (471.1250,424.0000) .. controls (471.1250,424.0000)
+      and (471.1250,425.0000) .. (471.1250,425.0000) -- (471.1250,426.0000) ..
+      controls (471.1250,426.0000) and (471.1170,426.0000) .. (489.7812,426.0000) --
+      (489.7812,424.0000) .. controls (480.4491,424.0000) and (475.7705,424.0000) ..
+      (473.4375,424.0000) .. controls (472.2710,424.0000) and (471.6979,424.0000) ..
+      (471.4062,424.0000) .. controls (471.2604,424.0000) and (471.1927,424.0000) ..
+      (471.1562,424.0000) .. controls (471.1380,424.0000) and (471.1296,424.0000) ..
+      (471.1250,424.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.3901,425.0000) --
+      (487.4701,429.0000) -- (487.4701,421.0000) -- (494.3901,425.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (466.4939,425.0000) --
+      (473.4139,421.0000) -- (473.4139,429.0000) -- (466.4939,425.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (435.6250,454.0000) .. controls (435.6250,454.0000)
+      and (435.6250,455.0000) .. (435.6250,455.0000) -- (435.6250,456.0000) ..
+      controls (435.6250,456.0000) and (435.6233,456.0000) .. (444.3438,456.0000) --
+      (444.3438,454.0000) .. controls (439.9835,454.0000) and (437.8088,454.0000) ..
+      (436.7188,454.0000) .. controls (436.1737,454.0000) and (435.8863,454.0000) ..
+      (435.7500,454.0000) .. controls (435.6819,454.0000) and (435.6420,454.0000) ..
+      (435.6250,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (448.9524,455.0000) --
+      (442.0324,459.0000) -- (442.0324,451.0000) -- (448.9524,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.0000,455.0000) --
+      (437.9200,451.0000) -- (437.9200,459.0000) -- (431.0000,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (435.6250,484.0000) .. controls (435.6250,484.0000)
+      and (435.6250,485.0000) .. (435.6250,485.0000) -- (435.6250,486.0000) ..
+      controls (435.6250,486.0000) and (435.6233,486.0000) .. (444.3438,486.0000) --
+      (444.3438,484.0000) .. controls (439.9835,484.0000) and (437.8088,484.0000) ..
+      (436.7188,484.0000) .. controls (436.1737,484.0000) and (435.8863,484.0000) ..
+      (435.7500,484.0000) .. controls (435.6819,484.0000) and (435.6420,484.0000) ..
+      (435.6250,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (448.9524,485.0000) --
+      (442.0324,489.0000) -- (442.0324,481.0000) -- (448.9524,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.0000,485.0000) --
+      (437.9200,481.0000) -- (437.9200,489.0000) -- (431.0000,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (435.6250,514.0000) .. controls (435.6250,514.0000)
+      and (435.6250,515.0000) .. (435.6250,515.0000) -- (435.6250,516.0000) ..
+      controls (435.6250,516.0000) and (435.6233,516.0000) .. (444.3438,516.0000) --
+      (444.3438,514.0000) .. controls (439.9835,514.0000) and (437.8088,514.0000) ..
+      (436.7188,514.0000) .. controls (436.1737,514.0000) and (435.8863,514.0000) ..
+      (435.7500,514.0000) .. controls (435.6819,514.0000) and (435.6420,514.0000) ..
+      (435.6250,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (448.9524,515.0000) --
+      (442.0324,519.0000) -- (442.0324,511.0000) -- (448.9524,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.0000,515.0000) --
+      (437.9200,511.0000) -- (437.9200,519.0000) -- (431.0000,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (435.6250,544.0000) .. controls (435.6250,544.0000)
+      and (435.6250,545.0000) .. (435.6250,545.0000) -- (435.6250,546.0000) ..
+      controls (435.6250,546.0000) and (435.6233,546.0000) .. (444.3438,546.0000) --
+      (444.3438,544.0000) .. controls (439.9835,544.0000) and (437.8088,544.0000) ..
+      (436.7188,544.0000) .. controls (436.1737,544.0000) and (435.8863,544.0000) ..
+      (435.7500,544.0000) .. controls (435.6819,544.0000) and (435.6420,544.0000) ..
+      (435.6250,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (448.9524,545.0000) --
+      (442.0324,549.0000) -- (442.0324,541.0000) -- (448.9524,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.0000,545.0000) --
+      (437.9200,541.0000) -- (437.9200,549.0000) -- (431.0000,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (471.1250,454.0000) .. controls (471.1250,454.0000)
+      and (471.1250,455.0000) .. (471.1250,455.0000) -- (471.1250,456.0000) ..
+      controls (471.1250,456.0000) and (471.1170,456.0000) .. (489.7812,456.0000) --
+      (489.7812,454.0000) .. controls (480.4491,454.0000) and (475.7705,454.0000) ..
+      (473.4375,454.0000) .. controls (472.2710,454.0000) and (471.6979,454.0000) ..
+      (471.4062,454.0000) .. controls (471.2604,454.0000) and (471.1927,454.0000) ..
+      (471.1562,454.0000) .. controls (471.1380,454.0000) and (471.1296,454.0000) ..
+      (471.1250,454.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.3901,455.0000) --
+      (487.4701,459.0000) -- (487.4701,451.0000) -- (494.3901,455.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (466.4939,455.0000) --
+      (473.4139,451.0000) -- (473.4139,459.0000) -- (466.4939,455.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (471.1250,484.0000) .. controls (471.1250,484.0000)
+      and (471.1250,485.0000) .. (471.1250,485.0000) -- (471.1250,486.0000) ..
+      controls (471.1250,486.0000) and (471.1170,486.0000) .. (489.7812,486.0000) --
+      (489.7812,484.0000) .. controls (480.4491,484.0000) and (475.7705,484.0000) ..
+      (473.4375,484.0000) .. controls (472.2710,484.0000) and (471.6979,484.0000) ..
+      (471.4062,484.0000) .. controls (471.2604,484.0000) and (471.1927,484.0000) ..
+      (471.1562,484.0000) .. controls (471.1380,484.0000) and (471.1296,484.0000) ..
+      (471.1250,484.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.3901,485.0000) --
+      (487.4701,489.0000) -- (487.4701,481.0000) -- (494.3901,485.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (466.4939,485.0000) --
+      (473.4139,481.0000) -- (473.4139,489.0000) -- (466.4939,485.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (471.1250,514.0000) .. controls (471.1250,514.0000)
+      and (471.1250,515.0000) .. (471.1250,515.0000) -- (471.1250,516.0000) ..
+      controls (471.1250,516.0000) and (471.1170,516.0000) .. (489.7812,516.0000) --
+      (489.7812,514.0000) .. controls (480.4491,514.0000) and (475.7705,514.0000) ..
+      (473.4375,514.0000) .. controls (472.2710,514.0000) and (471.6979,514.0000) ..
+      (471.4062,514.0000) .. controls (471.2604,514.0000) and (471.1927,514.0000) ..
+      (471.1562,514.0000) .. controls (471.1380,514.0000) and (471.1296,514.0000) ..
+      (471.1250,514.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.3901,515.0000) --
+      (487.4701,519.0000) -- (487.4701,511.0000) -- (494.3901,515.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (466.4939,515.0000) --
+      (473.4139,511.0000) -- (473.4139,519.0000) -- (466.4939,515.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (471.1250,544.0000) .. controls (471.1250,544.0000)
+      and (471.1250,545.0000) .. (471.1250,545.0000) -- (471.1250,546.0000) ..
+      controls (471.1250,546.0000) and (471.1170,546.0000) .. (489.7812,546.0000) --
+      (489.7812,544.0000) .. controls (480.4491,544.0000) and (475.7705,544.0000) ..
+      (473.4375,544.0000) .. controls (472.2710,544.0000) and (471.6979,544.0000) ..
+      (471.4062,544.0000) .. controls (471.2604,544.0000) and (471.1927,544.0000) ..
+      (471.1562,544.0000) .. controls (471.1380,544.0000) and (471.1296,544.0000) ..
+      (471.1250,544.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.3901,545.0000) --
+      (487.4701,549.0000) -- (487.4701,541.0000) -- (494.3901,545.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (466.4939,545.0000) --
+      (473.4139,541.0000) -- (473.4139,549.0000) -- (466.4939,545.0000) -- cycle;
+    \path[fill=black,line join=miter,line cap=butt,miter limit=4.00,even odd
+      rule,line width=1.600pt] (436.3750,374.0000) .. controls (436.3750,374.0000)
+      and (436.3750,375.0000) .. (436.3750,375.0000) -- (436.3750,376.0000) ..
+      controls (436.3750,376.0000) and (436.3723,376.0000) .. (490.2188,376.0000) --
+      (490.2188,374.0000) .. controls (463.2955,374.0000) and (449.8246,374.0000) ..
+      (443.0938,374.0000) .. controls (439.7283,374.0000) and (438.0601,374.0000) ..
+      (437.2188,374.0000) .. controls (436.7981,374.0000) and (436.5739,374.0000) ..
+      (436.4688,374.0000) .. controls (436.4162,374.0000) and (436.3881,374.0000) ..
+      (436.3750,374.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (494.8397,375.0000) --
+      (487.9197,379.0000) -- (487.9197,371.0000) -- (494.8397,375.0000) -- cycle;
+    \path[draw=black,even odd rule,line width=0.400pt] (431.7612,375.0000) --
+      (438.6812,371.0000) -- (438.6812,379.0000) -- (431.7612,375.0000) -- cycle;
+
+\end{tikzpicture}
+
+
+
+
+
+

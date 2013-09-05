@@ -1,5 +1,0 @@
-\begin{circuitikz}
-	\draw [help lines] (-3,-3) grid (3,3); 
- 	\draw (0,0) -- (2,0) -- (2,.6) -- (0,.6) -- cycle;
-
-\end{circuitikz}

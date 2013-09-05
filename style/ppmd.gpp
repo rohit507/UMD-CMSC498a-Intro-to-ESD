@@ -1,8 +1,14 @@
 @mode(push)
 @mode(quote,"|")
 
-@define(tikzstart,\begin{center}\resizebox{#1}{#2}{)
-@define(tikzend,}\end{center})
+@define(rcenterstart,\begin{center}\resizebox{#1}{#2}{)
+@define(rcenterend,}\end{center})
+@define(figure,         |
+\begin{figure}[htbp]    |
+\centering              |
+\includegraphics{#1}    |
+\caption{#2}            |
+\end{figure}            )
 @define(tinystart,)
 @define(tinyend,)
 @define(tablerowcolor,\rowcolors{2}{#1}{#2})

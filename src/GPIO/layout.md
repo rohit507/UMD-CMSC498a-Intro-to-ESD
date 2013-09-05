@@ -12,23 +12,15 @@ Read the following tutorials to get you up to speed with the electronics:
 All these tutorials are Arduino centric, but you should be able to 
 easily extrapolate to what you need to do for your LPC.
 
-Additionally, you should keep the following documents handy, as they contain
-lots of useful information we're not going to be duplicating:
-
- - [LPC176x Product Data Sheet][LPC_Spec]
- - [LPC17xx User Manual][LPC_Manual]
- - [LPC1769 Schematic][LPC_Schem]
-
 ## What is GPIO? ##
 
 We'll start with the most basic peripheral on the LPC, General Purpose 
 Input Output.
 @@
-GPIO is what lets your microcontroller be something more than an absurdly 
-weak auxiliary processor for your computer.
+GPIO is what lets your microcontroller be something more than a weak auxiliary processor.
 @@
 With it you can interact with the outside world, connecting up all manner
-of tools and turning your microcontroller into something genuinely useful. 
+of tools and turning your microcontroller into something useful. 
 
 
 GPIO has two fundamental operating modes, input and output.
@@ -38,27 +30,24 @@ or high (3v) and deal with that information programmatically.
 @@
 Output lets you set the voltage on a pin, again either high or low.
 @@
-Each and every pin on the LPC can be used as a GPIO pin, and each can 
-independently set to either mode. 
+Every pin on the LPC can be used as a GPIO pin, and can be
+independently set to act as an input or output. 
 
 
-Throughout this chapter we'll be walking you through two simple projects,
+In this chapter we will show how to complete 2 tasks,
 reading the state of a button, and making an LED blink.
 @@
 Using what you learn from that, you'll be able to start building more 
-complex devices.
+complex devices, and even implementing simple communications protocols.
 
 ## GPIO Output ##
 
-The first half of GPIO is the output, and it's a relatively simple system,
-compared to the other parts of the LPC, but it's also one of the most 
-versatile and powerful. 
+
+GPIO output is an incredibly versatile and powerful tool, especially given that
+it takes little effort to use and control it. 
 @@
-For the moment we'll limit ourselves to turning LEDs on and off, but the same
-tools can be used to create much more complex devices.
-@@
-You can control the output through a simple process, first you tell the LPC
-that a specific pin should be used as an output, and then you tell the LPC
+Once you've chosen a pin, the process to use it is straighforward; first you 
+tell the LPC that the pin should be used as an output, and then you tell the LPC
 whether the pin should be held low or high. 
 @@
 The interesting part is how exactly you can give the LPC instructions, and what
@@ -66,12 +55,16 @@ it does in order to carry them out.
 
 ### Memory Mapped Registers ###
 
-
-On a normal machine most of your hardware access is done through a kernel
-interface of some sort, but here, there is no kernel.
+In order to talk to the GPIO controller, or any other peripheral, we have 
+we have to use _memory mapped registers_. 
 @@
-So in order to talk to the GPIO controller, or any other peripheral, we have 
-what're known as memory mapped registers. 
+This is the same technique by which most computers communicate with external
+devices, but this is often hidden within kernel and driver code that most people
+never touch.
+@@ 
+The LPC however doesn't have a kernel or drivers, hiding these interfaces from
+you, giving you the ability to work with them directly, without having to deal
+with the extra complexity an OS would add. 
 
 
 When we try to read or write to a normal chunk of memory, the address and
@@ -79,8 +72,8 @@ instruction are sent down a bus to the memory controller.
 @@
 The memory controller then either retrieves data from memory and places it 
 into a register, or takes data from a register and writes it to somewhere
-in the memory.@comment(Rohit,Insert diagram of ARM processor? It'll show all
-connected components, which would be cool.)
+in the memory.
+
 
 However, there are a number of privileged address, and when you try to
 read from or write to these a slightly different pathway is taken. 
@@ -90,9 +83,8 @@ is special, and instead of going to the memory module, it'll forward the
 request to a register that's located in the relevant peripheral.
 
 
-These registers all have different functions, and you can read the manual
-to figure out what any specific register does, and  which address in memory
-it's mapped to. 
+These registers all have different functions, each of which is detailed in
+the manual along with the register's memory address.
 @@
 The really important thing to notice is that you're not dealing with a
 normal piece of memory, and these memory mapped registers can act very 
@@ -111,8 +103,7 @@ There are some registers which are connected to FIFOs and other structures,
 and reading from them is the same as popping from that queue, and the next
 time you read from the same address, you'll get a different value.
 @@
-Even the usual guarantee that a write operation is modular and won't do
-anything other than change the value of a particular piece of memory is lost.
+Even the usual guarantee that a write operation is idempotent is lost.
 @@
 There are registers where a write operation will trigger some change in the
 peripheral, making the LPC turn an LED on, or send out a signal.
@@ -120,11 +111,10 @@ peripheral, making the LPC turn an LED on, or send out a signal.
 
 ### Blinking Lights ###
 
-So let's start with something simple; Blinking Lights. 
+So let's start with something simple: Blinking Lights. 
 @@
-Connect up an LED to pin `P0[9]` and ground, making sfure to place the proper
+Connect up an LED to pin `P0[9]` and ground, making sure to place the proper
 current limiting resistor in series with it. 
-@todo(Use the schematic to figure which pin it is.)
 @@
 To actually turn on the LED you have to first tell the LPC that the pin is
 to be used for output, and then set the state to be on. 
@@ -162,9 +152,15 @@ exists, and which exploits the fact that the memory addresses for each single
 peripheral are laid out close together, and are tightly packed. 
 
 
-CMSIS is a library by NXP which sets up all these memory addresses as macros
-for you. To see how it works let's look at the setup for the DAC 
-(Digital to Analog Converter). 
+CMSIS is a library written by engineers at NXP, and it sets up all these memory 
+addresses as macros for you.
+@@
+To see how it works let's look at the setup for 
+the DAC (Digital to Analog Converter).
+@@
+The DAC is a device which can take a digital value, and turns it into an analog
+output, it's controlled with only 3 registers, the functions of which we'll
+look at in a later chapter.
 @@
 In `LPC17xx.h` you'll find a long list of struct definitions and 
 a series of raw memory addresses.
@@ -193,8 +189,8 @@ structs show the layout of each of those chunks of memory.
     #define LPC_DAC       ((LPC_DAC_TypeDef *) LPC_DAC_BASE )
 ~~~~~~~~~~
 
-The DAC is an APB1 peripheral and so `LPC_DAC_BASE` is the very start of the 
-memory allocated to DAC registers. 
+The DAC is an APB1[^APB1] peripheral and so `LPC_DAC_BASE` is the very start of the 
+memory mapped to DAC registers. 
 @@
 `LPC_DAC_Typedef` is a struct that's set up so that when it's aligned to that
 base address, each of the struct's fields will align with a particular register
@@ -202,6 +198,9 @@ in the DAC memory space.
 @@
 This whole setup means that you can write to the DAC Control Registers without
 using a raw memory location. 
+
+[^APB1]: APB stands for Applied Peripheral Bus, there are two in the LPC and
+         some peripherals are connected to each.
 
 ~~~~~~~~~~{.C}
     LPC_DAC->DACCTRL = /* stuff */;
@@ -217,77 +216,73 @@ it, you'll get something much easier to work with.
 ~~~~~~~~~~
 
 Having a layer of macros like this also makes it easier to port your code
-to another platform that uses the same interface.
+to another platform, since you'll have to only change the macro definitions
+rather than all the pieces of code which use some registers. 
 
 ### More Registers ###
 
-If you look closely there's 4 GPIO units, each controlling 32 pins, and 
+If you look closely there's 4 GPIO ports, each controlling up to 32 pins, and 
 each of those blocks has 5 registers. 
 @@
 Strictly speaking you only need the `FIODIR` (set pin direction)  and 
 `FIOPIN` (set or read pin state) registers to control each pin, but there
 are three others, which allow you to perform operations much faster. 
 
-`FIOSET` and `FIOCLR` are the two fast output control registers.
+`FIOSET` and `FIOCLR` are the two fast output control registers.[^FASTOCR]
 @@
 Writing a 1 to a bit in `FIOSET` will enable the corresponding pin, and 
 writing to `FIOCLR` will disable the pin.
+
+[^FASTOCR]: The fast in their moniker refers to the fact that using them takes
+            fewer operations than using `FIOPIN`. 
 
 ~~~~~~~~~~{.C}
     LPC_GPIO0->FIOSET = 1 << 9; // Turn LED On
     LPC_GPIO0->FIOCLR = 1 << 9; // Turn LED Off
 ~~~~~~~~~~
 
-Each of these transactions takes a single write command, while the previous
-method had to first read the register, do a computation and write back the 
-result.
+`FIOSET` is a good example of how the usual guarantees of memory structure are
+lost when working with memory mapped data.
 @@
-It is also important to note that a read operation on `FIOSET` connects to 
-a different register than a write operation to the same memory address.
+Writing a 1 to `FIOSET` will set the corresponding bit in `FIOPIN` to 1, while
+writing a 0 will do nothing. 
 @@
-In this case, reading from `FIOSET` will get you the current output state 
-of each of the pins, regardless of their mode; whereas a write sends data
-to a separate circuit that makes changes in a number of other registers.
+In effect '`FIOSET = ...`' is an alias for '`FIOPIN |= ...`'.
 @@
-`FIOCLR` has a similar write operation, but no read operation at all instead
-@todo("Figure out if it returns 0s,gibberish, or a hard fault")
+However reading from `FIOSET` is a completely different action, it will return 
+the value from the output state register, a register which stores the current
+output value for all the pins, regardless of whether they are current being used
+as such. 
 
-@inlinecomment(Rohit,"Should we insert assembly here? Showing the different numbers
-of instructions? is it relevant since ARM isn't a one cycle per instruction 
-architecture?")
-@>
-These seem redundant until you start looking at what happens when you 
-write code that uses them. 
-
-~~~~~~~~~~{.gnuassembler}
-    @   LPC_GPIO0->FIOPIN |= (1 << 9);  // Turn LED on
-  	mov.w	r3, 0xc000
-  	movt	r3, 0x2009
-    mov.w	r2, 0xc000
-  	movt	r2, 0x2009
-   	ldr	    r2, [r2, 20]
- 	orr.w	r2, r2, 0x200
-   	str	    r2, [r3, 20]
-~~~~~~~~~~
-~~~~~~~~~~{.gnuassembler}
-    @   LPC_GPIO0->FIOSET = 1 << 9; // Turn LED On
-    mov.w	r3, 0xc000
-   	movt	r3, 0x2009
-  	mov.w	r2, 0x200
-   	str	    r2, [r3, 24]
-~~~~~~~~~~
-<@
-
-`FIOMASK` serves a similar purpose, allowing you to disable various pins
-by writing ones to their respective bits. 
+Writes to `FIOCLR` can be similarly thought of as an alias, in this case from
+'`FIOPIN &= ~ ...`' to '`FIOCLR = ...`'. 
 @@
-Disabling a pin via `FIOMASK` means that `FIOSET` and `FIOCLR` will do nothing
-to change the state of that pin, and that `FIOPIN` will always read a zero. 
+But reading from `FIOCLR` is undefined, there is simply nothing that operation
+can look at when pointed at `FIOCLR`. 
+
+This idea of memory mapped registers being aliases for more complex commands 
+hints at why these registers are called the "_fast_ output control registers". 
+@@
+Trying to change the value of a single pin with `FIOPIN` requires at least 3 operations
+operations, a read , a bitwise logic operation, and a write. 
+@@
+To make the same change using the fast registers requires only a write operation,
+the rest of the stuff is done in hardware, which can be much faster. 
+
+`FIOMASK` is, in effect, a filter for `FIOPIN`,`FIOSET`, and `FIOCLR`.
+@@
+If a bit in `FIOMASK` is a 1, then none of those registers can cause any
+change in that pin's state.
+@@
+By default all of `FIOMASK`'s bits are set to 0, meaning that the other control 
+registers can operate freely. 
+@comment(Rohit,"Do we need this? FIOMASK is a very minor tool, and rarely useful to boot")
 
 ## GPIO Input ##
 
-Getting information into the LPC via GPIO is also very simple, using the same
-registers we've already looked at.
+Reading a pin uses the same registers we've already used, once a pin's mode is 
+set to input in `FIODIR`, the corresponding bit in `FIOPIN` holds the currently
+read value.
 @@
 In addition to simply reading the registers to figure out the voltage on a pin,
 we've also got access to interrupts, which will notify your program when the 
@@ -307,15 +302,11 @@ slightly differently.
 Here a zero in a particular position in `FIODIR` means the pin is used for 
 input, and the relevant bit in `FIOPIN` contains its current state. 
 @@
-Writing something to `FIOPIN` won't affect any of the bits of input pins, so
-you can have some pins set as input and some as output. 
+Writes to `FIOPIN`,`FIOCLR` or `FIOSET` don't affect input pins, and making changes
+to the value of an input pin is basically a no-op. 
 
 Once you have this set up, you can connect up a switch with a pull down resistor
 to the input pin, and be able to read the state of your button in software.
-
-@missingfigure(Diagram of button circuit w/ tiny explanation)
-@comment(Rohit,"Do we really need this basic a drawing, esp since we're not
-providing one for basic LED things?")
 
 ### Bouncing ###
 
@@ -337,12 +328,12 @@ something like the following.
 ~~~~~~~~~~
 
 When you try that, you'll notice some odd behavior, not only will the LED change
-when you press the button, but it will ocasionally also change when you release
+when you press the button, but it will occasionally also change when you release
 the button. 
 @@
-It'll even ocasionally miss button presses completely.
+Sometimes it'll miss button presses completely, and not change the LED's state. 
 
-@missingfigure(Insert figure showing zoomed in button press on oscilloscope)
+![What button presses actually look like.](assets/Bouncy_Switch.png)
 
 This happens because buttons aren't perfect, and instead of getting smooth 
 transitions from connected to disconnected, the transitions are disjointed
@@ -358,9 +349,17 @@ Most of the time, the bouncing will happen between reads of the pin state but
 sometimes, a read will happen in the middle of the bouncing and cause anomalous
 output. 
 
-There's a number of ways to combat bouncing, including keeping track of how long
-a button has been pressed before triggering an event and changing the circuit to 
-eliminate the effect. 
+Removing the errors caused by bouncing can be done with hardware or software.
+@@
+In hardware, using a capacitor or a 
+[Schmitt Trigger](http://en.wikipedia.org/wiki/Schmitt_trigger)
+can sometimes solve the problem.
+@@
+In software, one can check if the input has been stable for a while before acting
+upon an event.
+@@
+There are also many other [ways to deal with bouncing](http://www.eng.utah.edu/~cs5780/debouncing.pdf) 
+that can be more complex but also more reliable. 
 
 ### Interrupts ###
 
@@ -374,7 +373,7 @@ When the event happens, the processor will pause your currently running code, ru
 code to respond to the event, and restart the execution of your main program. 
 
 While there are many events the LPC can do this for, we'll quickly look at how
-it works with GPIO. ^[We'll go into more detail and see more complex uses later.]
+it works with GPIO. 
 @@
 These events, known as interrupts, can be initiated when a GPIO input
 pin changes from 0 to 1 (known as a rising edge) and from 1 to 0 (a falling edge).
@@ -403,8 +402,9 @@ telling the NVIC to enable the relevant external interrupt.
 @@
 Then in the struct `LPC_GPIOINT` you'll find the registers `IO0IntEnR` and 
 `IO0IntEnF` which define which pins on GPIO Port 0 generate interrupts on a
-rising and falling edge.^[There's corresponding registers for GPIO Port 2, the
-other GPIO ports don't have interrupt support]
+rising and falling edge.^[These registers are for pins on GPIO Port 0. There are 
+similar registers with `IO2` instead for pins on GPIO Port 2. The other GPIO
+ports don't have support for interrupts, and don't have interrupt registers.]
 
 ~~~~~~~~~~{.C} 
     // Turn on External Interrupt 3
@@ -466,40 +466,79 @@ software instead of dedicated hardware.
 In this case we're going to be sending data to a shift register, using 2 GPIO pins
 to control 8 LEDs.
 
-### Reading ###
+### Shift Registers ###
 
-@inlinetodo("Find a good tutorial on shift registers, and link it here")
+To control to many leds with so few outputs you need to implement a serial
+communications protocol, a way of sending data one bit at a time to another
+entity.
+@@
+In this case we are going to be sending the data to a CD4094B, which
+has an interface based around 3 input lines, the clock, the data line, and
+the stribe input. 
+
+@include(assets/Shift-Register-Diagram.tikz)
+
+The CD4094B has, in effect[^ShiftRegCaveat], two registers inside of it, a
+shift register and an output register. 
+@@
+The shift register is used to load in data one bit at a time, so whenever
+the clock signal moves from low to high it'll do two things.
+@@
+First, it'll shift the data it contains one bit to the right, and now that
+the lowest bit is empty, it'll read the value on the data line and store it
+in that bit. 
+@@
+So this way, through 8 clock cycles you can load one byte onto the shift
+register, starting with the highest first. 
+
+The output register is what is actually connected to the external pins, and
+determine whether each output pin is held low or high. 
+@@
+This register waits till it sees a rising edge on the strobe input, and when 
+it does, it'll copy over the values currently in the shift register.
+
+With this, you can load in a byte of data with the clock and data lines, and
+once you've finished, write it all at once to the output with the strobe line. 
+
+[^ShiftRegCaveat]: Thinking of them as memory registers is an imperfect 
+                   abstraction. While it'll serve for anything we need to do,
+                   there are much more detailed explanations on
+                   [Wikipedia][Wiki_Shift_Reg] and on the 
+                   [CD4094B Data Sheet][Shift_Schem]
 
 ### Materials ###
 
-@inlinetodo("Write a list of the basic components they'll need w/ links to a
- datasheet or two")
+Other than your LPC you'll need the following:
+
+  - 1 x [CD4094B 8-Bit Shift Register][Shift_Schem]
+  - 8 x LED of your choice
+  - 8 x [2N2222A NPN Transistor][Trans_Schem_PN2222A] 
+    ^[The 2N2222A and PN2222A are functionally equivalent transistors
+     with different packages, so feel free to use either.]
 
 ### Steps ###
 
- 1. Wire up the following circuit
+ 1. Wire up the following circuit[^WhyTransistor]
 
-    @inlinetodo("Insert Diagram for 8 Leds + button ")
+    ![Shift Register Circuit](assets/Shift-Register-Circuit.eps)
 
- 2. Write a program that uses GPIO A as a clock, and GPIO B to shift in data
-    slowly so that a single lit LED advances slowly across the line of LEDs.
+ 2. Implement the serial protocol needed to write to shift registers, and
+    display some pattern that changes over time.
     
-    @inlinetodo("Insert Diagram for Shift register protocol ")
-
- 3. Speed it up enough that a single cycle of 8 shifts is too fast to see and
-    make it look like the lit LED is moving the other direction. 
-
  4. Detect the position of the button connected to GPIO C and use it to switch
-    between the two patterns. 
+    between two patterns. 
 
  5. Use fast switching to make the LEDs glow at different brightnesses while 
-    displaying some interesting pattern, and having some button interaction. 
+    displaying some pattern, and having some interrupt based button interaction. 
     
  6. **Bonus:** Chain up two more shift registers, and use 8 RGB LEDs to display
-    something. 
+    something.^[The shift register data sheet has a diagram showing how to chain
+    them for more storage.]
 
-\todototoc
-\listoftodos
+[^WhyTransistor]: The shift register in this circuit can channel only 10mA of
+                  current, and if you connected them directly to the LEDs you'd
+                  get a glow that's barely visible. The transistors act as 
+                  simple current amplifiers so that you can have brighter LEDs.
 
 [Read_Schem]: https://learn.sparkfun.com/tutorials/how-to-read-a-schematic
     'How to read a schematic'
@@ -511,9 +550,7 @@ to control 8 LEDs.
     'Understanding Pull Up and Pull Down Resistors'
 [Shift_Schem]: http://www.ti.com/lit/ds/symlink/cd4094b.pdf
     'CD4094B Shift Register Schematic'
-[LPC_Manual]: http://www.nxp.com/documents/user_manual/UM10360.pdf
-    'LPC17xx User Manual'
-[LPC_Schem]: http://www.cs.umd.edu/class/fall2012/cmsc498a/manuals/lpcxpresso_lpc1769_schematic.pdf
-    'LPC1769 Rev b Schematic'
-[LPC_Spec]: http://www.nxp.com/documents/data_sheet/LPC1769_68_67_66_65_64_63.pdf
-    'LPC176x Specificiation Sheet'
+[Trans_Schem_PN2222A]: http://www.fairchildsemi.com/ds/PN/PN2222A.pdf
+    'PN2222A NPN Transistor Schematic'
+[Wiki_Shift_Reg]: http://en.wikipedia.org/wiki/Shift_register
+    'Wikipedia: Shift Registers'

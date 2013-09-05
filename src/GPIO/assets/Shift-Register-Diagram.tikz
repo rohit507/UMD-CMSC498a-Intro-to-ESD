@@ -1,0 +1,22 @@
+\begin{figure}[htbp]    
+\centering              
+\newcommand{\strtim}[2][]{
+ \parbox{.75\linewidth}{\hspace{-0.33cm}\resizebox{1.06\linewidth}{\height}{\texttiming[#1]{#2}}}
+ }   
+\begin{tabularx}{\textwidth}{XCCCCCCCCC}
+\toprule
+ Clock & 
+ \multicolumn{9}{c}{\strtim[h]{8{lllhhh}6h}} \\
+  Data & 
+ \multicolumn{9}{c}{\strtim[h]{6l6h6h6l6h6l6l6h6h}} \\
+  Strobe & 
+ \multicolumn{9}{c}{\strtim[h]{42l6h}} \\
+ Data Bit &  0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & x \\
+ Shift Register & 0x00 & 0x01 &  0x03 & 0x06 & 0x0D & 0x1A &
+ 0x34 & 0x69 & 0x69\\
+ Output Value & 0x00 & 0x00 & 0x00 & 0x00 & 0x00 & 0x00 & 0x00 & 0x00 & 0x69 \\
+ 
+\bottomrule
+\end{tabularx}
+\caption{Shift Register Timing Diagram}            
+\end{figure} 
