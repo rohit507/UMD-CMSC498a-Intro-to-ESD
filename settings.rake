@@ -28,6 +28,8 @@ $LC = "pandoc"
     # Template Files 
     $LCTEMPLATE_FILE = "#{$ROOT_DIR}style/pandoc-template.tex"
     $LCHEADER_FILE = "#{$ROOT_DIR}style/header.tex"
+    $LCTITLE_FILE = "#{$ROOT_DIR}title.md"
+    $LCTODO_FILE = "#{$ROOT_DIR}todo.md"
 
     # Bibiography and Citation Style Files
     $LCBIB_FILE = "#{$ROOT_DIR}src/Bibliography/Citations.bib"
@@ -39,7 +41,9 @@ $LC = "pandoc"
                  #"--bibliography #{$LCBIB_FILE} --csl #{$LCCSL_FILE}"
 
     # Linked Build Options
-    $LCOPTS_CN = "-s --toc-depth=2 -N -R --standalone"
+
+    $LCOPTS_CN = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE} " +
+                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango "# +
 
 # PDF Creator Options
 $PDF = "pdflatex"

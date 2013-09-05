@@ -7,6 +7,69 @@
 
 require "yaml" 
 
-task :todo do 
-    sh 'grep -r --exclude="*\.swp" --exclude-dir="\.git" "TODO" ./'
+$ROOT_DIR = ""
+
+import "#{$ROOT_DIR}settings.rake"
+
+$chapters = ['Introduction','GPIO']
+
+# Generate PDFs from preprocessed markdown
+rule '.pdf' => '.tex' do |f|
+    # Copy all the assets folders from subdirectories so 
+    #  things aren't horribly broken
+    rm_rf "assets/"
+    mkdir "assets"
+    $chapters.each do |d|
+        d = "src/#{d}/assets"
+        if Dir.exists?(d) then
+           cp(Dir.glob("#{d}/*"),"assets/")
+        end
+    end
+    sh "#{$PDF} #{f.source} #{$PDFOPTS}"
+    # run again to make sure cross references are there
+    sh "#{$PDF} #{f.source} #{$PDFOPTS}"
+
 end
+
+$chapters.each do |d|
+    file "src/#{d}/layout.ppmd" do
+        cd "src/#{d}/" do
+            sh "rake layout.ppmd"
+        end
+    end
+end
+
+file 'book.tex' => ['title.md',
+                    'src/Introduction/layout.ppmd',
+                    'src/GPIO/layout.ppmd',
+                    'todo.md'] do |f,s|
+    sh "#{$LC} -f markdown -w latex -o #{f.name} " +
+        "#{$LCOPTS_CN} #{f.prerequisites.join(" ")} "
+end
+
+$tempfiles = ["book.ppmd",
+              "book.tex",
+              "book.pptex",
+              "book.aux",
+              "book.log",
+              "book.out",
+              "book.pdf",
+              "nohup.out",
+              "book.toc",
+              "assets/"]
+
+task 'clean' do
+    fl = FileList.new()
+    fl.add($tempfiles)
+    fl.existing!
+    fl.each do |f|
+        rm_rf f
+    end
+
+    $chapters.each do |d|
+        cd "src/#{d}/" do
+            sh "rake clean"
+        end
+    end
+end
+
