@@ -16,7 +16,7 @@ $chapters = ['Introduction','GPIO']
 # Generate PDFs from preprocessed markdown
 rule '.pdf' => '.tex' do |f|
     # Copy all the assets folders from subdirectories so 
-    #  things aren't horribly broken
+    #  things aren't horribly broken (FIXME: this is so ugly)
     rm_rf "assets/"
     mkdir "assets"
     $chapters.each do |d|

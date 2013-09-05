@@ -18,4 +18,14 @@ At the moment this requires the following software:
 Ideally with the `texlive-full` package or similar, so you'll have
 a good selection of common LaTeX packages. 
 
+To actually build the book : 
+
+    rake book.pdf
+
+To build each chapter seperately :
+
+    cd src/<chapter>/
+    rake layout.pdf
+
+
 
