@@ -1,10 +1,9 @@
 # Introduction 
-@inlinetodo("Write intro paragraph.")
 
 This class will teach you about the LPC1769, an ARM Cortex microcontroller.
 @@
 When compared to normal CPU the LPC is a simple device, with only one processor core
-and a miniscure amount of memory, it still manages to be very useful. 
+and a miniscure amount of memory, it still manages to be useful. 
 @@
 In fact this simplicity makes it a wonderful learning tool, allowing us to forgo 
 kernel and driver interfaces and work at the lowest level possible, without 

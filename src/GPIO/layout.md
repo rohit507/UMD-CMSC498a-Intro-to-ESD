@@ -58,23 +58,24 @@ it does in order to carry them out.
 In order to talk to the GPIO controller, or any other peripheral, we have 
 we have to use _memory mapped registers_. 
 @@
-This is the same technique by which most computers communicate with external
-devices, but this is often hidden within kernel and driver code that most people
-never touch.
+In most computers these low level interfaces are hidden by the kernel, and
+often only higher level interfaces are available to developers.
 @@ 
-The LPC however doesn't have a kernel or drivers, hiding these interfaces from
-you, giving you the ability to work with them directly, without having to deal
+The LPC however doesn't have a kernel or drivers hiding these interfaces from
+you.
+@@
+This gives you the ability to work with them directly, without having to deal
 with the extra complexity an OS would add. 
 
 
+
 When we try to read or write to a normal chunk of memory, the address and
-instruction are sent down a bus to the memory controller. 
+instruction are sent to the memory controller. 
 @@
 The memory controller then either retrieves data from memory and places it 
 into a register, or takes data from a register and writes it to somewhere
 in the memory.
-
-
+@@
 However, there are a number of privileged address, and when you try to
 read from or write to these a slightly different pathway is taken. 
 @@
@@ -189,7 +190,7 @@ structs show the layout of each of those chunks of memory.
     #define LPC_DAC       ((LPC_DAC_TypeDef *) LPC_DAC_BASE )
 ~~~~~~~~~~
 
-The DAC is an APB1[^APB1] peripheral and so `LPC_DAC_BASE` is the very start of the 
+The DAC is an APB1[^APB1] peripheral and so `LPC_DAC_BASE` is the start of the 
 memory mapped to DAC registers. 
 @@
 `LPC_DAC_Typedef` is a struct that's set up so that when it's aligned to that
@@ -274,9 +275,12 @@ the rest of the stuff is done in hardware, which can be much faster.
 If a bit in `FIOMASK` is a 1, then none of those registers can cause any
 change in that pin's state.
 @@
+This means that you can change a subset of the bits very quickly, without having to
+perform a masking operation every time. 
+@@
 By default all of `FIOMASK`'s bits are set to 0, meaning that the other control 
-registers can operate freely. 
-@comment(Rohit,"Do we need this? FIOMASK is a very minor tool, and rarely useful to boot")
+registers can operate freely.
+
 
 ## GPIO Input ##
 
@@ -369,36 +373,44 @@ and poll the state of your button waiting for something to happen.
 With the correct settings the processor can wait for an event in the background
 while letting your code run in the meantime. 
 @@
-When the event happens, the processor will pause your currently running code, run
+When the event happens, the processor will interrupt your currently running code, run
 code to respond to the event, and restart the execution of your main program. 
 
-While there are many events the LPC can do this for, we'll quickly look at how
-it works with GPIO. 
+These _interrupts_ can be very complex and so we're only going to touch on a 
+small subset of their capabilities.
 @@
-These events, known as interrupts, can be initiated when a GPIO input
-pin changes from 0 to 1 (known as a rising edge) and from 1 to 0 (a falling edge).
+For GPIO specifically, an interrupt can be triggered when the CPU detects a rising
+or falling edge[^edge-exp] on an input pin.
 @@
-When this change is detected, the GPIO Controller flips a flag in the NVIC
-(Nested Vector Interrupt Controller) telling it to execute the GPIO Interrupt
-Handler.
-@@ 
-When the flag is set the NVIC performs a context switch, it saves all the registers 
-to the top of the stack, @todo("Figure out if/how else it modifies the stack") and
-moves the program counter to the start of the interrupt handling function.  
+Once the edge is detected, the Interrupt Controller performs a context switch. 
+@@
+In this case, saving any of the current registers to the stack, and starting the
+executing of the interrupt handler. 
+@@
+Once the interrupt handler is done, the processor will restore the previously
+saved registers, and continue executing the original code. 
 
-The interrupt handler executes, doing whatever you programmed, when it's done the
-NVIC takes control again. 
-@@
-If the interrupt flag is still set, the interrupt handler will execute the 
-interrupt again, but if you unset it, it'll reset the register state to what it
-saved to the stack, allowing your initial program to continue running. 
+[^edge-exp]: A rising edge is the pin's value changing from a 0 to a 1, and a falling
+             edge is the value changing from a 1 to a 0. 
 
-@missingfigure(Image of the changing stack as the interrupt executes)
+The Interrupt Controller uses an internal flag to determine whether or not to 
+perform a context switch, and this flag is not automatically turned off once
+it has been set.
+@@
+This means that if you don't manually disable the flag, the interrupt handler
+will execute repeatedly until the flag is disabled.
+@@
+_Interrupt chaining_ lets you keep your code small, and modular while still
+being able to handle many quickly incoming events.
+@@
+By only disabling the flag for the particular event you've handled, you are
+guaranteed to have your interrupt handler called again, so that it can handle
+a different event. 
 
 #### Setting Up an Interrupt Handler ####
 
-Setting up a GPIO interrupt is another relatively simple process, starting with
-telling the NVIC to enable the relevant external interrupt. 
+Setting up a GPIO interrupt starts with telling the Interrupt Controller to
+enable the relevant external interrupt. 
 @@
 Then in the struct `LPC_GPIOINT` you'll find the registers `IO0IntEnR` and 
 `IO0IntEnF` which define which pins on GPIO Port 0 generate interrupts on a
@@ -415,7 +427,7 @@ ports don't have support for interrupts, and don't have interrupt registers.]
     LPC_GPIOINT->IO0IntEnF |= (1 << 9);
 ~~~~~~~~~~
 
-Once the interrupt is enabled and will trigger on the right pins, the handler has
+Once the interrupt is enabled on the right pins, the handler has
 to be defined. 
 @@
 The interrupt handlers are found in `cr_startup_lpc176x.c` in each of your
@@ -443,16 +455,17 @@ name will make that the handler for the interrupt.
     }
 ~~~~~~~~~~
 
-Because the same interrupt handler will be called for any event one has to check
-the interrupt status registers to see which pin triggered the interrupt and on
-which edge it was triggered for. 
+All the GPIO Interrupts share the same interrupt handler, so it has to check
+which pins actually triggered the interrupt. 
+@@
+You can do this with the GPIO Interrupt Status Registers.
 @@ 
 `IO0IntStatR` will have bits set when the relevant pin was triggered by a rising 
 edge, and `IO0IntStatF` does the same for a falling edge. 
 @@
 Once you've done the relevant action you can clear a particular pin's interrupt
-by writing a 1 to the relevant bit in `IO0IntClr`, if you don't do this the 
-interrupt will be called again till all the pins have had their interrupts cleared.
+by writing a 1 to the bit in `IO0IntClr`, if you don't do this the interrupt
+will be called again till all the pins have had their interrupts cleared.
 @@
 This means you only have to handle one pin at a time, and as long as you clear 
 that pin's interrupt flag, the handler will be called again to take care of the 

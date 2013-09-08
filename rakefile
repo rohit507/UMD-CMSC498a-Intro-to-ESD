@@ -11,7 +11,9 @@ $ROOT_DIR = ""
 
 import "#{$ROOT_DIR}settings.rake"
 
-$chapters = ['Introduction','GPIO']
+$chapters = ['Introduction','GPIO','Appendix']
+
+task :default => ['clean','book.pdf']
 
 # Generate PDFs from preprocessed markdown
 rule '.pdf' => '.tex' do |f|
@@ -42,6 +44,7 @@ end
 file 'book.tex' => ['title.md',
                     'src/Introduction/layout.ppmd',
                     'src/GPIO/layout.ppmd',
+                    'src/Appendix/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
