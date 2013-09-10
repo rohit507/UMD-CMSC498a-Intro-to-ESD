@@ -9,8 +9,8 @@ Read the following tutorials to get you up to speed with the electronics:
  - [Understanding LEDs][LED]
  - [Using Pull Up Resistors][Pull_Up]
 
-All these tutorials are Arduino centric, but you should be able to 
-easily extrapolate to what you need to do for your LPC.
+All these tutorials are Arduino centric, but you can extrapolate to 
+what you need to do for your LPC.
 
 ## What is GPIO? ##
 
@@ -19,8 +19,8 @@ Input Output.
 @@
 GPIO is what lets your microcontroller be something more than a weak auxiliary processor.
 @@
-With it you can interact with the outside world, connecting up all manner
-of tools and turning your microcontroller into something useful. 
+With it you can interact with the environment, connecting up other devices
+and turning your microcontroller into something useful. 
 
 
 GPIO has two fundamental operating modes, input and output.
@@ -43,13 +43,14 @@ complex devices, and even implementing simple communications protocols.
 ## GPIO Output ##
 
 
-GPIO output is an incredibly versatile and powerful tool, especially given that
+GPIO output is a versatile and powerful tool, especially given that
 it takes little effort to use and control it. 
 @@
-Once you've chosen a pin, the process to use it is straighforward; first you 
-tell the LPC that the pin should be used as an output, and then you tell the LPC
-whether the pin should be held low or high. 
-@@
+Once you've chosen a pin, the process to use it is straighforward:
+
+  - tell the LPC that the pin should be used as an output
+  - tell the LPC whether the pin should be held low or high. 
+
 The interesting part is how exactly you can give the LPC instructions, and what
 it does in order to carry them out. 
 
@@ -65,7 +66,7 @@ The LPC however doesn't have a kernel or drivers hiding these interfaces from
 you.
 @@
 This gives you the ability to work with them directly, without having to deal
-with the extra complexity an OS would add. 
+with the virtual device abstraction a modern OS would impose. 
 
 
 
@@ -77,7 +78,7 @@ into a register, or takes data from a register and writes it to somewhere
 in the memory.
 @@
 However, there are a number of privileged address, and when you try to
-read from or write to these a slightly different pathway is taken. 
+read from or write to these a different pathway is taken. 
 @@
 Here when the memory controller gets the instruction it notices the address 
 is special, and instead of going to the memory module, it'll forward the 
@@ -88,7 +89,7 @@ These registers all have different functions, each of which is detailed in
 the manual along with the register's memory address.
 @@
 The really important thing to notice is that you're not dealing with a
-normal piece of memory, and these memory mapped registers can act very 
+normal piece of memory, and these _memory mapped_ registers can act very 
 differently. 
 
 
@@ -148,13 +149,21 @@ register isn't easy, or readable.
 You could replace it with a preprocessor macro, but writing those macros 
 would be painful and tedious.
 @@
-Thankfully there's already a library of macros and structures that already
-exists, and which exploits the fact that the memory addresses for each single
-peripheral are laid out close together, and are tightly packed. 
+Until you notice that the memory locations for these registers are 
+structured, with registers performing related tasks placed close together.
+@@
+In fact, the adresses are chosen so that they can easily map to structs.
+@@
+Finding the base address of a particular block of registers, and
+defining a suitable structure, will give you easy to use pointers to 
+all the registers in that block. 
+@@
+There already exists a library that defines these structs and calculates
+the proper base addresses.
 
-
-CMSIS is a library written by engineers at NXP, and it sets up all these memory 
-addresses as macros for you.
+**CMSIS** ^[CMSIS: Cortex Microcontroller Software Interface Standard] is a library
+written by engineers at ARM, and it sets up all these memory addresses 
+as human readable macros for you.
 @@
 To see how it works let's look at the setup for 
 the DAC (Digital to Analog Converter).
@@ -268,7 +277,7 @@ Trying to change the value of a single pin with `FIOPIN` requires at least 3 ope
 operations, a read , a bitwise logic operation, and a write. 
 @@
 To make the same change using the fast registers requires only a write operation,
-the rest of the stuff is done in hardware, which can be much faster. 
+the rest of the stuff is done in hardware, which is much faster. 
 
 `FIOMASK` is, in effect, a filter for `FIOPIN`,`FIOSET`, and `FIOCLR`.
 @@
@@ -279,7 +288,7 @@ This means that you can change a subset of the bits very quickly, without having
 perform a masking operation every time. 
 @@
 By default all of `FIOMASK`'s bits are set to 0, meaning that the other control 
-registers can operate freely.
+registers can operate over all bits.
 
 
 ## GPIO Input ##
@@ -309,6 +318,21 @@ input, and the relevant bit in `FIOPIN` contains its current state.
 Writes to `FIOPIN`,`FIOCLR` or `FIOSET` don't affect input pins, and making changes
 to the value of an input pin is basically a no-op. 
 
+@sidefigure(
+"A pull-down resistor allows for more predictable connections
+ between logic gates and inputs.
+ With the resistor, when the button is released, the ground will pull 
+ the voltage back down to 0v. 
+ Without the resistor, a sufficiently isolated pin might
+ stay at 3v even after the button is released, giving an 
+ incorrect reading. 
+ Additionally, having a large resistor is important since
+ it will only draw a small amount of current when the button 
+ is pressed. 
+ A small resistor might draw enough to stress the power
+ supply and keep other portions of your device from functioning"
+ ,assets/Pull-Down.eps,0.5)
+
 Once you have this set up, you can connect up a switch with a pull down resistor
 to the input pin, and be able to read the state of your button in software.
 
@@ -337,11 +361,13 @@ the button.
 @@
 Sometimes it'll miss button presses completely, and not change the LED's state. 
 
-![What button presses actually look like.](assets/Bouncy_Switch.png)
+@smallfigure("What button presses actually look like."
+,assets/Bouncy_Switch.png,0.75)
+
 
 This happens because buttons aren't perfect, and instead of getting smooth 
 transitions from connected to disconnected, the transitions are disjointed
-and shaky, this phenomenon is known as bouncing.
+and shaky, this phenomenon is known as bouncing.[^Button-Bounce-Cite]
 @@
 Because the GPIO pins can only read if something is low or high these jitters 
 result in a number of very fast transitions before the voltage stabilizes.
@@ -352,6 +378,8 @@ and toggle the LED accordingly.
 Most of the time, the bouncing will happen between reads of the pin state but
 sometimes, a read will happen in the middle of the bouncing and cause anomalous
 output. 
+
+[^Button-Bounce-Cite]: Image taken from <http://en.wikipedia.org/wiki/File:Bouncy_Switch.png>
 
 Removing the errors caused by bouncing can be done with hardware or software.
 @@
@@ -533,7 +561,7 @@ Other than your LPC you'll need the following:
 
  1. Wire up the following circuit[^WhyTransistor]
 
-    ![Shift Register Circuit](assets/Shift-Register-Circuit.eps)
+@smallfigure("Shift Register Circuit",assets/Shift-Register-Circuit.eps,0.85)
 
  2. Implement the serial protocol needed to write to shift registers, and
     display some pattern that changes over time.

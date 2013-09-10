@@ -4,11 +4,25 @@
 @define(rcenterstart,\begin{center}\resizebox{#1}{#2}{)
 @define(rcenterend,}\end{center})
 @define(figure,         |
-\begin{figure}[htbp]    |
+\begin{figure}[H]    |
 \centering              |
-\includegraphics{#1}    |
-\caption{#2}            |
+\includegraphics{#2}    |
+\caption{#1}            |
 \end{figure}            )
+@define(smallfigure,         |
+\begin{figure}[H]    |
+\centering              |
+\Oldincludegraphics[width=#3\textwidth]{#2}    |
+\caption{#1}            |
+\end{figure}            )
+@define(sidefigure,         |
+\FloatBarrier |
+\begin{SCfigure}   |
+\centering             |
+\Oldincludegraphics[width=0.5\textwidth]{#2}    |
+\caption{\small#1}            |
+\end{SCfigure}            |
+\FloatBarrier )
 @define(tinystart,)
 @define(tinyend,)
 @define(tablerowcolor,\rowcolors{2}{#1}{#2})

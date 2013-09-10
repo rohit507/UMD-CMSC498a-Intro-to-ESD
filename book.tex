@@ -1,4 +1,9 @@
 \documentclass[]{article}
+\usepackage{fullpage}
+
+\usepackage{float}
+\usepackage{sidecap}
+\usepackage{placeins}
 \usepackage{mathptmx}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -123,20 +128,21 @@
 
 \section{Introduction}
 
-This class will teach you about the LPC1769, an ARM Cortex
-microcontroller. When compared to normal CPU the LPC is a simple device,
-with only one processor core and a miniscure amount of memory, it still
-manages to be useful. In fact this simplicity makes it a wonderful
-learning tool, allowing us to forgo kernel and driver interfaces and
-work at the lowest level possible, without coming too complicated to
-just dive into. We'll exploit this to teach you about how processors are
-structured, how to deal with many common protocols and tools, and even
-how some of the most fundamental parts of an operating system work.
+This book will teach you embedded system design and development, using
+the LPC1769, an ARM Cortex microcontroller. When compared to normal CPU
+the LPC is a simple device, with only one processor core and a miniscure
+amount of memory, yet it still manages to be useful. In fact this
+simplicity makes it a wonderful learning tool, allowing us to forgo
+kernel and driver interfaces and work at the lowest level possible,
+without becoming too complicated to dive headfirst into. We'll exploit
+the simplicity to teach you about how processors are structured, how to
+deal with many common protocols and tools, and even how some fundamental
+parts of an operating system work.
 
 The LPC itself has a number of modules, which encapsulate various
 features of the processor. We'll be working our way through those
 modules, explaining why you would use them, how they work, and how to
-use them. With each module we learn about, we'll present execises and
+use them. With each module we learn about, we'll present exercises and
 projects that will help you cement that knowledge, and give you a
 practical examples of how these devices can be used.
 
@@ -165,15 +171,18 @@ cannot actually go over and to get the most out of this course, after
 every chapter you read in this textbook, you should read the
 corresponding chapters in the manual.
 
+A quick warning, this manual is very large, and you should not print it
+unless it's absolutely necessary.
+
 \subsubsection{The LPC1769 Schematic}
 
 The schematic
 (\href{http://www.cs.umd.edu/class/fall2012/cmsc498a/manuals/lpcxpresso_lpc1769_schematic.pdf}{available
 here} \footnote{\url{http://www.cs.umd.edu/class/fall2012/cmsc498a/manuals/lpcxpresso_lpc1769_schematic.pdf}})
-is the only way to know how the pins on the dev boards we work with
-correspond to the pins mentioned in the manual. You'll need to cross
-reference this schematic with Chapter 8 of the manual every time you
-need to figure out the physical location of any one particular pin.
+describes how the pins on the development boards correspond to the pins
+mentioned in the manual. You'll need to cross reference this schematic
+with Chapter 8 of the manual every time you need to figure out the
+physical location of any one particular pin.
 
 \subsubsection{The LPC176X Data Sheet}
 
@@ -209,15 +218,15 @@ electronics:
   Pull Up Resistors}
 \end{itemize}
 
-All these tutorials are Arduino centric, but you should be able to
-easily extrapolate to what you need to do for your LPC.
+All these tutorials are Arduino centric, but you can extrapolate to what
+you need to do for your LPC.
 
 \subsection{What is GPIO?}
 
 We'll start with the most basic peripheral on the LPC, General Purpose
 Input Output. GPIO is what lets your microcontroller be something more
 than a weak auxiliary processor. With it you can interact with the
-outside world, connecting up all manner of tools and turning your
+environment, connecting up other devices and turning your
 microcontroller into something useful.
 
 GPIO has two fundamental operating modes, input and output. Input lets
@@ -234,13 +243,20 @@ implementing simple communications protocols.
 
 \subsection{GPIO Output}
 
-GPIO output is an incredibly versatile and powerful tool, especially
-given that it takes little effort to use and control it. Once you've
-chosen a pin, the process to use it is straighforward; first you tell
-the LPC that the pin should be used as an output, and then you tell the
-LPC whether the pin should be held low or high. The interesting part is
-how exactly you can give the LPC instructions, and what it does in order
-to carry them out.
+GPIO output is a versatile and powerful tool, especially given that it
+takes little effort to use and control it. Once you've chosen a pin, the
+process to use it is straighforward:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  tell the LPC that the pin should be used as an output
+\item
+  tell the LPC whether the pin should be held low or high.
+\end{itemize}
+
+The interesting part is how exactly you can give the LPC instructions,
+and what it does in order to carry them out.
 
 \subsubsection{Memory Mapped Registers}
 
@@ -250,22 +266,23 @@ these low level interfaces are hidden by the kernel, and often only
 higher level interfaces are available to developers. The LPC however
 doesn't have a kernel or drivers hiding these interfaces from you. This
 gives you the ability to work with them directly, without having to deal
-with the extra complexity an OS would add.
+with the virtual device abstraction a modern OS would impose.
 
 When we try to read or write to a normal chunk of memory, the address
 and instruction are sent to the memory controller. The memory controller
 then either retrieves data from memory and places it into a register, or
 takes data from a register and writes it to somewhere in the memory.
 However, there are a number of privileged address, and when you try to
-read from or write to these a slightly different pathway is taken. Here
-when the memory controller gets the instruction it notices the address
-is special, and instead of going to the memory module, it'll forward the
+read from or write to these a different pathway is taken. Here when the
+memory controller gets the instruction it notices the address is
+special, and instead of going to the memory module, it'll forward the
 request to a register that's located in the relevant peripheral.
 
 These registers all have different functions, each of which is detailed
 in the manual along with the register's memory address. The really
 important thing to notice is that you're not dealing with a normal piece
-of memory, and these memory mapped registers can act very differently.
+of memory, and these \emph{memory mapped} registers can act very
+differently.
 
 Unlike static memory where you can read or write pretty much anywhere,
 there are a number of these memory mapped registers which you can only
@@ -316,20 +333,25 @@ brightness.
 Of course writing out the memory address every time you wish to change a
 register isn't easy, or readable. You could replace it with a
 preprocessor macro, but writing those macros would be painful and
-tedious. Thankfully there's already a library of macros and structures
-that already exists, and which exploits the fact that the memory
-addresses for each single peripheral are laid out close together, and
-are tightly packed.
+tedious. Until you notice that the memory locations for these registers
+are structured, with registers performing related tasks placed close
+together. In fact, the adresses are chosen so that they can easily map
+to structs. Finding the base address of a particular block of registers,
+and defining a suitable structure, will give you easy to use pointers to
+all the registers in that block. There already exists a library that
+defines these structs and calculates the proper base addresses.
 
-CMSIS is a library written by engineers at NXP, and it sets up all these
-memory addresses as macros for you. To see how it works let's look at
-the setup for the DAC (Digital to Analog Converter). The DAC is a device
-which can take a digital value, and turns it into an analog output, it's
-controlled with only 3 registers, the functions of which we'll look at
-in a later chapter. In \texttt{LPC17xx.h} you'll find a long list of
-struct definitions and a series of raw memory addresses. The addresses
-point to the chunks of memory assigned to each peripheral and the
-structs show the layout of each of those chunks of memory.
+\textbf{CMSIS} \footnote{CMSIS: Cortex Microcontroller Software
+  Interface Standard} is a library written by engineers at ARM, and it
+sets up all these memory addresses as human readable macros for you. To
+see how it works let's look at the setup for the DAC (Digital to Analog
+Converter). The DAC is a device which can take a digital value, and
+turns it into an analog output, it's controlled with only 3 registers,
+the functions of which we'll look at in a later chapter. In
+\texttt{LPC17xx.h} you'll find a long list of struct definitions and a
+series of raw memory addresses. The addresses point to the chunks of
+memory assigned to each peripheral and the structs show the layout of
+each of those chunks of memory.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -427,7 +449,7 @@ output control registers''. Trying to change the value of a single pin
 with \texttt{FIOPIN} requires at least 3 operations operations, a read ,
 a bitwise logic operation, and a write. To make the same change using
 the fast registers requires only a write operation, the rest of the
-stuff is done in hardware, which can be much faster.
+stuff is done in hardware, which is much faster.
 
 \texttt{FIOMASK} is, in effect, a filter for
 \texttt{FIOPIN},\texttt{FIOSET}, and \texttt{FIOCLR}. If a bit in
@@ -435,7 +457,7 @@ stuff is done in hardware, which can be much faster.
 change in that pin's state. This means that you can change a subset of
 the bits very quickly, without having to perform a masking operation
 every time. By default all of \texttt{FIOMASK}'s bits are set to 0,
-meaning that the other control registers can operate freely.
+meaning that the other control registers can operate over all bits.
 
 \subsection{GPIO Input}
 
@@ -464,6 +486,29 @@ used for input, and the relevant bit in \texttt{FIOPIN} contains its
 current state. Writes to \texttt{FIOPIN},\texttt{FIOCLR} or
 \texttt{FIOSET} don't affect input pins, and making changes to the value
 of an input pin is basically a no-op.
+
+\FloatBarrier 
+
+\begin{SCfigure}   
+\centering             
+\Oldincludegraphics[width=0.5\textwidth]{assets/Pull-Down.eps}    
+\caption{\small
+A pull-down resistor allows for more predictable connections
+ between logic gates and inputs.
+ With the resistor, when the button is released, the ground will pull 
+ the voltage back down to 0v. 
+ Without the resistor, a sufficiently isolated pin might
+ stay at 3v even after the button is released, giving an 
+ incorrect reading. 
+ Additionally, having a large resistor is important since
+ it will only draw a small amount of current when the button 
+ is pressed. 
+ A small resistor might draw enough to stress the power
+ supply and keep other portions of your device from functioning
+ }            
+\end{SCfigure}
+
+\FloatBarrier 
 
 Once you have this set up, you can connect up a switch with a pull down
 resistor to the input pin, and be able to read the state of your button
@@ -495,21 +540,24 @@ LED change when you press the button, but it will occasionally also
 change when you release the button. Sometimes it'll miss button presses
 completely, and not change the LED's state.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics{assets/Bouncy_Switch.png}
-\caption{What button presses actually look like.}
+\begin{figure}[H]    
+\centering              
+\Oldincludegraphics[width=0.75\textwidth]{assets/Bouncy_Switch.png}    
+\caption{What button presses actually look like.
+}            
 \end{figure}
 
 This happens because buttons aren't perfect, and instead of getting
 smooth transitions from connected to disconnected, the transitions are
-disjointed and shaky, this phenomenon is known as bouncing. Because the
-GPIO pins can only read if something is low or high these jitters result
-in a number of very fast transitions before the voltage stabilizes. Your
-LPC will see some of these transitions as a separate button presses and
-toggle the LED accordingly. Most of the time, the bouncing will happen
-between reads of the pin state but sometimes, a read will happen in the
-middle of the bouncing and cause anomalous output.
+disjointed and shaky, this phenomenon is known as bouncing.\footnote{Image
+  taken from \url{http://en.wikipedia.org/wiki/File:Bouncy_Switch.png}}
+Because the GPIO pins can only read if something is low or high these
+jitters result in a number of very fast transitions before the voltage
+stabilizes. Your LPC will see some of these transitions as a separate
+button presses and toggle the LED accordingly. Most of the time, the
+bouncing will happen between reads of the pin state but sometimes, a
+read will happen in the middle of the bouncing and cause anomalous
+output.
 
 Removing the errors caused by bouncing can be done with hardware or
 software. In hardware, using a capacitor or a
@@ -552,15 +600,14 @@ again, so that it can handle a different event.
 
 \paragraph{Setting Up an Interrupt Handler}
 
-Setting up a GPIO interrupt is another relatively simple process,
-starting with telling the NVIC to enable the relevant external
-interrupt. Then in the struct \texttt{LPC\_GPIOINT} you'll find the
-registers \texttt{IO0IntEnR} and \texttt{IO0IntEnF} which define which
-pins on GPIO Port 0 generate interrupts on a rising and falling
-edge.\footnote{These registers are for pins on GPIO Port 0. There are
-  similar registers with \texttt{IO2} instead for pins on GPIO Port 2.
-  The other GPIO ports don't have support for interrupts, and don't have
-  interrupt registers.}
+Setting up a GPIO interrupt starts with telling the Interrupt Controller
+to enable the relevant external interrupt. Then in the struct
+\texttt{LPC\_GPIOINT} you'll find the registers \texttt{IO0IntEnR} and
+\texttt{IO0IntEnF} which define which pins on GPIO Port 0 generate
+interrupts on a rising and falling edge.\footnote{These registers are
+  for pins on GPIO Port 0. There are similar registers with \texttt{IO2}
+  instead for pins on GPIO Port 2. The other GPIO ports don't have
+  support for interrupts, and don't have interrupt registers.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -573,8 +620,8 @@ edge.\footnote{These registers are for pins on GPIO Port 0. There are
 \end{Highlighting}
 \end{Shaded}
 
-Once the interrupt is enabled and will trigger on the right pins, the
-handler has to be defined. The interrupt handlers are found in
+Once the interrupt is enabled on the right pins, the handler has to be
+defined. The interrupt handlers are found in
 \texttt{cr\_startup\_lpc176x.c} in each of your project's source
 directories, defined as weak aliases to the default interrupt handler.
 Because they're weakly defined, defining a new function with the same
@@ -600,14 +647,14 @@ name will make that the handler for the interrupt.
 \end{Highlighting}
 \end{Shaded}
 
-Because the same interrupt handler will be called for any event one has
-to check the interrupt status registers to see which pin triggered the
-interrupt and on which edge it was triggered for. \texttt{IO0IntStatR}
-will have bits set when the relevant pin was triggered by a rising edge,
-and \texttt{IO0IntStatF} does the same for a falling edge. Once you've
-done the relevant action you can clear a particular pin's interrupt by
-writing a 1 to the relevant bit in \texttt{IO0IntClr}, if you don't do
-this the interrupt will be called again till all the pins have had their
+All the GPIO Interrupts share the same interrupt handler, so it has to
+check which pins actually triggered the interrupt. You can do this with
+the GPIO Interrupt Status Registers. \texttt{IO0IntStatR} will have bits
+set when the relevant pin was triggered by a rising edge, and
+\texttt{IO0IntStatF} does the same for a falling edge. Once you've done
+the relevant action you can clear a particular pin's interrupt by
+writing a 1 to the bit in \texttt{IO0IntClr}, if you don't do this the
+interrupt will be called again till all the pins have had their
 interrupts cleared. This means you only have to handle one pin at a
 time, and as long as you clear that pin's interrupt flag, the handler
 will be called again to take care of the next triggered pin.
@@ -694,18 +741,24 @@ Other than your LPC you'll need the following:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\itemsep1pt\parskip0pt\parsep0pt
 \item
   Wire up the following circuit\footnote{The shift register in this
     circuit can channel only 10mA of current, and if you connected them
     directly to the LEDs you'd get a glow that's barely visible. The
     transistors act as simple current amplifiers so that you can have
     brighter LEDs.}
+\end{enumerate}
 
-  \begin{figure}[htbp]
-  \centering
-  \includegraphics{assets/Shift-Register-Circuit.eps}
-  \caption{Shift Register Circuit}
-  \end{figure}
+\begin{figure}[H]    
+\centering              
+\Oldincludegraphics[width=0.85\textwidth]{assets/Shift-Register-Circuit.eps}    
+\caption{Shift Register Circuit}            
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
 \item
   Implement the serial protocol needed to write to shift registers, and
   display some pattern that changes over time.
@@ -721,6 +774,38 @@ Other than your LPC you'll need the following:
   to display something.\footnote{The shift register data sheet has a
     diagram showing how to chain them for more storage.}
 \end{enumerate}
+
+\newpage
+
+\section{Clocking and Timers}
+
+Microcontrollers are often used in situations where timing matters. One
+often has to complete work within precise dealines, and perform
+operations where being over a millisecond off is grounds for failure.
+
+Systems are said to be \emph{Real-Time} if the correctness of an
+operation depends on both its logical correctness, and whether the
+operation is performed within whatever timing constraints are set.
+
+\subsection{Clocking}
+
+\subsubsection{Processor Pipeline}
+
+\subsubsection{Calculating Settings}
+
+\subsubsection{Making Changes}
+
+\subsection{Timers}
+
+\subsubsection{Basic Description}
+
+\subsubsection{Speed Settings}
+
+\subsubsection{Match Registers}
+
+\subsubsection{Capture Registers}
+
+\subsection{Project : Something}
 
 \newpage
 
@@ -835,7 +920,9 @@ our example, we will use CMake to generate \texttt{Makefile}s.
 If you're on windows, you should also install
 \href{http://www.mingw.org}{MinGW}.
 
-\todo[inline,size=\footnotesize]{Description, install steps}
+MinGW or Minimalist GNU for Windows is a package containing all of the
+usual GNU tools, and GNU binutils, specifically targeted to compile
+windows binaries.
 
 \paragraph{UMD LPC Build}
 

@@ -11,7 +11,7 @@ $ROOT_DIR = ""
 
 import "#{$ROOT_DIR}settings.rake"
 
-$chapters = ['Introduction','GPIO','Appendix']
+$chapters = ['Introduction','GPIO','Appendix','ClockingAndTimers']
 
 task :default => ['clean','book.pdf']
 
@@ -24,13 +24,13 @@ rule '.pdf' => '.tex' do |f|
     $chapters.each do |d|
         d = "src/#{d}/assets"
         if Dir.exists?(d) then
-           cp(Dir.glob("#{d}/*"),"assets/")
+           ln(Dir.glob("#{d}/*"),"assets/")
         end
     end
     sh "#{$PDF} #{f.source} #{$PDFOPTS}"
     # run again to make sure cross references are there
     sh "#{$PDF} #{f.source} #{$PDFOPTS}"
-
+    rm_rf "assets/"
 end
 
 $chapters.each do |d|
@@ -44,6 +44,7 @@ end
 file 'book.tex' => ['title.md',
                     'src/Introduction/layout.ppmd',
                     'src/GPIO/layout.ppmd',
+                    'src/ClockingAndTimers/layout.ppmd',
                     'src/Appendix/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
