@@ -21,6 +21,8 @@ nohup.out
 # Generated Files
 
 *.ppmd
+ESDbook.tex
+book.tex
 
 # kBibtex
 

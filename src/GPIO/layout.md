@@ -42,11 +42,10 @@ complex devices, and even implementing simple communications protocols.
 
 ## GPIO Output ##
 
-
 GPIO output is a versatile and powerful tool, especially given that
 it takes little effort to use and control it. 
 @@
-Once you've chosen a pin, the process to use it is straighforward:
+Once you've chosen a pin, the process to use it is straightforward:
 
   - tell the LPC that the pin should be used as an output
   - tell the LPC whether the pin should be held low or high. 
@@ -67,8 +66,6 @@ you.
 @@
 This gives you the ability to work with them directly, without having to deal
 with the virtual device abstraction a modern OS would impose. 
-
-
 
 When we try to read or write to a normal chunk of memory, the address and
 instruction are sent to the memory controller. 
@@ -123,7 +120,7 @@ to be used for output, and then set the state to be on.
 @@
 If you look in the manual you'll see that `P0[9]`'s direction is controlled
 by the 9th bit in a register located at `0x2009C000`, and that setting it 
-to 1 makes it an output pin. @todo(Add cite for manual p.107)
+to 1 makes it an output pin. ^[See manual page 107)
 
 ~~~~~~~~~~{.C}
     ((uint32_t *) 0x2009C000) |= (1 << 9); // Set P0[9] to output
@@ -152,7 +149,7 @@ would be painful and tedious.
 Until you notice that the memory locations for these registers are 
 structured, with registers performing related tasks placed close together.
 @@
-In fact, the adresses are chosen so that they can easily map to structs.
+In fact, the addresses are chosen so that they can easily map to structs.
 @@
 Finding the base address of a particular block of registers, and
 defining a suitable structure, will give you easy to use pointers to 
@@ -401,11 +398,13 @@ and poll the state of your button waiting for something to happen.
 With the correct settings the processor can wait for an event in the background
 while letting your code run in the meantime. 
 @@
-When the event happens, the processor will interrupt your currently running code, run
-code to respond to the event, and restart the execution of your main program. 
+When an event occurs, the processor will stop your currently running code, run
+code to respond to the event, and restart the execution of your main program.
+@@
+This mode of communication is known as _Interrupt Driven I/O_.
 
 These _interrupts_ can be very complex and so we're only going to touch on a 
-small subset of their capabilities.
+small subset of their capabilities here.
 @@
 For GPIO specifically, an interrupt can be triggered when the CPU detects a rising
 or falling edge[^edge-exp] on an input pin.
@@ -421,13 +420,22 @@ saved registers, and continue executing the original code.
 [^edge-exp]: A rising edge is the pin's value changing from a 0 to a 1, and a falling
              edge is the value changing from a 1 to a 0. 
 
+
 The Interrupt Controller uses an internal flag to determine whether or not to 
 perform a context switch, and this flag is not automatically turned off once
 it has been set.
 @@
 This means that if you don't manually disable the flag, the interrupt handler
 will execute repeatedly until the flag is disabled.
+
+This might not seem useful, but consider a case where you've got a number 
+of interrupts coming in simultaneously. 
 @@
+Because the flag isn't automatically disabled, you can handle one incoming
+interrupt, disable the flag for that particular interrupt, and know that
+the Interrupt Controller will automatically call another handler to 
+care of the other interrupts. 
+
 _Interrupt chaining_ lets you keep your code small, and modular while still
 being able to handle many quickly incoming events.
 @@
@@ -437,25 +445,32 @@ a different event.
 
 #### Setting Up an Interrupt Handler ####
 
-Setting up a GPIO interrupt starts with telling the Interrupt Controller to
-enable the relevant external interrupt. 
+Setting up a GPIO interrupt starts with telling the Interrupt Controller or
+NVIC ^[NVIC : Nested Vector Interrupt Controller] that you want certain
+pins to trigger interrupts.
 @@
-Then in the struct `LPC_GPIOINT` you'll find the registers `IO0IntEnR` and 
+In the struct `LPC_GPIOINT` you'll find the registers `IO0IntEnR` and 
 `IO0IntEnF` which define which pins on GPIO Port 0 generate interrupts on a
 rising and falling edge.^[These registers are for pins on GPIO Port 0. There are 
 similar registers with `IO2` instead for pins on GPIO Port 2. The other GPIO
 ports don't have support for interrupts, and don't have interrupt registers.]
 
+Next the specific interrupt handler must be enabled.
+@@
+All the GPIO interrupts are handled by External Interrupt 3, so we'll
+use a macro to tell the NVIC that it's allowed to call that specific
+handler. 
+
 ~~~~~~~~~~{.C} 
-    // Turn on External Interrupt 3
-    NVIC_EnableIRQ(EINT3_IRQn);
     // Enable Rising Edge Interrupt on P0[9]
     LPC_GPIOINT->IO0IntEnR |= (1 << 9);
     // Enable Falling Edge Interrupt on P0[9]
     LPC_GPIOINT->IO0IntEnF |= (1 << 9);
+    // Turn on External Interrupt 3
+    NVIC_EnableIRQ(EINT3_IRQn);
 ~~~~~~~~~~
 
-Once the interrupt is enabled on the right pins, the handler has
+In order for the interrupt to do anything, the handler has
 to be defined. 
 @@
 The interrupt handlers are found in `cr_startup_lpc176x.c` in each of your
@@ -492,30 +507,30 @@ You can do this with the GPIO Interrupt Status Registers.
 edge, and `IO0IntStatF` does the same for a falling edge. 
 @@
 Once you've done the relevant action you can clear a particular pin's interrupt
-by writing a 1 to the bit in `IO0IntClr`, if you don't do this the interrupt
-will be called again till all the pins have had their interrupts cleared.
+flag by writing a 1 to the bit in `IO0IntClr`. 
 @@
 This means you only have to handle one pin at a time, and as long as you clear 
 that pin's interrupt flag, the handler will be called again to take care of the 
-next triggered pin. 
+next triggered pin.
+
 
 ## Project : Bit Banging ##
 
 Bit banging is the process of implementing a serial communication protocol using
 software instead of dedicated hardware. 
 @@
-In this case we're going to be sending data to a shift register, using 2 GPIO pins
+In this case we're going to be sending data to a shift register, using 3 GPIO pins
 to control 8 LEDs.
 
 ### Shift Registers ###
 
-To control to many leds with so few outputs you need to implement a serial
+To control many LEDs with few outputs you need to implement a serial
 communications protocol, a way of sending data one bit at a time to another
 entity.
 @@
 In this case we are going to be sending the data to a CD4094B, which
 has an interface based around 3 input lines, the clock, the data line, and
-the stribe input. 
+the strobe input. 
 
 @include(assets/Shift-Register-Diagram.tikz)
 
@@ -523,12 +538,12 @@ The CD4094B has, in effect[^ShiftRegCaveat], two registers inside of it, a
 shift register and an output register. 
 @@
 The shift register is used to load in data one bit at a time, so whenever
-the clock signal moves from low to high it'll do two things.
-@@
-First, it'll shift the data it contains one bit to the right, and now that
-the lowest bit is empty, it'll read the value on the data line and store it
-in that bit. 
-@@
+the clock signal moves from low to high it'll do two things:
+
+  1. It will shift the data it contains one bit to the right.
+  2. Now that the lowest bit is empty, it'll read the value 
+     on the data line and store it in that least significant bit. 
+
 So this way, through 8 clock cycles you can load one byte onto the shift
 register, starting with the highest first. 
 
@@ -543,43 +558,50 @@ once you've finished, write it all at once to the output with the strobe line.
 
 [^ShiftRegCaveat]: Thinking of them as memory registers is an imperfect 
                    abstraction. While it'll serve for anything we need to do,
-                   there are much more detailed explanations on
-                   [Wikipedia][Wiki_Shift_Reg] and on the 
-                   [CD4094B Data Sheet][Shift_Schem]
+                   there are much more detailed explanations on the
+                   [CD4094B Data Sheet][Shift_Schem] and on
+                   [Wikipedia][Wiki_Shift_Reg] 
 
 ### Materials ###
 
 Other than your LPC you'll need the following:
 
   - 1 x [CD4094B 8-Bit Shift Register][Shift_Schem]
-  - 8 x LED of your choice
+  - 8 x LEDs
   - 8 x [2N2222A NPN Transistor][Trans_Schem_PN2222A] 
     ^[The 2N2222A and PN2222A are functionally equivalent transistors
      with different packages, so feel free to use either.]
 
+The shift register in this circuit can channel only 10mA of
+current, and if you connected it directly to the LEDs you'd
+get a glow that's barely visible. The transistors act as 
+simple current amplifiers so that you can have brighter LEDs.
+
 ### Steps ###
 
- 1. Wire up the following circuit[^WhyTransistor]
+ 1. Wire up the following circuit
 
 @smallfigure("Shift Register Circuit",assets/Shift-Register-Circuit.eps,0.85)
 
  2. Implement the serial protocol needed to write to shift registers, and
     display some pattern that changes over time.
     
- 4. Detect the position of the button connected to GPIO C and use it to switch
-    between two patterns. 
+ 4. Use interrupts to detect the state of a button connected to GPIO and 
+    switch between two patterns when it is pressed. .
 
  5. Use fast switching to make the LEDs glow at different brightnesses while 
     displaying some pattern, and having some interrupt based button interaction. 
     
  6. **Bonus:** Chain up two more shift registers, and use 8 RGB LEDs to display
-    something.^[The shift register data sheet has a diagram showing how to chain
-    them for more storage.]
+    3 distinct patterns, one in each color channel. ^[The shift register data 
+    sheet has a diagram showing how to chain them for more storage.]
 
+@>
 [^WhyTransistor]: The shift register in this circuit can channel only 10mA of
                   current, and if you connected them directly to the LEDs you'd
                   get a glow that's barely visible. The transistors act as 
                   simple current amplifiers so that you can have brighter LEDs.
+<@
 
 [Read_Schem]: https://learn.sparkfun.com/tutorials/how-to-read-a-schematic
     'How to read a schematic'

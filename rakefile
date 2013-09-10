@@ -41,6 +41,7 @@ $chapters.each do |d|
     end
 end
 
+# Build For Test (Un finished Chapters)
 file 'book.tex' => ['title.md',
                     'src/Introduction/layout.ppmd',
                     'src/GPIO/layout.ppmd',
@@ -49,6 +50,20 @@ file 'book.tex' => ['title.md',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
+end
+
+# Build For Publish (no unfinished chapters) 
+file 'ESDbook.tex' => ['title.md',
+                    'src/Introduction/layout.ppmd',
+                    'src/GPIO/layout.ppmd',
+                    'src/Appendix/layout.ppmd'] do |f,s|
+    sh "#{$LC} -f markdown -w latex -o #{f.name} " +
+        "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
+end
+
+task :push => ['clean','book.pdf','ESDbook.pdf'] do
+    sh "scp ESDbook.pdf rohit@junkfood.cs.umd.edu:/fs/userdata/rohit/www/"
+    sh "scp book.pdf rohit@junkfood.cs.umd.edu:/fs/userdata/rohit/www/UESDbook.pdf"
 end
 
 $tempfiles = ["book.ppmd",

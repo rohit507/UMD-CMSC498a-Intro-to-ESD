@@ -11,8 +11,16 @@ looks for a pointer to first instruction to execute in the executable's
 metadata, and starts a process with the program counter set to that location. 
 @@
 We have no OS to offload a lot of this work to, we must build files that can
-be moved directly onto the LPC's memory, with the starting instruction and other
-features in the correct locations. 
+be moved directly onto the LPC's memory, and run on a bare machine. 
+
+Our executables will have the loaders and initializers that an OS would 
+normally provide, in addition to our actual programs. 
+@@
+In effect creating a minimal OS that exists only to load our app, and get 
+out of the way.
+@@
+These loaders are provided by our toolchain, and allow us to concentrate on
+the main application
 
 To do this we will be using a toolchain building applications for `arm-none-eabi`
 , which means:
