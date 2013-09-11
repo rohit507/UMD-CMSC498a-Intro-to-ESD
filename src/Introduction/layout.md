@@ -4,7 +4,7 @@ This book will teach you embedded system design and development, using
 the LPC1769, an ARM Cortex microcontroller.
 @@
 When compared to normal CPU the LPC is a simple device, with only one processor core
-and a miniscure amount of memory, yet it still manages to be useful. 
+and a miniscule amount of memory, yet it still manages to be useful. 
 @@
 In fact this simplicity makes it a wonderful learning tool, allowing us to forgo 
 kernel and driver interfaces and work at the lowest level possible, without 
