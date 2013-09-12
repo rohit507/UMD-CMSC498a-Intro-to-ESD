@@ -191,7 +191,7 @@ On Linux or OS X:
 ~~~~~~~~~~{.bash}
     # Extract CMSIS library .zip
     cd ..
-    unzip CMSISv2p00_LPC17xx.zip -d CMSISv2p00_LPC17x
+    unzip CMSISv2p00_LPC17xx.zip -d CMSISv2p00_LPC17xx
 ~~~~~~~~~~
 
 On Windows: 
