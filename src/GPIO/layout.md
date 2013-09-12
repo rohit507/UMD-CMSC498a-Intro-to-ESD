@@ -120,7 +120,7 @@ to be used for output, and then set the state to be on.
 @@
 If you look in the manual you'll see that `P0[9]`'s direction is controlled
 by the 9th bit in a register located at `0x2009C000`, and that setting it 
-to 1 makes it an output pin. ^[See manual page 107)
+to 1 makes it an output pin. ^[See manual page 107]
 
 ~~~~~~~~~~{.C}
     ((uint32_t *) 0x2009C000) |= (1 << 9); // Set P0[9] to output
@@ -516,7 +516,7 @@ next triggered pin.
 
 ## Project : Bit Banging ##
 
-Bit banging is the process of implementing a serial communication protocol using
+Bit banging is the process of implementing a serhttp://www.cs.umd.edu/~rohit/UESDbook.pdfial communication protocol using
 software instead of dedicated hardware. 
 @@
 In this case we're going to be sending data to a shift register, using 3 GPIO pins

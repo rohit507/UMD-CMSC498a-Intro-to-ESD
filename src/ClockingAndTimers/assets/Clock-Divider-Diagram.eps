@@ -1,0 +1,650 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 25 734 482 827
+%%Title: Clock-Divider-Diagram.tgif
+%%CreationDate: Thu Sep 12 13:28:07 2013
+%%Creator: Tgif-4.2.5-QPL written by William Chia-Wei Cheng (bill.cheng@acm.org)
+%%ProducedBy: (unknown)
+%%Pages: 1
+%%DocumentFonts: (atend)
+%%EndComments
+%%BeginProlog
+
+/tgifdict 56 dict def
+tgifdict begin
+
+/tgifellipsedict 6 dict def
+tgifellipsedict /mtrx matrix put
+
+/TGEL % tgifellipse
+ { tgifellipsedict begin
+      /yrad exch def
+      /xrad exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      xrad yrad scale
+      0 0 1 0 360 arc
+      savematrix setmatrix
+   end
+ } def
+
+/tgifarrowtipdict 8 dict def
+tgifarrowtipdict /mtrx matrix put
+
+/TGAT % tgifarrowtip
+ { tgifarrowtipdict begin
+      /dy exch def
+      /dx exch def
+      /h exch def
+      /w exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      dy dx atan rotate
+      0 0 moveto
+      w neg h lineto
+      w neg h neg lineto
+      savematrix setmatrix
+   end
+ } def
+
+/TGMAX
+ { exch dup 3 1 roll exch dup 3 1 roll gt { pop } { exch pop } ifelse
+ } def
+/TGMIN
+ { exch dup 3 1 roll exch dup 3 1 roll lt { pop } { exch pop } ifelse
+ } def
+/TGSW { stringwidth pop } def
+/tgifstrw 0 def
+
+/bd { bind def } bind def
+
+/GS { gsave } bd
+/GR { grestore } bd
+/NP { newpath } bd
+/CP { closepath } bd
+/CHP { charpath } bd
+/CT { curveto } bd
+/L { lineto } bd
+/RL { rlineto } bd
+/M { moveto } bd
+/RM { rmoveto } bd
+/S { stroke } bd
+/F { fill } bd
+/TR { translate } bd
+/RO { rotate } bd
+/SC { scale } bd
+/MU { mul } bd
+/DI { div } bd
+/DU { dup } bd
+/NE { neg } bd
+/AD { add } bd
+/SU { sub } bd
+/PO { pop } bd
+/EX { exch } bd
+/CO { concat } bd
+/CL { clip } bd
+/EC { eoclip } bd
+/EF { eofill } bd
+/IM { image } bd
+/IMM { imagemask } bd
+/ARY { array } bd
+/SG { setgray } bd
+/RG { setrgbcolor } bd
+/SD { setdash } bd
+/W { setlinewidth } bd
+/SM { setmiterlimit } bd
+/SLC { setlinecap } bd
+/SLJ { setlinejoin } bd
+/SH { show } bd
+/FF { findfont } bd
+/MS { makefont setfont } bd
+/AR { arcto 4 {pop} repeat } bd
+/CURP { currentpoint } bd
+/FLAT { flattenpath strokepath clip newpath } bd
+/TGSM { tgiforigctm setmatrix } def
+/TGRM { savematrix setmatrix } def
+
+end
+
+%%EndProlog
+%%Page: 1 1
+
+%%PageBoundingBox: 25 734 482 827
+tgifdict begin
+/tgifsavedpage save def
+
+1 SM
+1 W
+
+0 SG
+
+72 0 MU 72 11.602 MU TR
+72 128 DI 100.000 MU 100 DI DU NE SC
+
+GS
+
+/tgiforigctm matrix currentmatrix def
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      144 84 M
+      GS
+        GS
+        0
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Input Signal) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Input Signal) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0.000 0.600 1.000 RG
+GS
+   NP
+      64 104 M
+      64 120 L
+      80 120 L
+      80 104 L
+      96 104 L
+      96 120 L
+      112 120 L
+      112 104 L
+      128 104 L
+      128 120 L
+      144 120 L
+      144 104 L
+      160 104 L
+      160 120 L
+      176 120 L
+      176 104 L
+      192 104 L
+      192 120 L
+      208 120 L
+      208 104 L
+      224 104 L
+      16 0 atan DU cos 8.000 MU 224 exch SU
+      exch sin 8.000 MU 120 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      224 120 8.000 3.000 0 16 TGAT
+   1 SG CP F
+   0.000 0.600 1.000 RG
+   NP
+      224 120 8.000 3.000 0 16 TGAT
+   CP F
+GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 48 64 M 240 64 L 240 128 L 48 128 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      341 101 M
+      GS
+        GS
+        0
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Edge Detector) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Edge Detector) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 277 80 M 405 80 L 405 112 L 277 112 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      528 165 M
+      GS
+        GS
+        0
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Counter Register) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Counter Register) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 448 144 M 608 144 L 608 176 L 448 176 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      528 37 M
+      GS
+        GS
+        0
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Factor Register) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Factor Register) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 448 16 M 608 16 L 608 48 L 448 48 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      528 103 M
+      GS
+        GS
+        0
+            /Courier FF [24 0 0 -24 0 0] MS
+            (=) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [24 0 0 -24 0 0] MS
+            (=) SH
+      GR
+   GR
+
+% OVAL
+0 SG
+GS
+   GS
+      NP 528 96 16 16 TGEL
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      357 164 M
+      GS
+            0 SG
+            /Courier FF [10 0 0 -10 0 0] MS
+            (Increment) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      464 100 M
+      GS
+        GS
+        0
+            /Courier FF [10 0 0 -10 0 0] MS
+            (Test) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [10 0 0 -10 0 0] MS
+            (Test) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      240 96 M
+      0 36 atan DU cos 8.000 MU 276 exch SU
+      exch sin 8.000 MU 96 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      276 96 8.000 3.000 36 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      276 96 8.000 3.000 36 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      336 112 M
+      336 160 L
+      352 160 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      416 160 M
+      0 32 atan DU cos 8.000 MU 448 exch SU
+      exch sin 8.000 MU 160 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      448 160 8.000 3.000 32 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      448 160 8.000 3.000 32 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      405 96 M
+      448 96 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      480 96 M
+      0 32 atan DU cos 8.000 MU 512 exch SU
+      exch sin 8.000 MU 96 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      512 96 8.000 3.000 32 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      512 96 8.000 3.000 32 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      528 48 M
+      32 0 atan DU cos 8.000 MU 528 exch SU
+      exch sin 8.000 MU 80 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      528 80 8.000 3.000 0 32 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      528 80 8.000 3.000 0 32 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      528 144 M
+      -32 0 atan DU cos 8.000 MU 528 exch SU
+      exch sin 8.000 MU 112 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      528 112 8.000 3.000 0 -32 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      528 112 8.000 3.000 0 -32 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      544 96 M
+      584 96 L
+   TGSM
+   1 W
+   S
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      561 123 M
+      GS
+            0 SG
+            /Courier FF [10 0 0 -10 0 0] MS
+            (Reset) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0.000 0.600 1.000 RG
+GS
+   NP
+      679 104 M
+      679 120 L
+      711 120 L
+      711 104 L
+      743 104 L
+      743 120 L
+      775 120 L
+      775 104 L
+      807 104 L
+      807 120 L
+      839 120 L
+      -16 0 atan DU cos 8.000 MU 839 exch SU
+      exch sin 8.000 MU 104 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      839 104 8.000 3.000 0 -16 TGAT
+   1 SG CP F
+   0.000 0.600 1.000 RG
+   NP
+      839 104 8.000 3.000 0 -16 TGAT
+   CP F
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      759 84 M
+      GS
+        GS
+        0
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Output Signal) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Courier FF [14 0 0 -14 0 0] MS
+            (Output Signal) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 663 64 M 855 64 L 855 128 L 663 128 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      590 100 M
+      GS
+            0 SG
+            /Courier FF [10 0 0 -10 0 0] MS
+            (Toggle) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      631 96 M
+      0 32 atan DU cos 8.000 MU 663 exch SU
+      exch sin 8.000 MU 96 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      663 96 8.000 3.000 32 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      663 96 8.000 3.000 32 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      576 96 M
+      576 112 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      576 128 M
+      16 0 atan DU cos 8.000 MU 576 exch SU
+      exch sin 8.000 MU 144 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      576 144 8.000 3.000 0 16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      576 144 8.000 3.000 0 16 TGAT
+   CP F
+GR
+
+GR
+tgifsavedpage restore
+end
+showpage
+
+%%Trailer
+%MatchingCreationDate: Thu Sep 12 13:28:07 2013
+%%DocumentFonts: Courier
+%%EOF

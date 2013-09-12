@@ -180,3 +180,7 @@
 ~~ - low priority
 ?? - optional / tentative
 
+----------------
+Core Topics : 
+
+GPIO - Timer - NVIC - SPI - DAC - ADC - DMA 

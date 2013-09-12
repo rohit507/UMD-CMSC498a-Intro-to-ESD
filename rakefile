@@ -43,10 +43,7 @@ end
 
 # Build For Test (Un finished Chapters)
 file 'book.tex' => ['title.md',
-                    'src/Introduction/layout.ppmd',
-                    'src/GPIO/layout.ppmd',
                     'src/ClockingAndTimers/layout.ppmd',
-                    'src/Appendix/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
