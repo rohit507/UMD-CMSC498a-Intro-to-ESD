@@ -1,0 +1,28 @@
+\begin{tabular}{rrlcc}
+ \toprule 
+  & \multicolumn{2}{c}{\textbf{Start}} 
+  & \multicolumn{1}{c}{\textbf{Error}} 
+  & \multicolumn{1}{c}{\textbf{Correction}} \\
+  \midrule
+ \multirow{3}{*}{\textbf{Case 1}} 
+ 	& Input 		& \texttiming[l]{5{3h3l}} & 
+ 	\multirow{3}{*}{No Error} &  
+ 	\multirow{3}{*}{No Correction}\\
+ 	& CCO   		& \texttiming[l]{15{hl}} & \\
+ 	& Approximation & \texttiming[l]{5{3h3l}} \\
+ \\
+ \multirow{3}{*}{\textbf{Case 2}} 
+ 	& Input 		& \texttiming[l]{5{3h3l}} & 
+ 	\multirow{3}{*}{Too Fast} & 
+ 	\multirow{3}{*}{Slow Down CC0}\\
+ 	& CCO   		& \texttiming[l]{18{0.8h0.8l}0.75h} & \\
+ 	& Approximation & \texttiming[l]{6{2.4h2.4l}0.75h} \\
+ \\
+ \multirow{3}{*}{\textbf{Case 3}} 
+ 	& Input 		& \texttiming[l]{5{3h3l}} & 
+ 	\multirow{3}{*}{Too Slow} & 
+ 	\multirow{3}{*}{Speed Up CC0}\\
+ 	& CCO   		& \texttiming[l]{12{1.2h1.2l}1.2h} & \\
+ 	& Approximation & \texttiming[l]{4{3.6h3.6l}0.75h} \\
+ \bottomrule
+\end{tabular}

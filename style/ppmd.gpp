@@ -2,37 +2,60 @@
 @mode(quote,"|")
 
 @define(rcenterstart,\begin{center}\resizebox{#1}{#2}{)
+
+@define(table, |
+\begin{figure}[H]       |
+\centering              |
+\input{#2}              |
+\caption{#1}            |
+\end{figure}            )
+
+
 @define(rcenterend,}\end{center})
+
 @define(figure,         |
-\begin{figure}[H]    |
+\begin{figure}[H]       |
 \centering              |
 \includegraphics{#2}    |
 \caption{#1}            |
 \end{figure}            )
-@define(smallfigure,         |
-\begin{figure}[H]    |
-\centering              |
-\Oldincludegraphics[width=#3\textwidth]{#2}    |
-\caption{#1}            |
-\end{figure}            )
-@define(sidefigure,         |
-\FloatBarrier |
-\begin{SCfigure}   |
-\centering             |
+
+@define(smallfigure,                            |
+\begin{figure}[H]                               |
+\centering                                      |
+\Oldincludegraphics[width=#3\textwidth]{#2}     |
+\caption{#1}                                    |
+\end{figure}                                    )
+
+@define(sidefigure,                             |
+\FloatBarrier                                   |
+\begin{SCfigure}                                |
+\centering                                      |
 \Oldincludegraphics[width=0.5\textwidth]{#2}    |
-\caption{\small#1}            |
-\end{SCfigure}            |
-\FloatBarrier )
+\caption{\small#1}                              |
+\end{SCfigure}                                  |
+\FloatBarrier                                   )
+
 @define(tinystart,)
+
 @define(tinyend,)
+
 @define(tablerowcolor,\rowcolors{2}{#1}{#2})
+
 @define(centerstart,\begin{center})
+
 @define(centerend,\end{center})
+
 @define(pagebreak,\pagebreak)
-@define(todo,\todo[size=\footnotesize]{#1})
-@define(inlinetodo,\todo[inline,size=\footnotesize]{#1})
+
+@define(todo,\todo[size=\tiny]{#1})
+
+@define(inlinetodo,\todo[inline,size=\tiny]{#1})
+
 @define(comment,\mycomment[#1]{#2})
+
 @define(inlinecomment,\myinlinecomment[#1]{#2})
+
 @define(missingfigure,\missingfigure[#2]{#1})
 
 @mode(pop)

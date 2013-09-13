@@ -1,0 +1,650 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 12 735 482 825
+%%Title: PLL-Block-Diagram.tgif
+%%CreationDate: Fri Sep 13 14:37:39 2013
+%%Creator: Tgif-4.2.5-QPL written by William Chia-Wei Cheng (bill.cheng@acm.org)
+%%ProducedBy: (unknown)
+%%Pages: 1
+%%DocumentFonts: (atend)
+%%EndComments
+%%BeginProlog
+
+/tgifdict 56 dict def
+tgifdict begin
+
+/tgifellipsedict 6 dict def
+tgifellipsedict /mtrx matrix put
+
+/TGEL % tgifellipse
+ { tgifellipsedict begin
+      /yrad exch def
+      /xrad exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      xrad yrad scale
+      0 0 1 0 360 arc
+      savematrix setmatrix
+   end
+ } def
+
+/tgifarrowtipdict 8 dict def
+tgifarrowtipdict /mtrx matrix put
+
+/TGAT % tgifarrowtip
+ { tgifarrowtipdict begin
+      /dy exch def
+      /dx exch def
+      /h exch def
+      /w exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      dy dx atan rotate
+      0 0 moveto
+      w neg h lineto
+      w neg h neg lineto
+      savematrix setmatrix
+   end
+ } def
+
+/TGMAX
+ { exch dup 3 1 roll exch dup 3 1 roll gt { pop } { exch pop } ifelse
+ } def
+/TGMIN
+ { exch dup 3 1 roll exch dup 3 1 roll lt { pop } { exch pop } ifelse
+ } def
+/TGSW { stringwidth pop } def
+/tgifstrw 0 def
+
+/bd { bind def } bind def
+
+/GS { gsave } bd
+/GR { grestore } bd
+/NP { newpath } bd
+/CP { closepath } bd
+/CHP { charpath } bd
+/CT { curveto } bd
+/L { lineto } bd
+/RL { rlineto } bd
+/M { moveto } bd
+/RM { rmoveto } bd
+/S { stroke } bd
+/F { fill } bd
+/TR { translate } bd
+/RO { rotate } bd
+/SC { scale } bd
+/MU { mul } bd
+/DI { div } bd
+/DU { dup } bd
+/NE { neg } bd
+/AD { add } bd
+/SU { sub } bd
+/PO { pop } bd
+/EX { exch } bd
+/CO { concat } bd
+/CL { clip } bd
+/EC { eoclip } bd
+/EF { eofill } bd
+/IM { image } bd
+/IMM { imagemask } bd
+/ARY { array } bd
+/SG { setgray } bd
+/RG { setrgbcolor } bd
+/SD { setdash } bd
+/W { setlinewidth } bd
+/SM { setmiterlimit } bd
+/SLC { setlinecap } bd
+/SLJ { setlinejoin } bd
+/SH { show } bd
+/FF { findfont } bd
+/MS { makefont setfont } bd
+/AR { arcto 4 {pop} repeat } bd
+/CURP { currentpoint } bd
+/FLAT { flattenpath strokepath clip newpath } bd
+/TGSM { tgiforigctm setmatrix } def
+/TGRM { savematrix setmatrix } def
+
+end
+
+%%EndProlog
+%%Page: 1 1
+
+%%PageBoundingBox: 12 735 482 825
+tgifdict begin
+/tgifsavedpage save def
+
+1 SM
+1 W
+
+0 SG
+
+72 0 MU 72 11.602 MU TR
+72 128 DI 100.000 MU 100 DI DU NE SC
+
+GS
+
+/tgiforigctm matrix currentmatrix def
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      372 78 M
+      GS
+        GS
+        0
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Error Term) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Error Term) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      242 153 M
+      GS
+        GS
+        0
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Approximation) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Approximation) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      420 30 M
+      GS
+        GS
+        0
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Initial Target Frequency Approximation) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [10 0 0 -10 0 0] MS
+            (Initial Target Frequency Approximation) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      95 70 M
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Input Signal) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Input Signal) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0.000 0.600 1.000 RG
+GS
+   NP
+      35 80 M
+      35 90 L
+      55 90 L
+      55 80 L
+      75 80 L
+      75 90 L
+      95 90 L
+      95 80 L
+      115 80 L
+      115 90 L
+      135 90 L
+      135 80 L
+      155 80 L
+      10 0 atan DU cos 8.000 MU 155 exch SU
+      exch sin 8.000 MU 90 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      155 90 8.000 3.000 0 10 TGAT
+   1 SG CP F
+   0.000 0.600 1.000 RG
+   NP
+      155 90 8.000 3.000 0 10 TGAT
+   CP F
+GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 25 50 M 165 50 L 165 100 L 25 100 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      785 70 M
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Output Signal) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Output Signal) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0.000 0.600 1.000 RG
+GS
+   NP
+      725 80 M
+      725 90 L
+      735 90 L
+      735 80 L
+      745 80 L
+      745 90 L
+      755 90 L
+      755 80 L
+      765 80 L
+      765 90 L
+      775 90 L
+      775 80 L
+      785 80 L
+      785 90 L
+      795 90 L
+      795 80 L
+      805 80 L
+      805 90 L
+      815 90 L
+      815 80 L
+      825 80 L
+      825 90 L
+      835 90 L
+      835 80 L
+      845 80 L
+      10 0 atan DU cos 8.000 MU 845 exch SU
+      exch sin 8.000 MU 90 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      845 90 8.000 3.000 0 10 TGAT
+   1 SG CP F
+   0.000 0.600 1.000 RG
+   NP
+      845 90 8.000 3.000 0 10 TGAT
+   CP F
+GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 715 50 M 855 50 L 855 100 L 715 100 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      270 81 M
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Phase Comparator) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Phase Comparator) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 205 50 M 335 50 L 335 100 L 205 100 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      570 72 M
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Current Controlled Oscillator) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Current Controlled Oscillator) SH
+      GR
+      0 17 RM
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (\(CCO\)) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (\(CCO\)) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 475 50 M 665 50 L 665 100 L 475 100 L CP
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      420 80 M
+      GS
+        GS
+        0
+            /Times-Roman FF [17 0 0 -17 0 0] MS
+            (+) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [17 0 0 -17 0 0] MS
+            (+) SH
+      GR
+   GR
+
+% OVAL
+0 SG
+GS
+   GS
+      NP 420 75 10 10 TGEL
+      S
+   GR
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      360 156 M
+      GS
+        GS
+        0
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Clock Divider) TGSW 
+        AD
+        GR
+      2 DI NE 0 RM
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (Clock Divider) SH
+      GR
+   GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 310 125 M 410 125 L 410 175 L 310 175 L CP
+      S
+   GR
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      165 65 M
+      0 40 atan DU cos 8.000 MU 205 exch SU
+      exch sin 8.000 MU 65 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      205 65 8.000 3.000 40 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      205 65 8.000 3.000 40 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      310 150 M
+      280 150 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      205 150 M
+      185 150 L
+      185 85 L
+      0 20 atan DU cos 8.000 MU 205 exch SU
+      exch sin 8.000 MU 85 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      205 85 8.000 3.000 20 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      205 85 8.000 3.000 20 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      335 75 M
+      347 75 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      400 75 M
+      0 10 atan DU cos 8.000 MU 410 exch SU
+      exch sin 8.000 MU 75 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      410 75 8.000 3.000 10 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      410 75 8.000 3.000 10 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      420 35 M
+      30 0 atan DU cos 8.000 MU 420 exch SU
+      exch sin 8.000 MU 65 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      420 65 8.000 3.000 0 30 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      420 65 8.000 3.000 0 30 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      430 75 M
+      0 45 atan DU cos 8.000 MU 475 exch SU
+      exch sin 8.000 MU 75 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      475 75 8.000 3.000 45 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      475 75 8.000 3.000 45 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      665 75 M
+      0 50 atan DU cos 8.000 MU 715 exch SU
+      exch sin 8.000 MU 75 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      715 75 8.000 3.000 50 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      715 75 8.000 3.000 50 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      685 75 M
+      685 150 L
+      0 -275 atan DU cos 8.000 MU 410 exch SU
+      exch sin 8.000 MU 150 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      410 150 8.000 3.000 -275 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      410 150 8.000 3.000 -275 0 TGAT
+   CP F
+GR
+
+GR
+tgifsavedpage restore
+end
+showpage
+
+%%Trailer
+%MatchingCreationDate: Fri Sep 13 14:37:39 2013
+%%DocumentFonts: Times-Roman
+%%EOF

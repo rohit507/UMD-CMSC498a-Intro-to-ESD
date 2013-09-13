@@ -3,6 +3,7 @@
 \usepackage{sidecap}
 \usepackage{placeins}
 \usepackage{mathptmx}
+\usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -18,7 +19,7 @@
     \refstepcounter{mycmtctr}%
     {%
         \setstretch{0.7}% spacing
-        \todo[color={red!100!green!33},size=\footnotesize]
+        \todo[color={red!100!green!33},size=\tiny]
         {
             \textbf{Comment [\uppercase{#1}\themycmtctr]:}~#2
         }
@@ -30,7 +31,7 @@
     \refstepcounter{mycmtctr}%
     {%
         \setstretch{0.7}% spacing
-        \todo[inline,color={red!100!green!33},size=\footnotesize]
+        \todo[inline,color={red!100!green!33},size=\tiny]
         {
             \textbf{Comment [\uppercase{#1}\themycmtctr]:}~#2
         }
