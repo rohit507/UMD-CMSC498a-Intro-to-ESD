@@ -3,21 +3,28 @@
 
 @define(rcenterstart,\begin{center}\resizebox{#1}{#2}{)
 
+@define(rcenterend,}\end{center})
+
+@define(ref,\ref{#1})
+
 @define(table, |
 \begin{figure}[H]       |
 \centering              |
 \input{#2}              |
 \caption{#1}            |
+@ifneq(#3,)             |
+  \label{#3}            |
+@endif                  |
 \end{figure}            )
-
-
-@define(rcenterend,}\end{center})
 
 @define(figure,         |
 \begin{figure}[H]       |
 \centering              |
 \includegraphics{#2}    |
 \caption{#1}            |
+@ifneq(#3,)             |
+  \label{#3}            |
+@endif                  |
 \end{figure}            )
 
 @define(smallfigure,                            |
@@ -25,6 +32,9 @@
 \centering                                      |
 \Oldincludegraphics[width=#3\textwidth]{#2}     |
 \caption{#1}                                    |
+@ifneq(#4,)                                     |
+  \label{#4}                                    |
+@endif                                          |
 \end{figure}                                    )
 
 @define(sidefigure,                             |
@@ -33,6 +43,9 @@
 \centering                                      |
 \Oldincludegraphics[width=0.5\textwidth]{#2}    |
 \caption{\small#1}                              |
+@ifneq(#3,)                                     |
+  \label{#3}                                    |
+@endif                                          |
 \end{SCfigure}                                  |
 \FloatBarrier                                   )
 

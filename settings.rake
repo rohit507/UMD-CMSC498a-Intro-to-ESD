@@ -13,7 +13,7 @@ $PP = "gpp"
 
     # Options for initial .pp to .ppmd pass
     $PPMACRO_PRE = "#{$ROOT_DIR}style/ppmd.gpp"
-    $PPOPTS_PRE = '-U "@" "\n" "(" "," ")" "(" ")" "#" "" ' +
+    $PPOPTS_PRE = '-U "@" "\W" "(" "," ")" "(" ")" "#" "" ' +
                   '+ciic "@@" "\n" +ciic "@>" "<@" +siqi "\"" "\"" "\\\\" ' +
                   "--include #{$PPMACRO_PRE}"
 
@@ -37,13 +37,15 @@ $LC = "pandoc"
 
     # Standalone Options
     $LCOPTS_SA = "-s --toc-depth=3 -N -R --standalone -H #{$LCHEADER_FILE} " +
-                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango "# +
+                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango " +
+                 "--from=markdown+tex_math_single_backslash " # +
                  #"--bibliography #{$LCBIB_FILE} --csl #{$LCCSL_FILE}"
 
     # Linked Build Options
 
     $LCOPTS_CN = "-s --toc-depth=2 -N -R --standalone -H #{$LCHEADER_FILE} " +
-                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango "# +
+                 "--template #{$LCTEMPLATE_FILE} --highlight-style=tango " +
+                 "--from=markdown+tex_math_single_backslash " # +
 
 # PDF Creator Options
 $PDF = "pdflatex"

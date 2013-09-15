@@ -112,7 +112,10 @@ We use git to manage our build system.
 
 #### CMake ####
 
-Next, install the [CMake](http://www.cmake.org/) build system.
+Next, install the [CMake](http://www.cmake.org/) build system, make sure
+you install the very latest version, a number of distros do now have 
+the proper binaries in their repositories, and you might have to build it
+yourself. 
 @todo("Windows Instructions,and path changes.")
 
 CMake is a meta-build system.
