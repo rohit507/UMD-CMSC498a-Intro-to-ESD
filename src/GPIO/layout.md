@@ -584,24 +584,18 @@ simple current amplifiers so that you can have brighter LEDs.
 @smallfigure("Shift Register Circuit",assets/Shift-Register-Circuit.eps,0.85)
 
  2. Implement the serial protocol needed to write to shift registers, and
-    display some pattern that changes over time.
+    display a pattern where one LED turns on at a time, moving back and forth
+    across the back of LEDs. 
     
- 4. Use interrupts to detect the state of a button connected to GPIO and 
-    switch between two patterns when it is pressed. .
+ 3. Use interrupts to detect the state of a button connected to GPIO and 
+    switch between two patterns when it is pressed.
 
- 5. Use fast switching to make the LEDs glow at different brightnesses while 
+ 4. Use fast switching to make the LEDs glow at different brightnesses while 
     displaying some pattern, and having some interrupt based button interaction. 
     
- 6. **Bonus:** Chain up two more shift registers, and use 8 RGB LEDs to display
+ 5. **Bonus:** Chain up two more shift registers, and use 8 RGB LEDs to display
     3 distinct patterns, one in each color channel. ^[The shift register data 
     sheet has a diagram showing how to chain them for more storage.]
-
-@>
-[^WhyTransistor]: The shift register in this circuit can channel only 10mA of
-                  current, and if you connected them directly to the LEDs you'd
-                  get a glow that's barely visible. The transistors act as 
-                  simple current amplifiers so that you can have brighter LEDs.
-<@
 
 [Read_Schem]: https://learn.sparkfun.com/tutorials/how-to-read-a-schematic
     'How to read a schematic'

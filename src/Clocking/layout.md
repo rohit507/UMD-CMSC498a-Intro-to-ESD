@@ -1,8 +1,4 @@
-# Clocking and Timers #
-
-@inlinetodo(Write Clocking and timer intro)
-
-## Clocking ##
+# Clocking #
 
 @inlinetodo("Paragraph about clocking being a tradeoff between processing
 power and power consumptions, and segue into LPC stuff")
@@ -32,7 +28,7 @@ LPC's limit of 120MHz.
 Before we can get into how to set the LPC's clock, there are two components
 you need to understand: Clock Dividers, and Phase Locked Loops. 
 
-### Clock Dividers ###
+## Clock Dividers ##
 
 @smallfigure("Clock Divider Block Diagram",assets/Clock-Divider-Diagram.eps,0.95,Clk-Div-Dia)
 
@@ -71,7 +67,7 @@ then $\frac{F_{in}}{N + 1} = F_{out}$
 
 @table("Clock Divider Timing Example",assets/Divider-Timing.tikz,Clk-Div-Timing)
 
-### Phase Locked Loops ###
+## Phase Locked Loops ##
 
 @figure("PLL0 Block Diagram",assets/PLL-Block-Diagram.eps,PLL0-Blk-Dia)
 
@@ -124,7 +120,7 @@ This continual process of error checking and correction means the PLL becomes
 locked to the input signal, and outputs a precisely frequency multiplied version
 thereof. 
 
-### Calculating Clock Speed ###
+## Calculating Clock Speed ##
 
 @smallfigure("Cpu Clock Generation Diagram",assets/Clock-Settings.eps,0.95,CPU-Clk-Gen)
 
@@ -170,7 +166,7 @@ then
  
   \[ F_{\mathtt{cclk}} = \frac{F_{\mathtt{pllclk}}}{D+1} \] 
 
-### Working Backwards ###
+## Working Backwards ##
 
 If we want to change our LPC's clock speed, we must answer the following
 questions: 
@@ -254,7 +250,7 @@ following:
   3) Connect PLL0 to `pllclk`.
   4) And set the CPU Clock Divider to $D$.
 
-### Making The Changes ###
+## Making The Changes ##
 
 Now that we know how to choose the various clocking settings we'll use, we
 need to learn how to apply them.
@@ -269,7 +265,7 @@ chosen settings, we could render our microcontrollers useless.
 This is why the LPC's clocking subsystem requires people to jump through hoops
 to change anything.
 
-#### Registers ####
+### Registers ###
 
 Before we dive into the algorithm to change the settings, we should step through
 the various registers we'll be using and look at their functions. 
@@ -309,7 +305,7 @@ the various registers we'll be using and look at their functions.
     in quick succession in order to validate changes you've made to the 
     other PLL0 registers, and actually apply them to the PLL. See manual page 40. 
 
-#### Feed Sequence ####
+### Feed Sequence ###
 
 The PLL registers together form an update-commit system, where every change of
 PLL settings requires a feed sequence in order to actually be applied.
@@ -328,7 +324,7 @@ registers in between.
     }
 ~~~~~
 
-#### Update Algorithm ####
+### Update Algorithm ###
 
 When you have chosen your settings, there's a well specified algorithm
 ^[See page 46 in the manual] which explains what changes you have to make
@@ -431,17 +427,69 @@ If $20\mathrm{MHz} < F_{pllref}$ wait for $200\mathrm{\mu s}$.
     PLL0_feed_sequence(); // Commit Changes
 ~~~~~
 
-@inlinetodo("Write Timer calculator and test code")
+## Project : Precision Timing ##
 
-## Timers ##
+Many aspects of your LPC require very precise clocking. 
+@@
+Things like the USB subsystem, the _Analog to Digital Converter (ADC)_
+and _Direct Memory Access (DMA)_ all perform operations that are timed
+using your internal CPU clock. 
+@@
+The accuracy of those features, and more depends on how accurate your
+clock speed is.
 
-### Basic Description ###
+We are going to experiment with changing the clock speed to generate
+output signals at various frequencies. 
 
-### Speed Settings ###
+### Instruction Speed ###
 
-### Match Registers ###
+### Steps ###
 
-### Capture Registers ### 
+  1) Write a script, in any laguage you want, that will calculate
+     clock settings for you. It should, given a target clock speed, 
+     give you everything needed to write the clock setup code.
+     @todo("Write this yourself") 
 
-## Project : Something ##
+~~~~~{.bash}
+    $ ./clk-calc --target=120MHz
+
+    Base Oscillator : 
+    Use PLL :
+        N-Divider : 
+        M-Divider : 
+    CPU Clock Divider : 
+
+    Target Freq: 
+    Output Freq: 
+    Error: 
+    
+    $ ./clk-calc --target=200MHz
+
+    Cannot Compute: Target Clock Too High
+
+~~~~~
+
+  2) Write a program that repeatedly toggles a GPIO pin, so that you 
+     get a square wave. 
+
+  3) Use `make lst` and the [ARM Cortex M3 Manual](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0432c/CHDCICDF.html) to find the number of
+     clock cycles between every toggle. 
+
+  4) Change the frequency of your output square wave without changing 
+     the loop at all, use only different clocking settings. 
+ 
+### Questions ###
+
+As you progress through the exercise, answer the followign questions:
+
+  1) What is the lowest clock speed you can achieve with this setup?
+  
+  2) How many clock cycles does your loop take between GPIO toggles?
+
+  3) What is the frequency of your output signal when the CPU clock 
+     is 200Hz? 120MHz? 
+
+  4) What clock frequency do you need to get an output signal at 1kHz? 
+
+
 

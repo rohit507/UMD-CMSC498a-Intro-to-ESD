@@ -11,7 +11,7 @@ $ROOT_DIR = ""
 
 import "#{$ROOT_DIR}settings.rake"
 
-$chapters = ['Introduction','GPIO','Appendix','ClockingAndTimers']
+$chapters = ['Introduction','GPIO','Appendix','Clocking','Timers']
 
 task :default => ['clean','book.pdf']
 
@@ -43,7 +43,8 @@ end
 
 # Build For Test (Un finished Chapters)
 file 'book.tex' => ['title.md',
-                    'src/ClockingAndTimers/layout.ppmd',
+                    'src/Clocking/layout.ppmd',
+                    'src/Timers/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
