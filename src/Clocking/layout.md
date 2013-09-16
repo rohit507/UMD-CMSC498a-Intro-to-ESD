@@ -427,6 +427,20 @@ If $20\mathrm{MHz} < F_{pllref}$ wait for $200\mathrm{\mu s}$.
     PLL0_feed_sequence(); // Commit Changes
 ~~~~~
 
+## Peripheral Clocks ##
+
+Many peripherals are timed using the _Peripheral Clock Dividers_. 
+@@
+There are four clocks `pclk1`,`pclk2`,`pclk4` and `pclk8`, which
+are clocks derived from `cclk`, and are 1,2,4,and 8 times as slow 
+as `cclk`. 
+@@
+Namely, they are implemented with clock dividers with fixed factor
+registers of 0,1,3 and 7.
+
+You can see how to connect them to various paripherals on pages 
+56 and 57 of the manual.
+
 ## Project : Precision Timing ##
 
 Many aspects of your LPC require very precise clocking. 
@@ -441,32 +455,28 @@ clock speed is.
 We are going to experiment with changing the clock speed to generate
 output signals at various frequencies. 
 
-### Instruction Speed ###
-
 ### Steps ###
 
   1) Write a script, in any laguage you want, that will calculate
      clock settings for you. It should, given a target clock speed, 
      give you everything needed to write the clock setup code.
-     @todo("Write this yourself") 
 
 ~~~~~{.bash}
     $ ./clk-calc --target=120MHz
 
-    Base Oscillator : 
-    Use PLL :
-        N-Divider : 
-        M-Divider : 
-    CPU Clock Divider : 
+    Base Oscillator : ...
+    Use PLL : ...
+        N-Divider : ...
+        M-Divider : ...
+    CPU Clock Divider : ... 
 
-    Target Freq: 
-    Output Freq: 
-    Error: 
+    Target Freq: ...
+    Output Freq: ...
+    Error: ... 
     
     $ ./clk-calc --target=200MHz
 
     Cannot Compute: Target Clock Too High
-
 ~~~~~
 
   2) Write a program that repeatedly toggles a GPIO pin, so that you 
@@ -482,14 +492,17 @@ output signals at various frequencies.
 
 As you progress through the exercise, answer the followign questions:
 
-  1) What is the lowest clock speed you can achieve with this setup?
+  1) What is the lowest CPU clock speed you can achieve with this setup?
   
   2) How many clock cycles does your loop take between GPIO toggles?
+ 
 
-  3) What is the frequency of your output signal when the CPU clock 
+  3) What are the options needed to get the maximum speed, 120MHz? 
+
+  4) What is the frequency of your output signal when the CPU clock 
      is 200Hz? 120MHz? 
 
-  4) What clock frequency do you need to get an output signal at 1kHz? 
+  5) What clock frequency do you need to get an output signal at 1kHz? 
 
 
 
