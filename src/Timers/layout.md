@@ -144,27 +144,65 @@ counter increment.
 Within each timer are four match registers, 32 bit registers which can store a
 specific match value. 
 @@
-When the timer counter and match register are equal, any combination of the following
-three events can be triggered:
+When the timer counter and match register are equal, certain events can be
+triggered.
 
-Reset
- 
-  : The Timer Counter's value is reset to 0, because the relevant bit in the TCR is
-    toggled. 
+Choosing the match value is just a matter of setting the match register,
+`LPC_TIMx->MRx`.
 
-Disable 
-
-  : The Timer Counter is disabled, because the TCR's disable flag is set. 
-
-Interrupt
-
-  : An Interrupt is thrown for this timer.
+~~~~{.C}
+    LPC_TIM0->MR3 = (uint32_t) 4000; // Set match register 3 on timer 0
+    LPC_TIM2->MR1 = (uint32_t) 453;  // Set match register 1 on timer 2
+~~~~~
 
 ### Match Settings ###
 
+There are three events a match can trigger, a reset of the timer counter,
+disabling the timer counter and sending an interrupt. 
+@@
+The disable and reset events work by modifying the timer control register,
+and using its features to control the timer counter. 
+
+The match register's disable event sets the disable flag in the TCR to 1,
+requiring you to manually toggle it back.
+@@
+On the other hand, the reset event simply toggles the flag in the TCR,
+setting the timer counter to 0, but allowing it to continue incrementing,
+
+@inlinetodo("Insert timing diagrams showing outcome of disable and reset flags")
+
+To actually change which events are triggered on match requires manipulating
+the register at `LPC_TIMx->MCR`. 
+@@
+All the flags for all the timer registers are mapped to various bits in
+the _Match Control Register (MCR)_.
+@@
+This mapping can be found on page 496 on the manual. 
+
+~~~~~{.C}
+    BITON(LPC_TIM0->MCR,10); // Reset on match for 
+                             // match register 3 in timer 0
+    BOTON(LPC_TIM2->MCR,5);  // Disable on match for 
+                             // match register 3 in timer 2
+~~~~~
+
 ### Match Interrupts ###
 
-### Match Outputs ###
+Like a GPIO interrupt, there are multiple triggers which all trigger 
+an interrupt on the same channet. @todo("Explain: Interrupt channel or
+make sure it's used earlier")
+@@
+Each of the match registers can trigger interrupts, and so can other
+components of each timer.
+
+To tell these interrupts apart, you can use each timer's _Interrupt 
+Register (IR)_.
+@@
+When a component of the timer triggers the interrupt a flag in 
+the IR is flipped and you can use that to determine what's already going
+on. 
+
+### External Match Registers ###
 
 ## Capture Registers ## 
 

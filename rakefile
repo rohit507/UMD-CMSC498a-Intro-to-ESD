@@ -24,7 +24,7 @@ rule '.pdf' => '.tex' do |f|
     $chapters.each do |d|
         d = "src/#{d}/assets"
         if Dir.exists?(d) then
-           ln(Dir.glob("#{d}/*"),"assets/")
+           ln(Dir.glob("#{d}/*"),"assets/",:force => true)
         end
     end
     sh "#{$PDF} #{f.source} #{$PDFOPTS}"
@@ -43,7 +43,6 @@ end
 
 # Build For Test (Un finished Chapters)
 file 'book.tex' => ['title.md',
-                    'src/Clocking/layout.ppmd',
                     'src/Timers/layout.ppmd',
                     'todo.md'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
@@ -54,6 +53,7 @@ end
 file 'ESDbook.tex' => ['title.md',
                     'src/Introduction/layout.ppmd',
                     'src/GPIO/layout.ppmd',
+                    'src/Clocking/layout.ppmd',
                     'src/Appendix/layout.ppmd'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "
