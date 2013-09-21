@@ -204,12 +204,37 @@ on.
 
 ### External Match Registers ###
 
+@inlinetodo("Explanation of how external pins can be modified by
+             match output without CPU intervention.")
+
 ## Capture Registers ## 
 
-## Project : Morse Code Reader ##
+@figure("Capture Register Block Diagram",assets/Capture-Register.eps,Cap-Reg-Blk)
+
+@inlinetodo("Explanation of capture register structure and function with example code")
+
+## Project : Serial Light Communications ##
+
+@inlinetodo(Explanation of project.)
 
 ### Background ###
 
+@missingfigure("Oscilloscope readout")
+
+@inlinetodo("explain rise/fall time, timing and synchronization considerations")
+
 ### Materials ###
 
+  - 1 x LED (use the bright blue ones on the strip)
+  - 1 x Photoresistor
+  - 1 x [Potentiometer](http://en.wikipedia.org/wiki/Potentiometer)
+  - 1 x 2kOhm Resistor
+  - 1 x [TLV2461](http://www.ti.com/lit/ds/symlink/tlv2461-q1.pdf) Op-Amp
+
 ### Steps ###
+
+@smallfigure("LED Output Circuit",assets/Led-Circuit.eps,0.25)
+
+@smallfigure("Light Recieve Circuit",assets/Recieve-Circuit.eps,0.75)
+
+@inlinetodo("Explain voltage dividers and the maths behind it")

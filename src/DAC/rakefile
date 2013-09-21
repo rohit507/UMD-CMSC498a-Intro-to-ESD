@@ -1,0 +1,32 @@
+#########################################
+#                                       #
+#   Name : src/GPIO/Rakefile            #
+#   About : Build automation document   #
+#            for the GPIO chapter.      #
+#                                       #
+#########################################
+
+$ROOT_DIR = "../../"
+
+import "#{$ROOT_DIR}common.rake"
+
+# List of files that aren't automatically generated and should be saved
+#  *everything* else will be deleted during the full clean operation
+
+$filelist = ["layout.md",        # The final layout document
+             "table.erb",        # Template for the table
+             "assets/"  ,        # Dir containing images and stuff
+             "rakefile"]    
+
+# List of generated files, these will be deleted during most clean operations  
+
+$tempfiles = ["layout.ppmd",
+              "layout.tex",
+              "layout.pptex",
+              "layout.aux",
+              "layout.log",
+              "layout.out",
+              "layout.pdf",
+              "nohup.out",
+              "layout.toc"]
+
