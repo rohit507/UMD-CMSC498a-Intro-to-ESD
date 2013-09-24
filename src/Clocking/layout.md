@@ -301,7 +301,7 @@ the various registers we'll be using and look at their functions.
 
 `LPC_SC->PLL0FEED`
 
-  : The PLL0 Feed register, you write afeed sequence to this register
+  : The PLL0 Feed register, you write a feed sequence to this register
     in quick succession in order to validate changes you've made to the 
     other PLL0 registers, and actually apply them to the PLL. See manual page 40. 
 
