@@ -29,5 +29,5 @@ To build each chapter seperately :
 
 Relevant Links :
 
-[ESD Textbook] (http://www.cs.umd.edu/~rohit/ESDbook.pdf)
+[ESD Textbook] (http://www.cs.umd.edu/~rohit/ESDbook.pdf)  
 [Pin Diagram] (http://www.cs.umd.edu/~rohit/pinout.pdf)
