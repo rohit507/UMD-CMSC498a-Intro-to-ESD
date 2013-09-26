@@ -57,8 +57,6 @@ file 'ESDbook.tex' => ['title.md',
                     'src/GPIO/layout.ppmd',
                     'src/Clocking/layout.ppmd',
                     'src/Timers/layout.ppmd',
-                    'src/ADC/layout.ppmd',
-                    'src/DAC/layout.ppmd',
                     'src/Appendix/layout.ppmd'] do |f,s|
     sh "#{$LC} -f markdown -w latex -o #{f.name} " +
         "#{$LCOPTS_CN} #{f.prerequisites.join(" style/chapter_prefix.md ")} "

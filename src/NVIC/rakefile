@@ -1,8 +1,8 @@
 #########################################
 #                                       #
-#   Name : src/GPIO/Rakefile            #
+#   Name : src/NVIC/Rakefile            #
 #   About : Build automation document   #
-#            for the GPIO chapter.      #
+#            for the NVIC chapter.      #
 #                                       #
 #########################################
 
