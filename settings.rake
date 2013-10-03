@@ -49,7 +49,7 @@ $LC = "pandoc"
 
 # PDF Creator Options
 $PDF = "pdflatex"
-$PDFOPTS = "--trace"
+$PDFOPTS = "--trace -shell-escape"
 
 # HTML Creator Options
 $HTML = "pandoc"
