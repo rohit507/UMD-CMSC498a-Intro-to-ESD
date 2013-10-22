@@ -491,8 +491,7 @@ Once the circuit is assembled connect the oscilloscope probe to the ADC
 input and wave your hand above the sensor to get something like figure
 @ref(Osc-Hand-Wave).
 
-@smallfigure("Hand Sensor Oscilloscope Trace"
-    ,assets/Hand-Wave-Sense.png,0.6,Osc-Hand-Wave)
+@@smallfigure("Hand Sensor Oscilloscope Trace",assets/Hand-Wave-Sense,0.6,Osc-Hand-Wave)
 
   2) Connect the hand sensors to your LPC and check if you can receive
      ADC values with GDB or semi-hosting.
