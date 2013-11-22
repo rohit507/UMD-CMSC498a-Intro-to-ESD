@@ -1,4 +1,4 @@
-# Introduction 
+# Introduction # 
 
 This book will teach you embedded system design and development, using
 the LPC1769, an ARM Cortex microcontroller.

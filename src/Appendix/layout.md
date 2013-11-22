@@ -1,7 +1,11 @@
 # Appendix #
 
-@include(assets/devsetup.md)
+@include(devsetup.md)
 
 \newpage
 
-@include(assets/macros.md)
+@include(macros.md)
+
+\newpage
+
+@@include(circuit-theory.md)

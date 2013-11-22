@@ -1,6 +1,19 @@
 # Timers #
 
-@inlinetodo("Intro Paragraph for Timers, something about real time systems?")
+Microcontrollers are often called to perform complex tasks as part of
+medical equipment, or aeronautics hardware, tasks which require precise
+measurement of time, and the ability to perform actions at set times. 
+@@
+While simply counting CPU cycles and performing actions after predefined
+wait loops is good enough for some of our simplest projects, we need 
+better methods to measure and keep track of time if we want to do anything
+more complex. 
+@@
+Timers provide such a tool, they use the CPU clock as the basis of their
+measurement capability, and from that provide you the ability to throw 
+interrupts when you want, measure the number of cycles between two events,
+and output basic timing signals without need for any active management by
+the CPU. 
 
 ## Basic Description ##
 
@@ -14,10 +27,10 @@ simply make the time available for your applications, among other things.
 This means you can start using temporal information in your program, 
 without having to use unwieldy spin loops, and other ill advised hacks.
 
-There are four timers within the LPC, Tim0, Tim1, Tim2 and Tim3.
+There are four timers within the LPC, `TIM0`, `TIM1`, `TIM2` and `TIM3`.
 @@
 All are identical, but can have options set independently, and can be
-used without interfering with each other. `
+used without interfering with each other. 
 
 ## Speed Settings ##
 
@@ -32,7 +45,7 @@ is set to.
 
 There's nothing more to it than that, the prescale counter is a 
 clock divider like so many others, and the Timer counter is a 32 bit register,
-and as long as nothing else intervenes it's count from `0x00000000` to 
+and as long as nothing else intervenes it'll count from `0x00000000` to 
 `0xFFFFFFFF`, overflow, and do it all over again. 
 
 ### Powering Devices ###
@@ -44,12 +57,12 @@ On reset most of the LPC's peripherals are off, and aren't being supplied
 power by the microcontroller. 
 @@
 This can save a lot of energy, but a few core peripherals are turned on 
-when the LPC starts, among these GPIO and Tim0 and Tim1.
+when the LPC starts, among these GPIO and `TIM0` and `TIM1`.
 @@
-But this means that Tim2 and Tim3 start off, and if you need them you'll
+But this means that `TIM2` and `TIM3` start off, and if you need them you'll
 have to turn them on. 
 @@
-Additionally, if you don't need Tim0 or Tim1, you can turn them off
+Additionally, if you don't need `TIM0` or `TIM1`, you can turn them off
 to save some power. 
 
 Power control is considered a system feature, and is controlled by register
@@ -59,8 +72,8 @@ Each bit in that register is assigned to a peripheral, with a 0 meaning
 unpowered, and a 1 meaning that the peripheral is powered. 
 
 ~~~~~{.C}
-    BITON(LPC_SC->PCONP,22); // Turn on Tim2
-    BITOFF(LPC_SC->PCONP,2); // Turn off Tim1
+    BITON(LPC_SC->PCONP,22); // Turn on TIM2
+    BITOFF(LPC_SC->PCONP,2); // Turn off TIM1
 ~~~~~
 
 You can find the full table of peripheral to bit mappings on pages 63 and
@@ -189,8 +202,7 @@ This mapping can be found on page 496 on the manual.
 ### Match Interrupts ###
 
 Like a GPIO interrupt, there are multiple triggers which all trigger 
-an interrupt on the same channet. @todo("Explain: Interrupt channel or
-make sure it's used earlier")
+an interrupt on the same channel.
 @@
 Each of the match registers can trigger interrupts, and so can other
 components of each timer.
@@ -204,14 +216,33 @@ on.
 
 ### External Match Registers ###
 
-@inlinetodo("Explanation of how external pins can be modified by
-             match output without CPU intervention.")
+The _External Match Register (EMR)_ allows the timers to manipulate the
+state of pins on the LPC. 
+@@
+Each timer has 4 external match pins, one for every match register, and 
+they can be used like GPIO pins, where you can set the outputs to logic
+high or logic low at will, with the additional ability to change the state
+of those same pins when a match occurs.
+
+Each pin has a bit in the EMR which allows you to set its current state
+just like `FIOPIN` does for GPIO, but there's also two additional bits 
+for each pin which allow you to set it to change when a match occurs. 
+@@
+They can go low, go high, or toggle when a match occurs.
+
+All of these can be useful in various circumstances.
+@@
+For instance you can set a timer up send a pulse of a specified length 
+when you tell it to, or output a clock signal at a specific frequency.
 
 ## Capture Registers ## 
 
 @figure("Capture Register Block Diagram",assets/Capture-Register.eps,Cap-Reg-Blk)
 
-@inlinetodo("Explanation of capture register structure and function with example code")
+Capture registers allow you to store the state of the timer when an
+event occurs. 
+@@
+You can use this to time external events, and 
 
 ## Project : Serial Light Communications ##
 
