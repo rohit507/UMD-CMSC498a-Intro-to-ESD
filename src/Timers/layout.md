@@ -182,7 +182,7 @@ requiring you to manually toggle it back.
 On the other hand, the reset event simply toggles the flag in the TCR,
 setting the timer counter to 0, but allowing it to continue incrementing,
 
-@inlinetodo("Insert timing diagrams showing outcome of disable and reset flags")
+@@inlinetodo("Insert timing diagrams showing outcome of disable and reset flags")
 
 To actually change which events are triggered on match requires manipulating
 the register at `LPC_TIMx->MCR`. 
@@ -195,7 +195,7 @@ This mapping can be found on page 496 on the manual.
 ~~~~~{.C}
     BITON(LPC_TIM0->MCR,10); // Reset on match for 
                              // match register 3 in timer 0
-    BOTON(LPC_TIM2->MCR,5);  // Disable on match for 
+    BITON(LPC_TIM2->MCR,5);  // Disable on match for 
                              // match register 3 in timer 2
 ~~~~~
 
@@ -235,6 +235,14 @@ All of these can be useful in various circumstances.
 For instance you can set a timer up send a pulse of a specified length 
 when you tell it to, or output a clock signal at a specific frequency.
 
+~~~~~{.C}
+    BITON(LPC_TIM0->EMR,0); // Set the External Match pin for TIM0:MAT0 high
+    SETBITS(LPC_TIM0->EMR,5,2,0b11);  // Make the TIM0:MAT0 pin to toggle
+                                      // whenever there is a match.
+~~~~~ 
+
+The full register map is on page 498 of the manual. 
+
 ## Capture Registers ## 
 
 @figure("Capture Register Block Diagram",assets/Capture-Register.eps,Cap-Reg-Blk)
@@ -242,11 +250,41 @@ when you tell it to, or output a clock signal at a specific frequency.
 Capture registers allow you to store the state of the timer when an
 event occurs. 
 @@
-You can use this to time external events, and 
+You can use this to accurately time external events. 
+
+Each timer in the LPC has two capture registers, and a capture control 
+register. 
+@@
+The _Capture Control Register (CCR)_ tells the LPC to load the value of the 
+timer counter into the capture register when they see a falling egde
+or rising edge on the input pin. 
+@@
+The capture control register also controls whether an interrupt is 
+thrown when the capture register is loaded with a new value. 
+
+~~~~~{.C}
+    BITON(LPC_TIM0->CCR,0); // Set TIM0:CAP0 to save the value on the
+                            // timer counter when there's a falling edge. 
+~~~~~
+
+The full register map is on page 497 of the manual. 
+
+@>
 
 ## Project : Serial Light Communications ##
 
-@inlinetodo(Explanation of project.)
+Timing is often very important in communications, take the UART serial 
+protocol for instance. 
+@@
+It's very similar to the shift register protocol we implemented in the 
+GPIO chapter but with one key difference, there is no clock line. 
+@@ 
+Instead the sender and receiver agree on a specific _baud rate_ which 
+determines the speed of their clock, and use that implied clock to 
+shift data in and out.
+
+_Universal Asynchronous Receiver/Transmitter (UART)_ is a serial 
+communications protocol built by wrapping a shifted byte in a 
 
 ### Background ###
 
@@ -268,4 +306,4 @@ You can use this to time external events, and
 
 @smallfigure("Light Recieve Circuit",assets/Recieve-Circuit.eps,0.75)
 
-@inlinetodo("Explain voltage dividers and the maths behind it")
+@inlinetodo("Explain voltage dividers and the maths behind it") <@

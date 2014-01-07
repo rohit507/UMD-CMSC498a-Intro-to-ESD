@@ -1,7 +1,29 @@
 # Clocking #
 
-@inlinetodo("Paragraph about clocking being a tradeoff between processing
-power and power consumptions, and segue into LPC stuff")
+Chosing clock speeds in microcontrollers tends to be a tradeoff
+between speed of computation and power consumption.
+@@
+The faster a processor runs, the more power it uses, and the more
+heat it generates. 
+@@
+On a desktop this is often a non-issue, there is usually amply 
+available power, and it becomes sensible to run as fast as your
+application needs, and your cooling hardware supports. 
+
+On a microcontroller power becomes a lot more important, often
+devices will be running off a bettery, and choosing a clock speed
+means choosing how long the device will last before needing to be
+recharged. 
+@@
+We won't be delving very deeply into the power and speed tradeoffs
+that come from various settings of the CPU clock, but it is good
+to keep the tradeoff in mind when you're developing devices where
+power consumption is important. 
+
+Additionally all of the peripherals on the LPC use clocks 
+which are derived from the CPU clock, and those clocks often need
+to be very precisely set, which means that you need to be able
+to choose and set your CPU clock precisely as well. 
 
 Clocks in the LPC all derive from one of three oscillators. 
 

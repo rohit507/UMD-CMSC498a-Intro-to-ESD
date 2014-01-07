@@ -102,7 +102,7 @@ larger file size.
 
 You also need to install the [Git](http://git-scm.com/downloads)
 version control system.
-@todo("Windows Instructions,and path changes.")
+@@todo("Windows Instructions,and path changes.")
 
 Git is a similar tool to SVN or CVS and allows you to store your
 code's history and synchronize development with other
@@ -116,7 +116,7 @@ Next, install the [CMake](http://www.cmake.org/) build system, make sure
 you install the very latest version, a number of distros do now have 
 the proper binaries in their repositories, and you might have to build it
 yourself. 
-@todo("Windows Instructions,and path changes.")
+@@todo("Windows Instructions,and path changes.")
 
 CMake is a meta-build system.
 @@
@@ -176,7 +176,7 @@ proprietary tools.
 @@
 Here the `DLPCXPRESSO_DIR` variable should be set to the root directory 
 under which all of the necessary files can be found, this should contain
-the `lpcxpresso` binary.@todo("Add Windows to footnote") ^[On Linux or OSX it
+the `lpcxpresso` binary.@>@todo("Add Windows to footnote")<@ ^[On Linux or OSX it
 should look like `/usr/local/lpcxpresso_5.1.2_2065/lpcxpresso/`.  On Windows
 it should look like `TODO: Insert actual path here`.] 
 
@@ -197,9 +197,9 @@ On Linux or OS X:
     unzip CMSISv2p00_LPC17xx.zip -d CMSISv2p00_LPC17xx
 ~~~~~~~~~~
 
-On Windows: 
+@@On Windows: 
 
-@inlinetodo("Add instructions here")
+@@inlinetodo("Add instructions here")
 
 Now from within the `CMSIS` directory, we'll use CMake to generate a 
 build system.
@@ -213,9 +213,9 @@ On Linux or OS X:
     make
 ~~~~~~~~~~
 
-On Windows: 
+@@On Windows: 
 
-@inlinetodo("Add instructions here")
+@@inlinetodo("Add instructions here")
 
 Now we can build our skeleton project, which is the bare template
 all your projects will be build from.
@@ -229,9 +229,9 @@ On Linux or OS X:
     make
 ~~~~~~~~~~
 
-On Windows: 
+@@On Windows: 
 
-@inlinetodo("Add instructions here")
+@@inlinetodo("Add instructions here")
 
 At this point all your installation steps are done and we can go over 
 basic usage, and workflow.
